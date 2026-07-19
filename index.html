@@ -332,6 +332,9 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <div id="loading-indicator" class="hidden text-brand-dark text-xs font-bold animate-pulse">실시간 연동 진행중...</div>
+                        <button id="admin-homework-link-btn" onclick="openHomeworkLinkEditModal()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                            <i class="fa-solid fa-pen-to-square mr-1"></i>링크 수정
+                        </button>
                     </div>
                 </div>
 
@@ -407,6 +410,28 @@
             </div>
         </div>
 
+        <!-- Homework Link Edit Modal -->
+        <div id="homework-link-edit-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                    <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-link text-brand-dark"></i> 숙제 연결 링크 수정
+                    </h3>
+                    <button onclick="closeHomeworkLinkEditModal()" class="text-amber-500 hover:text-[#181611] dark:hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="space-y-4 font-bold text-xs">
+                    <div>
+                        <label class="block text-gray-500 mb-1.5">이동할 URL 주소 (구글 스프레드시트 등)</label>
+                        <input type="text" id="edit-homework-url" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none font-medium text-xs" placeholder="https://docs.google.com/spreadsheets/...">
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
+                    <button onclick="closeHomeworkLinkEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
+                    <button onclick="saveHomeworkLink()" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Notice Edit Modal -->
         <div id="notice-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[85vh]">
@@ -459,13 +484,6 @@
                         <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너</h4>
                         <label class="block text-gray-400 mb-1.5">상단 커버용 URL 이미지</label>
                         <input type="text" id="edit-profile-banner" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="이미지 주소를 복사해 넣어주세요">
-                    </div>
-                    <hr class="border-amber-50 dark:border-amber-950/30">
-
-                    <div>
-                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-link text-brand-dark mr-1"></i> 방셀 숙제 연결 링크 설정</h4>
-                        <label class="block text-gray-400 mb-1.5">방셀 숙제 현황판 버튼 클릭 시 이동할 URL 주소 (구글 시트 등)</label>
-                        <input type="text" id="edit-profile-upbo-link" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="예: https://docs.google.com/spreadsheets/...">
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
 
@@ -1305,6 +1323,40 @@
             reader.readAsDataURL(file);
         }
 
+        function openHomeworkLinkEditModal() {
+            const modal = document.getElementById('homework-link-edit-modal');
+            document.getElementById('edit-homework-url').value = globalProfileData.upboLink || defaultProfileData.upboLink || '';
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+        }
+
+        function closeHomeworkLinkEditModal() {
+            const modal = document.getElementById('homework-link-edit-modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-100');
+                modal.querySelector('div').classList.add('scale-95');
+            }
+        }
+
+        function saveHomeworkLink() {
+            let url = document.getElementById('edit-homework-url').value.trim();
+            if (url && !/^https?:\/\//i.test(url)) {
+                url = 'https://' + url;
+            }
+            globalProfileData.upboLink = url;
+            updateFirestore('profile', globalProfileData);
+            const upboLinkBtn = document.getElementById('upbo-link-btn');
+            if (upboLinkBtn) {
+                upboLinkBtn.href = url;
+            }
+            closeHomeworkLinkEditModal();
+            showToast("🔗 숙제 연결 링크가 성공적으로 수정되었습니다.");
+        }
+
         function openAdminLoginModal() {
             if (isAdminMode) {
                 isAdminMode = false;
@@ -1313,6 +1365,7 @@
                 document.getElementById('admin-notice-edit-btn').classList.add('hidden'); 
                 document.getElementById('admin-schedule-edit-btn').classList.add('hidden'); 
                 document.getElementById('admin-profile-edit-btn').classList.add('hidden');
+                document.getElementById('admin-homework-link-btn').classList.add('hidden');
                 renderMonthlyFansigns();
                 renderSignatureStar();
                 showToast("관리자 모드가 해제되었습니다! 🌸");
@@ -1337,6 +1390,7 @@
                 document.getElementById('admin-notice-edit-btn').classList.remove('hidden'); 
                 document.getElementById('admin-schedule-edit-btn').classList.remove('hidden'); 
                 document.getElementById('admin-profile-edit-btn').classList.remove('hidden');
+                document.getElementById('admin-homework-link-btn').classList.remove('hidden');
                 renderMonthlyFansigns();
                 renderSignatureStar();
                 showToast("인증 완료되었습니다. 공지/일정/방셀/시그풍 추가 및 텍스트와 이미지 변경이 가능합니다.");
@@ -1442,7 +1496,6 @@
             const modal = document.getElementById('profile-edit-modal');
             
             document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || defaultProfileData.bannerUrl || '';
-            document.getElementById('edit-profile-upbo-link').value = globalProfileData.upboLink || defaultProfileData.upboLink || '';
             document.getElementById('edit-profile-intro').value = globalProfileData.introText || ''; 
             document.getElementById('edit-profile-tags').value = (globalProfileData.tags || []).join(', ');
             
@@ -1512,7 +1565,6 @@
             const parse = (str) => str.split(',').map(item => item.trim()).filter(item => item !== '');
             
             globalProfileData.bannerUrl = document.getElementById('edit-profile-banner').value.trim();
-            globalProfileData.upboLink = document.getElementById('edit-profile-upbo-link').value.trim();
             globalProfileData.introText = document.getElementById('edit-profile-intro').value; 
             globalProfileData.tags = parse(document.getElementById('edit-profile-tags').value);
             
@@ -1572,6 +1624,9 @@
         window.openSignatureTextEditModal = openSignatureTextEditModal;
         window.closeSignatureTextEditModal = closeSignatureTextEditModal;
         window.saveSignatureText = saveSignatureText;
+        window.openHomeworkLinkEditModal = openHomeworkLinkEditModal;
+        window.closeHomeworkLinkEditModal = closeHomeworkLinkEditModal;
+        window.saveHomeworkLink = saveHomeworkLink;
     </script>
 </body>
 </html>
