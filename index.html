@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>탱자 오피셜 프로필 🦆💛</title>
     
-    <!-- 브라우저 탭 아이콘 (파비콘) - 탱자님의 상큼하고 달콤한 탱자/오리 테마 -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍊</text></svg>">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- html2canvas for PNG export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <!-- Google Fonts: Gowun Dodum, Gaegu, Fredoka, Noto Sans KR -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gowun+Dodum&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <script>
@@ -46,14 +43,12 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
-        /* 스크롤바 노랑-화이트 테마 커스텀 */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #fffdf5; }
         .dark ::-webkit-scrollbar-track { background: #16140e; }
         ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 9999px; border: 2px solid #fffdf5; }
         .dark ::-webkit-scrollbar-thumb { background: #d97706; border: 2px solid #16140e; }
         
-        /* 쫀득하고 톡톡 튀는 탱자 애니메이션 */
         @keyframes taengzaBeat {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.12); }
@@ -70,7 +65,6 @@
             animation: float 3s infinite ease-in-out;
         }
 
-        /* 눈송이처럼 떨어지는 탱자/오리 파티클 */
         .taengza-particle {
             position: absolute;
             pointer-events: none;
@@ -85,13 +79,14 @@
 </head>
 <body class="bg-[#fefef9] dark:bg-[#0f0e0a] text-[#4d3d24] dark:text-amber-100 font-sans text-lg antialiased min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
-    <!-- background decorative floating elements -->
+    <!-- background decorative elements -->
     <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-20" id="taengza-bg-effects"></div>
 
+    <!-- Header Navigation -->
     <header class="bg-white/85 dark:bg-[#181611]/85 backdrop-blur-md shadow-xs sticky top-0 z-50 transition-colors duration-300 border-b border-amber-100/50 dark:border-amber-950/40">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo with Cute Lemon/Orange -->
+                <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="flex items-center gap-1.5 group">
                         <span class="taengza-beat inline-block">🍊</span>
@@ -112,16 +107,9 @@
                     <button id="theme-toggle" class="text-amber-500 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/40 p-2 rounded-xl transition-colors" title="화면 테마 변경">
                         <i class="fa-solid fa-moon text-lg w-5 h-5 flex items-center justify-center"></i>
                     </button>
-                    <!-- PNG Export Action -->
-                    <button onclick="captureProfile()" class="bg-brand text-amber-950 hover:bg-brand-dark hover:text-white px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-sm">
-                        <i class="fa-solid fa-camera"></i> 이미지 저장
-                    </button>
                 </nav>
-                <!-- Mobile Menu Button -->
+                <!-- Mobile Menu Buttons -->
                 <div class="md:hidden flex items-center gap-1">
-                    <button onclick="captureProfile()" class="text-amber-600 hover:bg-amber-50 p-2 rounded-xl" title="이미지 저장">
-                        <i class="fa-solid fa-camera text-lg"></i>
-                    </button>
                     <button id="mobile-theme-toggle" class="text-amber-500 dark:text-amber-400 p-2 rounded-xl transition-colors">
                         <i class="fa-solid fa-moon text-lg"></i>
                     </button>
@@ -131,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu Panel -->
+        <!-- Mobile Navigation Panel -->
         <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#181611] border-t border-amber-100/50 dark:border-amber-950/40">
             <div class="px-3 pt-2 pb-4 space-y-1 font-bold">
                 <a href="#profile" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">프로필</a>
@@ -144,14 +132,12 @@
         </div>
     </header>
 
-    <main id="capture-target" class="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 relative z-10">
+    <main class="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 relative z-10">
 
-        <!-- 1. Profile Section -->
+        <!-- 1. Profile Area -->
         <section id="profile" class="scroll-mt-20 flex flex-col gap-6">
-            
-            <!-- Hero Header Card with SOOP Profile Integration -->
             <div class="bg-white dark:bg-[#181611] rounded-3xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 overflow-hidden transition-colors duration-300">
-                <!-- Cover Banner with Yellow Hue Gradation -->
+                <!-- Cover Banner Area -->
                 <div class="h-32 sm:h-48 w-full relative overflow-hidden bg-gradient-to-r from-amber-50 via-white to-orange-100 dark:from-amber-950/20 dark:to-orange-950/10">
                     <img id="profile-banner-img" src="" 
                          onerror="this.src='https://placehold.co/1200x400/fffdf0/fbbf24?text=Taengza+🦆💛'" 
@@ -160,7 +146,7 @@
                 </div>
                 
                 <div class="px-6 sm:px-8 pb-6 flex flex-col sm:flex-row relative">
-                    <!-- Avatar Area - Dynamic integration of Taengza's SOOP Avatar (popo030) -->
+                    <!-- Avatar and Profile Icon -->
                     <div class="-mt-16 sm:-mt-24 mb-4 sm:mb-0 sm:mr-6 flex-shrink-0 flex justify-center sm:block relative z-10">
                         <img class="h-32 w-32 sm:h-40 sm:w-40 rounded-full border-4 border-white dark:border-[#181611] shadow-md object-cover bg-amber-50 dark:bg-amber-950/30 hover:scale-105 transition-transform duration-350" 
                              src="https://stimg.afreecatv.com/LOGO/po/popo030/popo030.jpg" 
@@ -168,19 +154,23 @@
                              alt="탱자 아바타">
                     </div>
                     
-                    <!-- Main Profile Details -->
+                    <!-- Profile Information Headers -->
                     <div class="pt-2 sm:pt-4 flex-grow text-center sm:text-left flex flex-col sm:justify-between">
                         <div>
                             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mb-2">
-                                <span class="bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 px-3 py-0.5 rounded-full text-xs font-bold"><i class="fa-solid fa-duck"></i> 과일 '탱자'러버 오리 🦆</span>
-                                <span class="bg-orange-100/70 text-accent-dark dark:bg-orange-950/50 dark:text-orange-300 px-3 py-0.5 rounded-full text-xs font-bold"><i class="fa-solid fa-gamepad"></i> 소통 · 배그 · 마크 · 종겜 (겜못스)</span>
+                                <span class="bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 px-3 py-0.5 rounded-full text-xs font-bold">
+                                    <i class="fa-solid fa-duck"></i> 귀여운 탱커 🦆
+                                </span>
+                                <span class="bg-orange-100/70 text-accent-dark dark:bg-orange-950/50 dark:text-orange-300 px-3 py-0.5 rounded-full text-xs font-bold">
+                                    <i class="fa-solid fa-gamepad"></i> 소통 · 배그 · 마크 · 종겜 (겜못스)
+                                </span>
                             </div>
                             <h1 class="text-3xl font-logo font-bold text-[#45361a] dark:text-white mb-2 flex items-baseline justify-center sm:justify-start gap-2">
                                 탱자
                                 <span class="text-base text-amber-500 dark:text-amber-400 font-sans font-medium">Taengza</span>
                             </h1>
                             
-                            <!-- Key Metadata Tags (Taengza Specific) -->
+                            <!-- Key Metadata Tags -->
                             <div class="flex flex-wrap justify-center sm:justify-start gap-1.5 mb-5 text-sm font-bold">
                                 <span class="px-3 py-1 bg-amber-50/80 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full border border-amber-100/50 dark:border-amber-950/50">💛 데뷔일: 26.01.24</span>
                                 <span class="px-3 py-1 bg-amber-50/80 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full border border-amber-100/50 dark:border-amber-950/50">🎂 생일: 11월 22일</span>
@@ -189,19 +179,16 @@
                             </div>
                         </div>
 
-                        <!-- Social Links -->
+                        <!-- Social Link Badges -->
                         <div class="flex justify-center sm:justify-start gap-4">
-                            <!-- SOOP Link -->
                             <a href="https://www.sooplive.com/station/popo030" target="_blank" 
                                class="w-11 h-11 rounded-full bg-[#1aa7ec] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 SOOP 방송국">
                                 <i class="fa-solid fa-tv text-base"></i>
                             </a>
-                            <!-- YouTube Link -->
                             <a href="https://www.youtube.com/@taengza.030" target="_blank" 
                                class="w-11 h-11 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 유튜브">
                                 <i class="fa-brands fa-youtube text-lg"></i>
                             </a>
-                            <!-- Fancim Link -->
                             <a href="https://fancim.me/celeb/profile.aspx?url=578524" target="_blank" 
                                class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 팬심">
                                 <i class="fa-solid fa-heart text-base"></i>
@@ -211,9 +198,9 @@
                 </div>
             </div>
 
+            <!-- Introductory and Anniversary Columns -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
-                <!-- Introduction Card -->
+                <!-- Self Introduction -->
                 <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300 flex flex-col justify-between">
                     <div>
                         <div class="flex items-center justify-between mb-3">
@@ -225,28 +212,28 @@
                             </button>
                         </div>
                         <p id="profile-intro-text" class="text-sm leading-relaxed mb-4 whitespace-pre-wrap font-medium">
-                            <!-- JS Rendering -->
+                            <!-- Injected by JS -->
                         </p>
                     </div>
                     <div id="profile-tags-container" class="flex flex-wrap gap-1.5 pt-2 border-t border-amber-50 dark:border-amber-950/30">
-                        <!-- JS Rendering -->
+                        <!-- Injected by JS -->
                     </div>
                 </div>
 
-                <!-- Anniversary Card -->
+                <!-- D-Days List -->
                 <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300 flex flex-col justify-between">
                     <div>
                         <h3 class="flex items-center gap-1.5 text-lg font-bold text-[#45361a] dark:text-white mb-4">
                             💛 기념일 & 디데이
                         </h3>
                         <div id="dday-container" class="space-y-2.5">
-                            <!-- JS Rendering -->
+                            <!-- Injected by JS -->
                         </div>
                     </div>
                 </div>
-
             </div>
 
+            <!-- Broadcasting details -->
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300">
                 <h3 class="flex items-center gap-2 text-lg font-bold text-[#45361a] dark:text-white mb-4">
                     🦆 방송 정보
@@ -254,22 +241,22 @@
                 <div class="space-y-3 font-medium text-sm">
                     <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                         <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 방송 주기</span>
-                        <span id="profile-broadcast-time" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                        <span id="profile-broadcast-time" class="text-gray-750 dark:text-amber-200"><!-- Injected by JS --></span>
                     </div>
                     <div class="border-b border-dashed border-amber-100/40 dark:border-amber-950/30"></div>
                     <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                         <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 소통 장르</span>
-                        <span id="profile-broadcast-content" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                        <span id="profile-broadcast-content" class="text-gray-750 dark:text-amber-200"><!-- Injected by JS --></span>
                     </div>
                     <div class="border-b border-dashed border-amber-100/40 dark:border-amber-950/30"></div>
                     <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
                         <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 주요 게임</span>
-                        <span id="profile-broadcast-game" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                        <span id="profile-broadcast-game" class="text-gray-750 dark:text-amber-200"><!-- Injected by JS --></span>
                     </div>
                 </div>
             </div>
 
-            <!-- Likes & Dislikes -->
+            <!-- Likes and Dislikes -->
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300">
                 <h3 class="flex items-center gap-1.5 text-lg font-bold text-[#45361a] dark:text-white mb-4">
                     🍊 호불호 리스트
@@ -278,22 +265,22 @@
                     <div>
                         <p class="text-sm font-bold text-brand-dark dark:text-brand mb-2.5">좋아하는 것 💛</p>
                         <div id="profile-likes-container" class="flex flex-wrap gap-1.5">
-                            <!-- JS Rendering -->
+                            <!-- Injected by JS -->
                         </div>
                     </div>
                     <div>
                         <p class="text-sm font-bold text-gray-500 dark:text-amber-400 mb-2.5">싫어하는 것 ❌</p>
                         <div id="profile-dislikes-container" class="flex flex-wrap gap-1.5">
-                            <!-- JS Rendering -->
+                            <!-- Injected by JS -->
                         </div>
                     </div>
                 </div>
             </div>
-
         </section>
 
+        <!-- Notices and Schedule Rows -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Notice Section -->
+            <!-- Notices -->
             <section id="notice" class="scroll-mt-20">
                 <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 h-full border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300 flex flex-col relative">
                     <div class="flex items-center justify-between mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
@@ -306,12 +293,12 @@
                         </button>
                     </div>
                     <ul id="notice-list" class="space-y-3.5 flex-grow text-sm">
-                        <!-- JS Dynamic Notice -->
+                        <!-- Injected by JS -->
                     </ul>
                 </div>
             </section>
 
-            <!-- Weekly Schedule Section -->
+            <!-- Schedule -->
             <section id="schedule" class="scroll-mt-20">
                 <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 h-full border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300 flex flex-col relative">
                     <div class="flex items-center justify-between mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
@@ -323,25 +310,23 @@
                             <i class="fa-solid fa-pen-to-square text-sm"></i>
                         </button>
                     </div>
-                    
                     <div id="schedule-list" class="space-y-2.5 flex-grow text-sm">
-                        <!-- JS Dynamic Schedule -->
+                        <!-- Injected by JS -->
                     </div>
                 </div>
             </section>
         </div>
 
-        <!-- Homework Section -->
+        <!-- 3. Homework Area -->
         <section id="homework" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
-                
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 border-b border-amber-50 dark:border-amber-950/30 pb-4">
                     <div>
                         <div class="text-brand-dark dark:text-brand font-bold tracking-widest text-xs mb-1 flex items-center gap-1.5">
-                            <span>TAENGZA FANSIGN STATUS</span>
-                            <button onclick="openAdminLoginModal()" class="text-amber-300 hover:text-brand-dark transition-colors animate-pulse" title="관리인증">
-                                <i class="fa-solid fa-lock text-xs"></i>
+                            <button onclick="openAdminLoginModal()" class="text-amber-400 hover:text-brand-dark transition-colors animate-pulse" title="관리자 모드">
+                                <i class="fa-solid fa-lock text-sm"></i>
                             </button>
+                            <span class="text-gray-400 font-bold">TAENGZA FANSIGN WORK</span>
                         </div>
                         <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">방셀 숙제 현황 💛</h2>
                     </div>
@@ -353,7 +338,7 @@
                     </div>
                 </div>
 
-                <!-- Search and Manage Controls -->
+                <!-- Searching and Controls -->
                 <div class="flex flex-col sm:flex-row gap-3 mb-6">
                     <div class="relative flex-grow">
                         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -361,52 +346,56 @@
                         </div>
                         <input type="text" id="upbo-search" class="w-full bg-[#fffdfa] dark:bg-[#1b1914] border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-sm rounded-xl focus:ring-1 focus:ring-brand focus:border-brand block pl-11 p-3.5 outline-none font-medium transition-colors" placeholder="죽탱이 팬닉을 검색해보세요...">
                     </div>
-                    <!-- Admin: Add New User -->
                     <button id="admin-add-user-btn" onclick="openAddUserModal()" class="hidden items-center justify-center bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-3.5 px-5 rounded-xl transition-colors whitespace-nowrap shadow-xs text-sm">
                         <i class="fa-solid fa-user-plus mr-1.5 text-xs"></i>죽탱이 추가
                     </button>
                 </div>
 
-                <!-- Dynamic Grid for Users -->
+                <!-- Users Grid -->
                 <div id="upbo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     <!-- Cards injected by JS -->
                 </div>
-
             </div>
         </section>
 
-        <!-- 4. Monthly Fansign Section with Photo Uploads -->
+        <!-- 4. Monthly Fansign Area (Simplified: Description-based, with Add/Delete & customizable image/text) -->
         <section id="monthly-fansign" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
                     <div>
                         <div class="text-brand-dark dark:text-brand font-bold tracking-widest text-xs mb-1">
-                            <span>HONORED FANSIGNS OF THE MONTH (PHOTO UPLOAD) 📸</span>
+                            <span>HONORED FANSIGNS OF THE MONTH 📸</span>
                         </div>
                         <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">이달의 방셀 👑</h2>
                     </div>
+                    <button id="admin-add-fansign-btn" onclick="addMonthlyFansign()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                        <i class="fa-solid fa-plus mr-1"></i>방셀 추가
+                    </button>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="monthly-fansign-container">
-                    <!-- Cards with optional custom photos, updated dynamically by JS -->
+                    <!-- Cards injected by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- 5. Signature Balloon Section with Photo Uploads -->
+        <!-- 5. Signature Balloon Area (Landscape 16:9 images, Clean top-right button positions, Add/Delete support) -->
         <section id="signature-star" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
                     <div>
                         <div class="text-accent font-bold tracking-widest text-xs mb-1">
-                            <span>SIGNATURE STAR BALLOON REACTION PHOTOS 🎈</span>
+                            <span>SIGNATURE STAR BALLOON REACTION 🎈</span>
                         </div>
                         <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">탱자 시그풍 📸</h2>
                     </div>
+                    <button id="admin-add-signature-btn" onclick="addSignatureStar()" class="hidden bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                        <i class="fa-solid fa-plus mr-1"></i>시그풍 추가
+                    </button>
                 </div>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="signature-star-container">
-                    <!-- Custom signature reaction cards generated via JS with photo attachments -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="signature-star-container">
+                    <!-- Cards injected by JS -->
                 </div>
             </div>
         </section>
@@ -493,7 +482,7 @@
                         <input type="text" id="new-notice-content" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="내용을 기재하세요...">
                     </div>
                     <div class="flex gap-2">
-                        <input type="text" id="new-notice-link" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="연결 링크 (선택 / https://...)">
+                        <input type="text" id="new-notice-link" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="연결 링크 (선택 / https://...)">
                         <button onclick="addNewNotice()" class="bg-brand text-amber-950 px-5 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors whitespace-nowrap shadow-xs">등록</button>
                     </div>
                 </div>
@@ -514,7 +503,7 @@
             </div>
         </div>
 
-        <!-- Profile Detail Edit Modal -->
+        <!-- Profile detail Edit Modal -->
         <div id="profile-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[90vh]">
                 <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-brand-light/30 dark:bg-amber-950/20">
@@ -523,7 +512,6 @@
                 </div>
                 
                 <div class="p-5 flex-grow overflow-y-auto space-y-6 text-xs font-bold">
-                    <!-- Banner Cover Setting -->
                     <div>
                         <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너</h4>
                         <label class="block text-gray-400 mb-1.5">상단 커버용 URL 이미지</label>
@@ -531,16 +519,14 @@
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
 
-                    <!-- Intro Words and Hashtags -->
                     <div>
                         <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-solid fa-star text-brand-dark"></i> 환영 인사</h4>
                         <textarea id="edit-profile-intro" rows="3" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none resize-none mb-2"></textarea>
                         <label class="block text-gray-400 mb-1.5 mt-3">대표 키워드 해시태그 (쉼표(,) 구분)</label>
-                        <input type="text" id="edit-profile-tags" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                        <input type="text" id="edit-profile-tags" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
                     
-                    <!-- Dynamic Days / Ddays list -->
                     <div>
                         <div class="flex items-center justify-between mb-3">
                             <h4 class="text-sm text-gray-900 dark:text-white"><i class="fa-regular fa-clock text-brand-dark"></i> 실시간 디데이 관리</h4>
@@ -554,7 +540,6 @@
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
 
-                    <!-- Broadcast information Details -->
                     <div>
                         <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-regular fa-calendar-check text-brand-dark"></i> 방송 개요</h4>
                         <div class="space-y-3">
@@ -574,7 +559,6 @@
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
 
-                    <!-- Likes and Dislikes config -->
                     <div>
                         <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-heart text-brand-dark"></i> 취향 저격 리스트 (쉼표(,) 구분)</h4>
                         <div class="space-y-3">
@@ -600,9 +584,8 @@
 
     <footer class="bg-brand-dark dark:bg-black text-amber-50 py-8 text-center mt-auto transition-colors duration-300 border-t border-amber-100/10">
         <p class="text-sm text-amber-100 dark:text-amber-300 font-cute text-2xl tracking-wide">🍊 오늘도 탱자와 함께 도파민 가득한 하루 되세요 🍊</p>
-        
         <p class="text-[11px] text-amber-200/50 dark:text-amber-600 font-mono mt-4">© 2026 탱자 🍊. All Taengza’s Rights Reserved.</p>
-        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 mt-1 font-mono">SOOP Official integration profile design.</p>
+        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 mt-1 font-mono">made by.연주아🍀</p>
     </footer>
 
     <!-- Toast Notification -->
@@ -610,12 +593,13 @@
         <span id="toast-text">성공!</span>
     </div>
 
+    <!-- Core Logic Scripts (Modularized text/image dynamic integrations) -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration (Taengza's official database)
+        // Firebase Setup
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'taengza-profile-app';
         const firebaseConfig = {
             apiKey: "AIzaSyB-eCdUErE0Grd2X0MhmpKgY0vMWloskCo",
@@ -630,7 +614,6 @@
         const db = getFirestore(app);
         const auth = getAuth(app);
 
-        // Compliant collection path following security sandbox rules
         const getTaengzaDocRef = () => doc(db, 'artifacts', appId, 'public', 'data', 'profileData', 'content');
 
         const defaultUpboData = [
@@ -673,16 +656,14 @@
             }
         };
 
-        // Interactive Monthly Fansigns with customizable/uploadable photocard images (No ranks)
         const defaultMonthlyFansigns = [
-            { id: "fansign_1", name: "죽탱이짱", desc: "최다 방셀 달성", quote: "고급 오디오 장비 자필 손편지", balloon: "5,200개 💛", img: "" },
-            { id: "fansign_2", name: "도파민수혈자", desc: "레전드 풍 리액션", quote: "오리 애교 춤방 스폐셜셀", balloon: "3,000개 🦆", img: "" },
-            { id: "fansign_3", name: "별풍선러버", desc: "러블리 일기셀", quote: "자필 다이어리 공개방셀", balloon: "1,122개 🍊", img: "" }
+            { id: "fansign_1", desc: "고급 오디오 장비 자필 손편지 완료 💛", img: "" },
+            { id: "fansign_2", desc: "오리 애교 춤방 스폐셜셀 진행 대기 🦆", img: "" },
+            { id: "fansign_3", desc: "자필 다이어리 공개방셀 제작 완료 🍊", img: "" }
         ];
 
-        // Star balloon items supporting custom reaction cutouts
         const defaultSignatureStar = [
-            { id: "reaction_1", count: "100개", action: "귀여운 탱커 애교 💛", img: "" },
+            { id: "reaction_1", count: "100개", action: "하나뿐인 탱자", img: "" },
             { id: "reaction_2", count: "520개", action: "죽탱이 하트 발사 🔫", img: "" },
             { id: "reaction_3", count: "1004개", action: "천사 오리 춤 댄스 🦆", img: "" },
             { id: "reaction_4", count: "1122개", action: "생일축하 기념송 🎂", img: "" }
@@ -699,10 +680,8 @@
         let currentEditingUserId = null;
         let deleteConfirmState = false; 
 
-        // Target slots for image file uploading callbacks
-        let activeImageUploadTarget = null; // { type: 'fansign'|'signature', id: string }
+        let activeImageUploadTarget = null; 
 
-        // Local Storage Utilities
         function safeGetStorage(key, defaultValue) {
             try { 
                 const item = window.localStorage.getItem(key); 
@@ -751,7 +730,6 @@
                         globalMonthlyFansigns = data.monthlyFansigns || defaultMonthlyFansigns;
                         globalSignatureStar = data.signatureStar || defaultSignatureStar;
 
-                        // Cache update
                         safeSetStorage('taengzaUpboData', globalUpboData);
                         safeSetStorage('taengzaNoticeData', globalNoticeData);
                         safeSetStorage('taengzaScheduleData', globalScheduleData);
@@ -759,7 +737,6 @@
                         safeSetStorage('taengzaMonthlyFansigns', globalMonthlyFansigns);
                         safeSetStorage('taengzaSignatureStar', globalSignatureStar);
                     } else {
-                        // Create initial database documents
                         const initialPayload = {
                             upbo: defaultUpboData,
                             notice: defaultNoticeData,
@@ -809,10 +786,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
-            // Particle Generation
             generateBgTaengzas();
 
-            // Dark Mode Handling
             const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')];
             const html = document.documentElement;
             let savedTheme = 'light';
@@ -844,7 +819,6 @@
                 });
             }
 
-            // Mobile Menu
             const mobileBtn = document.getElementById('mobile-menu-btn');
             if (mobileBtn) {
                 mobileBtn.addEventListener('click', () => {
@@ -855,14 +829,12 @@
                 link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
             });
 
-            // Set Current Date
             const today = new Date();
             const dateSpan = document.getElementById('upbo-date');
             if (dateSpan) {
                 dateSpan.innerText = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
             }
 
-            // Searching 명단
             const searchInput = document.getElementById('upbo-search');
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
@@ -872,13 +844,11 @@
                 });
             }
 
-            // Global image file uploader logic configuration
             const fileUploader = document.getElementById('global-image-uploader');
             if (fileUploader) {
                 fileUploader.addEventListener('change', handleGlobalImageUpload);
             }
 
-            // Initial Draw
             await fetchSiteData();
             
             renderProfile();
@@ -889,7 +859,6 @@
             renderSignatureStar();
         });
 
-        // Background Particles Generator (Taengza Hues)
         function generateBgTaengzas() {
             const container = document.getElementById('taengza-bg-effects');
             if (!container) return;
@@ -910,7 +879,6 @@
             }, 2000);
         }
 
-        // Toast Messages
         function showToast(message) {
             const toast = document.getElementById('toast-message');
             const toastText = document.getElementById('toast-text');
@@ -926,7 +894,6 @@
             }, 2500);
         }
 
-        // Link auto format
         function linkify(text) {
             if (!text) return '';
             const urlPattern = /(https?:\/\/[^\s]+)/g;
@@ -1135,6 +1102,81 @@
             });
         }
 
+        // ------------------------- FANSIGN ADD / DELETE / EDIT -------------------------
+        function addMonthlyFansign() {
+            const newId = "fansign_" + Date.now();
+            globalMonthlyFansigns.push({ id: newId, desc: "고마운 마음을 가득 담은 탱자만의 스페셜 방셀! 💛", img: "" });
+            updateFirestore('monthlyFansigns', globalMonthlyFansigns);
+            renderMonthlyFansigns();
+            showToast("✨ 새로운 이달의 방셀 카드가 신규 등록되었습니다!");
+        }
+
+        function deleteMonthlyFansign(id) {
+            globalMonthlyFansigns = globalMonthlyFansigns.filter(f => f.id !== id);
+            updateFirestore('monthlyFansigns', globalMonthlyFansigns);
+            renderMonthlyFansigns();
+            showToast("🗑️ 선택한 방셀 카드가 완전히 삭제되었습니다.");
+        }
+
+        function openFansignTextEditModal(id) {
+            const fansign = globalMonthlyFansigns.find(f => f.id === id);
+            if (!fansign) return;
+            let modal = document.getElementById('fansign-text-edit-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'fansign-text-edit-modal';
+                modal.className = 'fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                    <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                        <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-pen text-brand-dark"></i> 방셀 설명 수정
+                        </h3>
+                        <button onclick="closeFansignTextEditModal()" class="text-amber-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    </div>
+                    <div class="space-y-4 font-bold text-xs">
+                        <div>
+                            <label class="block text-gray-500 mb-1.5">설명 기입</label>
+                            <textarea id="edit-fansign-desc" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none resize-none font-medium text-xs" rows="3">${fansign.desc}</textarea>
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
+                        <button onclick="closeFansignTextEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
+                        <button onclick="saveFansignText('${id}')" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
+                    </div>
+                </div>
+            `;
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+        }
+
+        function closeFansignTextEditModal() {
+            const modal = document.getElementById('fansign-text-edit-modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-100');
+                modal.querySelector('div').classList.add('scale-95');
+            }
+        }
+
+        function saveFansignText(id) {
+            const desc = document.getElementById('edit-fansign-desc').value.trim();
+            if (!desc) return;
+            const fansign = globalMonthlyFansigns.find(f => f.id === id);
+            if (fansign) {
+                fansign.desc = desc;
+                updateFirestore('monthlyFansigns', globalMonthlyFansigns);
+                renderMonthlyFansigns();
+                closeFansignTextEditModal();
+                showToast("📝 방셀 설명문구가 수정되었습니다.");
+            }
+        }
+
         function renderMonthlyFansigns() {
             const container = document.getElementById('monthly-fansign-container');
             if (!container) return;
@@ -1142,36 +1184,120 @@
 
             globalMonthlyFansigns.forEach((fansign) => {
                 const photoHtml = fansign.img 
-                    ? `<img src="${fansign.img}" class="w-full h-40 object-cover rounded-xl mb-3 shadow-inner" alt="${fansign.name} 방셀 이미지">`
+                    ? `<img src="${fansign.img}" class="w-full h-40 object-cover rounded-xl mb-3 shadow-inner bg-amber-50/20" alt="방셀 이미지">`
                     : `
-                        <div class="w-full h-40 bg-amber-50/50 dark:bg-amber-950/10 border-2 border-dashed border-amber-200 dark:border-amber-950 rounded-xl mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-900">
+                        <div class="w-full h-40 bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 rounded-xl mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-900">
                             <i class="fa-solid fa-image text-2xl mb-1.5"></i>
-                            <span class="text-xs font-bold">방셀 이미지가 없습니다 📸</span>
+                            <span class="text-xs font-bold">방셀 이미지 등록 📸</span>
                         </div>
                     `;
 
                 const editBtnHtml = isAdminMode 
                     ? `
-                        <button onclick="triggerImageUpload('fansign', '${fansign.id}')" class="absolute top-2 left-2 z-20 bg-brand hover:bg-brand-dark hover:text-white text-amber-950 text-[10px] font-bold px-2.5 py-1.5 rounded-lg shadow-md transition-transform active:scale-95 flex items-center gap-1">
-                            <i class="fa-solid fa-camera"></i> 사진 등록/변경
-                        </button>
+                        <div class="absolute top-2 right-2 z-20 flex gap-1 bg-white/90 dark:bg-black/80 p-1 rounded-lg backdrop-blur-xs shadow-sm">
+                            <button onclick="triggerImageUpload('fansign', '${fansign.id}')" class="bg-brand text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="방셀 사진 변경">
+                                <i class="fa-solid fa-camera"></i>
+                            </button>
+                            <button onclick="openFansignTextEditModal('${fansign.id}')" class="bg-white text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md border border-amber-300 active:scale-95" title="설명 수정">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button onclick="deleteMonthlyFansign('${fansign.id}')" class="bg-red-500 text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="방셀 삭제">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
                     ` : '';
 
                 container.innerHTML += `
-                    <div class="bg-gradient-to-b from-amber-50/30 to-white dark:from-amber-950/10 dark:to-[#181611] border-2 border-amber-200/60 dark:border-amber-950/40 rounded-2xl p-5 flex flex-col justify-between text-center relative overflow-hidden group">
+                    <div class="bg-gradient-to-b from-amber-50/30 to-white dark:from-amber-[#181611]/10 dark:to-[#181611] border border-amber-200/60 dark:border-amber-950/40 rounded-2xl p-5 flex flex-col justify-between text-center relative overflow-hidden group">
                         ${editBtnHtml}
                         <div>
                             ${photoHtml}
-                            <h4 class="font-bold text-lg text-brand-dark dark:text-brand mt-1">${fansign.name}</h4>
-                            <p class="text-xs text-gray-500 dark:text-amber-400 mt-0.5">${fansign.desc}</p>
-                            <p class="text-sm mt-3 font-semibold text-gray-700 dark:text-amber-200 italic">"${fansign.quote}"</p>
-                        </div>
-                        <div class="mt-4 pt-3 border-t border-dashed border-amber-150/50 text-xs font-bold text-brand-dark">
-                            풍선 개수: ${fansign.balloon}
+                            <p class="text-xs text-gray-500 dark:text-amber-400 mt-2 font-medium leading-relaxed">${fansign.desc}</p>
                         </div>
                     </div>
                 `;
             });
+        }
+
+        // ------------------------- SIGNATURE TEXT ADD / DELETE / EDIT -------------------------
+        function addSignatureStar() {
+            const newId = "reaction_" + Date.now();
+            globalSignatureStar.push({ id: newId, count: "100개", action: "하나뿐인 탱자", img: "" });
+            updateFirestore('signatureStar', globalSignatureStar);
+            renderSignatureStar();
+            showToast("✨ 새로운 시그풍 리액션 카드가 신규 등록되었습니다!");
+        }
+
+        function deleteSignatureStar(id) {
+            globalSignatureStar = globalSignatureStar.filter(r => r.id !== id);
+            updateFirestore('signatureStar', globalSignatureStar);
+            renderSignatureStar();
+            showToast("🗑️ 시그풍 리액션 카드가 삭제되었습니다.");
+        }
+
+        function openSignatureTextEditModal(id) {
+            const star = globalSignatureStar.find(r => r.id === id);
+            if (!star) return;
+            let modal = document.getElementById('signature-text-edit-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'signature-text-edit-modal';
+                modal.className = 'fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300';
+                document.body.appendChild(modal);
+            }
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                    <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                        <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-pen text-brand-dark"></i> 시그풍 리액션 수정
+                        </h3>
+                        <button onclick="closeSignatureTextEditModal()" class="text-amber-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    </div>
+                    <div class="space-y-4 font-bold text-xs">
+                        <div>
+                            <label class="block text-gray-500 mb-1.5">별풍선 개수</label>
+                            <input type="text" id="edit-signature-count" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none" value="${star.count}">
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 mb-1.5">리액션 설명</label>
+                            <input type="text" id="edit-signature-action" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none" value="${star.action}">
+                        </div>
+                    </div>
+                    <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
+                        <button onclick="closeSignatureTextEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
+                        <button onclick="saveSignatureText('${id}')" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
+                    </div>
+                </div>
+            `;
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-95');
+                modal.querySelector('div').classList.add('scale-100');
+            });
+        }
+
+        function closeSignatureTextEditModal() {
+            const modal = document.getElementById('signature-text-edit-modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.querySelector('div').classList.remove('scale-100');
+                modal.querySelector('div').classList.add('scale-95');
+            }
+        }
+
+        function saveSignatureText(id) {
+            const count = document.getElementById('edit-signature-count').value.trim();
+            const action = document.getElementById('edit-signature-action').value.trim();
+            if (!count) return;
+            const star = globalSignatureStar.find(r => r.id === id);
+            if (star) {
+                star.count = count;
+                star.action = action;
+                updateFirestore('signatureStar', globalSignatureStar);
+                renderSignatureStar();
+                closeSignatureTextEditModal();
+                showToast("📝 시그풍 리액션 정보가 성공적으로 반영되었습니다.");
+            }
         }
 
         function renderSignatureStar() {
@@ -1181,22 +1307,31 @@
 
             globalSignatureStar.forEach((reaction) => {
                 const photoHtml = reaction.img 
-                    ? `<img src="${reaction.img}" class="w-16 h-16 rounded-full object-cover border-2 border-brand mx-auto mb-2" alt="${reaction.count} 리액션">`
+                    ? `<img src="${reaction.img}" class="w-full aspect-video rounded-xl object-cover border border-brand/40 mx-auto mb-3 bg-amber-50/20 dark:bg-[#12110e]" alt="리액션 이미지">`
                     : `
-                        <div class="w-16 h-16 rounded-full bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 mx-auto mb-2 flex items-center justify-center text-gray-400 dark:text-amber-800">
-                            <i class="fa-solid fa-ghost text-lg"></i>
+                        <div class="w-full aspect-video rounded-xl bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 mx-auto mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-850">
+                            <i class="fa-solid fa-image text-2xl mb-1"></i>
+                            <span class="text-xs font-bold">이미지 등록 📸</span>
                         </div>
                     `;
 
                 const editBtnHtml = isAdminMode 
                     ? `
-                        <button onclick="triggerImageUpload('signature', '${reaction.id}')" class="absolute bottom-2 right-2 z-20 bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 text-[9px] font-bold p-1 rounded-md border border-brand/40 active:scale-95" title="리액션 사진 업로드">
-                            <i class="fa-solid fa-camera"></i>
-                        </button>
+                        <div class="absolute top-2 right-2 z-20 flex gap-1 bg-white/90 dark:bg-black/80 p-1 rounded-lg backdrop-blur-xs shadow-sm">
+                            <button onclick="triggerImageUpload('signature', '${reaction.id}')" class="bg-brand text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="리액션 사진 업로드">
+                                <i class="fa-solid fa-camera"></i>
+                            </button>
+                            <button onclick="openSignatureTextEditModal('${reaction.id}')" class="bg-white text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md border border-amber-300 active:scale-95" title="글씨 수정">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>
+                            <button onclick="deleteSignatureStar('${reaction.id}')" class="bg-red-500 text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="시그풍 삭제">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
                     ` : '';
 
                 container.innerHTML += `
-                    <div class="bg-[#fffdf8] dark:bg-[#201e19] border border-amber-150 rounded-xl p-3 text-center relative flex flex-col justify-center min-h-[140px] overflow-hidden">
+                    <div class="bg-[#fffdf8] dark:bg-[#201e19] border border-amber-150 rounded-xl p-4 text-center relative flex flex-col justify-center min-h-[140px] overflow-hidden">
                         ${editBtnHtml}
                         ${photoHtml}
                         <span class="text-base font-black text-accent">${reaction.count}</span>
@@ -1206,12 +1341,12 @@
             });
         }
 
-        // File selection handling
+        // ------------------------- IMAGE RESIZE & COMPRESS (WITH PNG TRANSPARENCY SUPPORT) -------------------------
         function triggerImageUpload(type, id) {
             activeImageUploadTarget = { type, id };
             const uploader = document.getElementById('global-image-uploader');
             if (uploader) {
-                uploader.value = ''; // Reset
+                uploader.value = ''; 
                 uploader.click();
             }
         }
@@ -1220,7 +1355,7 @@
             const file = event.target.files[0];
             if (!file || !activeImageUploadTarget) return;
 
-            showToast("📸 이미지 압축 가공 중... 잠시만 기다려주세요!");
+            showToast("📸 고해상도 이미지 보정 및 리사이징 중...");
 
             compressImage(file, 400, 400, (compressedBase64) => {
                 if (activeImageUploadTarget.type === 'fansign') {
@@ -1229,7 +1364,7 @@
                         fansignItem.img = compressedBase64;
                         updateFirestore('monthlyFansigns', globalMonthlyFansigns);
                         renderMonthlyFansigns();
-                        showToast("🎉 이달의 방셀 이미지가 성공적으로 업로드되었습니다 💛");
+                        showToast("🎉 이달의 방셀 이미지가 업로드 완료되었습니다 💛");
                     }
                 } else if (activeImageUploadTarget.type === 'signature') {
                     const reactionItem = globalSignatureStar.find(r => r.id === activeImageUploadTarget.id);
@@ -1237,7 +1372,7 @@
                         reactionItem.img = compressedBase64;
                         updateFirestore('signatureStar', globalSignatureStar);
                         renderSignatureStar();
-                        showToast("🎉 시그풍 리액션 예시 이미지가 연동되었습니다 🦆");
+                        showToast("🎉 해당 시그풍의 가로형 리액션 프레임이 최적화되었습니다 🦆");
                     }
                 }
                 activeImageUploadTarget = null;
@@ -1268,9 +1403,13 @@
                     canvas.width = width;
                     canvas.height = height;
                     const ctx = canvas.getContext('2d');
+                    ctx.clearRect(0, 0, width, height); // Clear to preserve PNG transparency
                     ctx.drawImage(img, 0, 0, width, height);
                     
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.65);
+                    // Determine output type to support PNG transparent backgrounds
+                    const outMime = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
+                    const quality = outMime === 'image/jpeg' ? 0.7 : undefined;
+                    const dataUrl = canvas.toDataURL(outMime, quality);
                     callback(dataUrl);
                 };
                 img.src = e.target.result;
@@ -1278,6 +1417,7 @@
             reader.readAsDataURL(file);
         }
 
+        // Upbo Modal views
         function openUpboModal(user, avatarUrl) {
             let modal = document.getElementById('upbo-modal');
             if (!modal) {
@@ -1315,15 +1455,21 @@
             if (modal) { modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
         }
 
+        // Admin Management validation module
         function openAdminLoginModal() {
             if (isAdminMode) {
                 isAdminMode = false;
-                document.getElementById('admin-add-user-btn').classList.add('hidden'); document.getElementById('admin-add-user-btn').classList.remove('flex');
-                document.getElementById('admin-notice-edit-btn').classList.add('hidden'); document.getElementById('admin-schedule-edit-btn').classList.add('hidden'); document.getElementById('admin-profile-edit-btn').classList.add('hidden');
+                document.getElementById('admin-add-user-btn').classList.add('hidden'); 
+                document.getElementById('admin-add-user-btn').classList.remove('flex');
+                document.getElementById('admin-add-fansign-btn').classList.add('hidden');
+                document.getElementById('admin-add-signature-btn').classList.add('hidden');
+                document.getElementById('admin-notice-edit-btn').classList.add('hidden'); 
+                document.getElementById('admin-schedule-edit-btn').classList.add('hidden'); 
+                document.getElementById('admin-profile-edit-btn').classList.add('hidden');
                 document.getElementById('upbo-search').dispatchEvent(new Event('input')); 
                 renderMonthlyFansigns();
                 renderSignatureStar();
-                showToast("관리자 모드가 완전히 로그아웃 되었어요! 🌸");
+                showToast("관리자 모드가 해제되었습니다! 🌸");
                 return;
             }
             const modal = document.getElementById('admin-login-modal');
@@ -1340,12 +1486,17 @@
             const pin = document.getElementById('admin-pin').value;
             if (pin === '021122') { 
                 isAdminMode = true; closeAdminLoginModal();
-                document.getElementById('admin-add-user-btn').classList.remove('hidden'); document.getElementById('admin-add-user-btn').classList.add('flex');
-                document.getElementById('admin-notice-edit-btn').classList.remove('hidden'); document.getElementById('admin-schedule-edit-btn').classList.remove('hidden'); document.getElementById('admin-profile-edit-btn').classList.remove('hidden');
+                document.getElementById('admin-add-user-btn').classList.remove('hidden'); 
+                document.getElementById('admin-add-user-btn').classList.add('flex');
+                document.getElementById('admin-add-fansign-btn').classList.remove('hidden');
+                document.getElementById('admin-add-signature-btn').classList.remove('hidden');
+                document.getElementById('admin-notice-edit-btn').classList.remove('hidden'); 
+                document.getElementById('admin-schedule-edit-btn').classList.remove('hidden'); 
+                document.getElementById('admin-profile-edit-btn').classList.remove('hidden');
                 document.getElementById('upbo-search').dispatchEvent(new Event('input'));
                 renderMonthlyFansigns();
                 renderSignatureStar();
-                showToast("탱자 매니저님 인증 완료! 이미지 업로드 및 편집 기능들이 모두 활성화되었습니다 💛");
+                showToast("인증 완료되었습니다. 공지/일정/방셀/시그풍 추가 및 텍스트와 이미지 변경이 가능합니다.");
             } else {
                 const input = document.getElementById('admin-pin');
                 input.classList.add('border-red-500'); input.value = ''; input.placeholder = '비밀번호를 확인해주세요!';
@@ -1475,7 +1626,6 @@
             saveUpboData(); closeAddUserModal(); document.getElementById('upbo-search').dispatchEvent(new Event('input'));
         }
 
-        // Notice config operations
         function openNoticeEditModal() {
             const modal = document.getElementById('notice-edit-modal'); renderNoticeEditList();
             requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
@@ -1673,34 +1823,6 @@
             showToast("탱자의 대표 프로필들이 완벽히 적용되었습니다. 🧡");
         }
 
-        async function captureProfile() {
-            showToast("📸 프로필 이미지 내보내기 준비 중입니다. 잠시만 기다려주세요...");
-            
-            const target = document.getElementById('capture-target');
-            
-            try {
-                const canvas = await html2canvas(target, {
-                    useCORS: true, 
-                    allowTaint: true,
-                    backgroundColor: document.documentElement.classList.contains('dark') ? '#0f0e0a' : '#fefef9',
-                    scale: 2, // High-DPI capture output
-                    logging: false
-                });
-
-                const image = canvas.toDataURL("image/png");
-                const link = document.createElement('a');
-                link.download = `Taengza_Profile_Capture_${new Date().toISOString().slice(0,10)}.png`;
-                link.href = image;
-                link.click();
-                
-                showToast("🎉 성공적으로 프로필 이미지가 저장되었습니다!");
-            } catch (error) {
-                console.error("Capture failure:", error);
-                showToast("❌ 이미지 저장 중 문제가 발생했습니다. (외부 이미지 CORS 제한일 수 있습니다)");
-            }
-        }
-
-        // Global functions mapped for inline browser events
         window.openProfileEditModal = openProfileEditModal;
         window.closeProfileEditModal = closeProfileEditModal;
         window.saveProfileChanges = saveProfileChanges;
@@ -1727,8 +1849,17 @@
         window.addEditDdayRow = addEditDdayRow;
         window.deleteEditDdayRow = deleteEditDdayRow;
         window.handleDeleteUser = handleDeleteUser;
-        window.captureProfile = captureProfile;
         window.triggerImageUpload = triggerImageUpload;
+        window.addMonthlyFansign = addMonthlyFansign;
+        window.deleteMonthlyFansign = deleteMonthlyFansign;
+        window.openFansignTextEditModal = openFansignTextEditModal;
+        window.closeFansignTextEditModal = closeFansignTextEditModal;
+        window.saveFansignText = saveFansignText;
+        window.addSignatureStar = addSignatureStar;
+        window.deleteSignatureStar = deleteSignatureStar;
+        window.openSignatureTextEditModal = openSignatureTextEditModal;
+        window.closeSignatureTextEditModal = closeSignatureTextEditModal;
+        window.saveSignatureText = saveSignatureText;
     </script>
 </body>
 </html>
