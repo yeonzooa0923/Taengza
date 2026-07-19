@@ -615,20 +615,23 @@
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Configuration (Shared profile infrastructure)
+        // Firebase Configuration (Taengza's official database)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'taengza-profile-app';
         const firebaseConfig = {
-            apiKey: "AIzaSyA-7RFaaBIxkdJpozbgN2vxF3Cw_C3uoiU",
-            authDomain: "solming-profile-db-5ebc8.firebaseapp.com",
-            projectId: "solming-profile-db-5ebc8",
-            storageBucket: "solming-profile-db-5ebc8.firebasestorage.app",
-            messagingSenderId: "144023412722",
-            appId: "1:144023412722:web:72ab8fda5ded2cfe3bd56b"
+            apiKey: "AIzaSyB-eCdUErE0Grd2X0MhmpKgY0vMWloskCo",
+            authDomain: "taengza-profile-db.firebaseapp.com",
+            projectId: "taengza-profile-db",
+            storageBucket: "taengza-profile-db.firebasestorage.app",
+            messagingSenderId: "571682762262",
+            appId: "1:571682762262:web:85c59dd87717c4ea340f37"
         };
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
+
+        // Compliant collection path following security sandbox rules
+        const getTaengzaDocRef = () => doc(db, 'artifacts', appId, 'public', 'data', 'profileData', 'content');
 
         const defaultUpboData = [
             { id: 'popo030_fan1', nickname: '정포도죽탱이', items: [{ name: 'A4 자필 편지 방셀', count: 1 }, { name: '춤방 리액션 선택권', count: 2 }] },
@@ -713,8 +716,6 @@
                 window.localStorage.setItem(key, JSON.stringify(value)); 
             } catch (e) {}
         }
-
-        const getTaengzaDocRef = () => doc(db, 'taengza-data', 'profile-content');
 
         async function authenticate() {
             try {
