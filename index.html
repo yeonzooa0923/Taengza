@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>탱자 오피셜 프로필 🦆💛</title>
+    
+    <!-- 브라우저 탭 아이콘 (파비콘) - 탱자님의 상큼하고 달콤한 탱자/오리 테마 -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍊</text></svg>">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Google Fonts: Gowun Dodum, Gaegu, Fredoka, Noto Sans KR -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Gowun+Dodum&family=Gaegu:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Gowun Dodum', 'Noto Sans KR', 'sans-serif'], 
+                        cute: ['Gaegu', 'sans-serif'], 
+                        logo: ['Fredoka', 'Gowun Dodum', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            light: '#fffbeb', 
+                            DEFAULT: '#fbbf24', 
+                            dark: '#d97706',  
+                            hover: '#f59e0b'  
+                        },
+                        accent: {
+                            light: '#ffedd5', 
+                            DEFAULT: '#f97316', 
+                            dark: '#c2410c' 
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        /* 스크롤바 노랑-화이트 테마 커스텀 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fffdf5; }
+        .dark ::-webkit-scrollbar-track { background: #16140e; }
+        ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 9999px; border: 2px solid #fffdf5; }
+        .dark ::-webkit-scrollbar-thumb { background: #d97706; border: 2px solid #16140e; }
+        
+        /* 쫀득하고 톡톡 튀는 탱자 애니메이션 */
+        @keyframes taengzaBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+        .taengza-beat {
+            animation: taengzaBeat 1.4s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .floating {
+            animation: float 3s infinite ease-in-out;
+        }
+
+        /* 눈송이처럼 떨어지는 탱자/오리 파티클 */
+        .taengza-particle {
+            position: absolute;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fefef9] dark:bg-[#0f0e0a] text-[#4d3d24] dark:text-amber-100 font-sans text-lg antialiased min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
+
+    <!-- background decorative floating elements -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-20" id="taengza-bg-effects"></div>
+
+    <header class="bg-white/85 dark:bg-[#181611]/85 backdrop-blur-md shadow-xs sticky top-0 z-50 transition-colors duration-300 border-b border-amber-100/50 dark:border-amber-950/40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo with Cute Lemon/Orange -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-1.5 group">
+                        <span class="taengza-beat inline-block">🍊</span>
+                        <span class="text-brand-dark dark:text-brand font-logo text-2xl tracking-wide font-bold pt-0.5">Taengza</span>
+                        <span class="text-xs bg-amber-100/60 text-brand-dark dark:bg-amber-950/60 dark:text-amber-300 px-2 py-0.5 rounded-full font-bold">죽탱이 🦆</span>
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-4 items-center font-bold text-sm">
+                    <a href="#profile" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">프로필</a>
+                    <a href="#notice" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">공지</a>
+                    <a href="#schedule" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">일정</a>
+                    <a href="#homework" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">방셀숙제</a>
+                    <a href="#monthly-fansign" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">이달의 방셀</a>
+                    <a href="#signature-star" class="text-[#665435] dark:text-amber-300 hover:text-accent px-2 py-1 rounded-xl transition-colors">시그풍</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="text-amber-500 dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-950/40 p-2 rounded-xl transition-colors" title="화면 테마 변경">
+                        <i class="fa-solid fa-moon text-lg w-5 h-5 flex items-center justify-center"></i>
+                    </button>
+                    <!-- PNG Export Action -->
+                    <button onclick="captureProfile()" class="bg-brand text-amber-950 hover:bg-brand-dark hover:text-white px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1 shadow-sm">
+                        <i class="fa-solid fa-camera"></i> 이미지 저장
+                    </button>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-1">
+                    <button onclick="captureProfile()" class="text-amber-600 hover:bg-amber-50 p-2 rounded-xl" title="이미지 저장">
+                        <i class="fa-solid fa-camera text-lg"></i>
+                    </button>
+                    <button id="mobile-theme-toggle" class="text-amber-500 dark:text-amber-400 p-2 rounded-xl transition-colors">
+                        <i class="fa-solid fa-moon text-lg"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-[#665435] dark:text-amber-300 p-2 rounded-xl">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-[#181611] border-t border-amber-100/50 dark:border-amber-950/40">
+            <div class="px-3 pt-2 pb-4 space-y-1 font-bold">
+                <a href="#profile" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">프로필</a>
+                <a href="#notice" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">공지사항</a>
+                <a href="#schedule" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">주간 일정</a>
+                <a href="#homework" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">방셀 숙제</a>
+                <a href="#monthly-fansign" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">이달의 방셀</a>
+                <a href="#signature-star" class="block text-[#665435] dark:text-amber-300 hover:bg-amber-50 hover:text-accent px-4 py-2 rounded-xl text-sm">시그풍</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="capture-target" class="flex-grow w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 relative z-10">
+
+        <!-- 1. Profile Section -->
+        <section id="profile" class="scroll-mt-20 flex flex-col gap-6">
+            
+            <!-- Hero Header Card with SOOP Profile Integration -->
+            <div class="bg-white dark:bg-[#181611] rounded-3xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 overflow-hidden transition-colors duration-300">
+                <!-- Cover Banner with Yellow Hue Gradation -->
+                <div class="h-32 sm:h-48 w-full relative overflow-hidden bg-gradient-to-r from-amber-50 via-white to-orange-100 dark:from-amber-950/20 dark:to-orange-950/10">
+                    <img id="profile-banner-img" src="" 
+                         onerror="this.src='https://placehold.co/1200x400/fffdf0/fbbf24?text=Taengza+🦆💛'" 
+                         class="w-full h-full object-cover absolute inset-0" alt="탱자 배너">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/15 dark:to-[#181611]/15"></div>
+                </div>
+                
+                <div class="px-6 sm:px-8 pb-6 flex flex-col sm:flex-row relative">
+                    <!-- Avatar Area - Dynamic integration of Taengza's SOOP Avatar (popo030) -->
+                    <div class="-mt-16 sm:-mt-24 mb-4 sm:mb-0 sm:mr-6 flex-shrink-0 flex justify-center sm:block relative z-10">
+                        <img class="h-32 w-32 sm:h-40 sm:w-40 rounded-full border-4 border-white dark:border-[#181611] shadow-md object-cover bg-amber-50 dark:bg-amber-950/30 hover:scale-105 transition-transform duration-350" 
+                             src="https://stimg.afreecatv.com/LOGO/po/popo030/popo030.jpg" 
+                             onerror="this.src='https://placehold.co/400x400/fef3c7/d97706?text=Taengza'" 
+                             alt="탱자 아바타">
+                    </div>
+                    
+                    <!-- Main Profile Details -->
+                    <div class="pt-2 sm:pt-4 flex-grow text-center sm:text-left flex flex-col sm:justify-between">
+                        <div>
+                            <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mb-2">
+                                <span class="bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 px-3 py-0.5 rounded-full text-xs font-bold"><i class="fa-solid fa-duck"></i> 과일 '탱자'러버 오리 🦆</span>
+                                <span class="bg-orange-100/70 text-accent-dark dark:bg-orange-950/50 dark:text-orange-300 px-3 py-0.5 rounded-full text-xs font-bold"><i class="fa-solid fa-gamepad"></i> 소통 · 배그 · 마크 · 종겜 (겜못스)</span>
+                            </div>
+                            <h1 class="text-3xl font-logo font-bold text-[#45361a] dark:text-white mb-2 flex items-baseline justify-center sm:justify-start gap-2">
+                                탱자
+                                <span class="text-base text-amber-500 dark:text-amber-400 font-sans font-medium">Taengza</span>
+                            </h1>
+                            
+                            <!-- Key Metadata Tags (Taengza Specific) -->
+                            <div class="flex flex-wrap justify-center sm:justify-start gap-1.5 mb-5 text-sm font-bold">
+                                <span class="px-3 py-1 bg-amber-50/80 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full border border-amber-100/50 dark:border-amber-950/50">💛 데뷔일: 26.01.24</span>
+                                <span class="px-3 py-1 bg-amber-50/80 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full border border-amber-100/50 dark:border-amber-950/50">🎂 생일: 11월 22일</span>
+                                <span class="px-3 py-1 bg-[#fffdf0] dark:bg-[#252119] text-accent dark:text-orange-300 rounded-full border border-amber-100 dark:border-amber-950/50">🍊 팬닉: 죽탱이</span>
+                                <span class="px-3 py-1 bg-amber-100/40 dark:bg-[#252119] text-brand-dark dark:text-amber-300 rounded-full border border-amber-100 dark:border-amber-950/50">⚡ MBTI: INTP</span>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="flex justify-center sm:justify-start gap-4">
+                            <!-- SOOP Link -->
+                            <a href="https://www.sooplive.com/station/popo030" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-[#1aa7ec] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 SOOP 방송국">
+                                <i class="fa-solid fa-tv text-base"></i>
+                            </a>
+                            <!-- YouTube Link -->
+                            <a href="https://www.youtube.com/@taengza.030" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 유튜브">
+                                <i class="fa-brands fa-youtube text-lg"></i>
+                            </a>
+                            <!-- Fancim Link -->
+                            <a href="https://fancim.me/celeb/profile.aspx?url=578524" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 팬심">
+                                <i class="fa-solid fa-heart text-base"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Introduction Card -->
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="flex items-center gap-1.5 text-lg font-bold text-[#45361a] dark:text-white">
+                                🍊 자기소개
+                            </h3>
+                            <button id="admin-profile-edit-btn" onclick="openProfileEditModal()" class="hidden text-amber-500 hover:text-brand-dark transition-colors p-1" title="대표프로필 수정">
+                                <i class="fa-solid fa-pen-to-square text-sm"></i>
+                            </button>
+                        </div>
+                        <p id="profile-intro-text" class="text-sm leading-relaxed mb-4 whitespace-pre-wrap font-medium">
+                            <!-- JS Rendering -->
+                        </p>
+                    </div>
+                    <div id="profile-tags-container" class="flex flex-wrap gap-1.5 pt-2 border-t border-amber-50 dark:border-amber-950/30">
+                        <!-- JS Rendering -->
+                    </div>
+                </div>
+
+                <!-- Anniversary Card -->
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300 flex flex-col justify-between">
+                    <div>
+                        <h3 class="flex items-center gap-1.5 text-lg font-bold text-[#45361a] dark:text-white mb-4">
+                            💛 기념일 & 디데이
+                        </h3>
+                        <div id="dday-container" class="space-y-2.5">
+                            <!-- JS Rendering -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300">
+                <h3 class="flex items-center gap-2 text-lg font-bold text-[#45361a] dark:text-white mb-4">
+                    🦆 방송 정보
+                </h3>
+                <div class="space-y-3 font-medium text-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                        <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 방송 주기</span>
+                        <span id="profile-broadcast-time" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                    </div>
+                    <div class="border-b border-dashed border-amber-100/40 dark:border-amber-950/30"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                        <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 소통 장르</span>
+                        <span id="profile-broadcast-content" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                    </div>
+                    <div class="border-b border-dashed border-amber-100/40 dark:border-amber-950/30"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                        <span class="text-brand-dark dark:text-brand font-bold text-sm w-24 flex-shrink-0">🍊 주요 게임</span>
+                        <span id="profile-broadcast-game" class="text-gray-750 dark:text-amber-200"><!-- JS --></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Likes & Dislikes -->
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 p-6 transition-colors duration-300">
+                <h3 class="flex items-center gap-1.5 text-lg font-bold text-[#45361a] dark:text-white mb-4">
+                    🍊 호불호 리스트
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-sm font-bold text-brand-dark dark:text-brand mb-2.5">좋아하는 것 💛</p>
+                        <div id="profile-likes-container" class="flex flex-wrap gap-1.5">
+                            <!-- JS Rendering -->
+                        </div>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-500 dark:text-amber-400 mb-2.5">싫어하는 것 ❌</p>
+                        <div id="profile-dislikes-container" class="flex flex-wrap gap-1.5">
+                            <!-- JS Rendering -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Notice Section -->
+            <section id="notice" class="scroll-mt-20">
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 h-full border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300 flex flex-col relative">
+                    <div class="flex items-center justify-between mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-brand">🔔</span>
+                            <h2 class="text-lg font-bold text-[#45361a] dark:text-white">공지사항</h2>
+                        </div>
+                        <button id="admin-notice-edit-btn" onclick="openNoticeEditModal()" class="hidden text-amber-500 hover:text-brand-dark transition-colors p-1" title="공지 수정">
+                            <i class="fa-solid fa-pen-to-square text-sm"></i>
+                        </button>
+                    </div>
+                    <ul id="notice-list" class="space-y-3.5 flex-grow text-sm">
+                        <!-- JS Dynamic Notice -->
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Weekly Schedule Section -->
+            <section id="schedule" class="scroll-mt-20">
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 h-full border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300 flex flex-col relative">
+                    <div class="flex items-center justify-between mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-accent">📅</span>
+                            <h2 class="text-lg font-bold text-[#45361a] dark:text-white">주간 일정</h2>
+                        </div>
+                        <button id="admin-schedule-edit-btn" onclick="openScheduleEditModal()" class="hidden text-amber-500 hover:text-brand-dark transition-colors p-1" title="일정 수정">
+                            <i class="fa-solid fa-pen-to-square text-sm"></i>
+                        </button>
+                    </div>
+                    
+                    <div id="schedule-list" class="space-y-2.5 flex-grow text-sm">
+                        <!-- JS Dynamic Schedule -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Homework Section -->
+        <section id="homework" class="scroll-mt-20">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
+                
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 border-b border-amber-50 dark:border-amber-950/30 pb-4">
+                    <div>
+                        <div class="text-brand-dark dark:text-brand font-bold tracking-widest text-xs mb-1 flex items-center gap-1.5">
+                            <span>TAENGZA FANSIGN STATUS</span>
+                            <button onclick="openAdminLoginModal()" class="text-amber-300 hover:text-brand-dark transition-colors animate-pulse" title="관리인증">
+                                <i class="fa-solid fa-lock text-xs"></i>
+                            </button>
+                        </div>
+                        <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">방셀 숙제 현황 💛</h2>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div id="loading-indicator" class="hidden text-brand-dark text-xs font-bold animate-pulse">실시간 연동 진행중...</div>
+                        <div class="bg-amber-50/50 dark:bg-amber-950/20 text-[#665435] dark:text-amber-300 text-xs px-3 py-1.5 rounded-full font-bold border border-amber-100/40 dark:border-transparent">
+                            작성일: <span id="upbo-date"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Manage Controls -->
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <div class="relative flex-grow">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-amber-500 dark:text-amber-400 text-base"></i>
+                        </div>
+                        <input type="text" id="upbo-search" class="w-full bg-[#fffdfa] dark:bg-[#1b1914] border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-sm rounded-xl focus:ring-1 focus:ring-brand focus:border-brand block pl-11 p-3.5 outline-none font-medium transition-colors" placeholder="죽탱이 팬닉을 검색해보세요...">
+                    </div>
+                    <!-- Admin: Add New User -->
+                    <button id="admin-add-user-btn" onclick="openAddUserModal()" class="hidden items-center justify-center bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-3.5 px-5 rounded-xl transition-colors whitespace-nowrap shadow-xs text-sm">
+                        <i class="fa-solid fa-user-plus mr-1.5 text-xs"></i>죽탱이 추가
+                    </button>
+                </div>
+
+                <!-- Dynamic Grid for Users -->
+                <div id="upbo-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                    <!-- Cards injected by JS -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 4. Monthly Fansign Section with Photo Uploads -->
+        <section id="monthly-fansign" class="scroll-mt-20">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
+                <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
+                    <div>
+                        <div class="text-brand-dark dark:text-brand font-bold tracking-widest text-xs mb-1">
+                            <span>HONORED FANSIGNS OF THE MONTH (PHOTO UPLOAD) 📸</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">이달의 방셀 👑</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="monthly-fansign-container">
+                    <!-- Cards with optional custom photos, updated dynamically by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Signature Balloon Section with Photo Uploads -->
+        <section id="signature-star" class="scroll-mt-20">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
+                <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
+                    <div>
+                        <div class="text-accent font-bold tracking-widest text-xs mb-1">
+                            <span>SIGNATURE STAR BALLOON REACTION PHOTOS 🎈</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">탱자 시그풍 📸</h2>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="signature-star-container">
+                    <!-- Custom signature reaction cards generated via JS with photo attachments -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Hidden Global File Input for Image Uploading -->
+        <input type="file" id="global-image-uploader" class="hidden" accept="image/*">
+
+        <!-- Admin PIN Verification Modal -->
+        <div id="admin-login-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-2"><i class="fa-solid fa-key text-brand-dark mr-1"></i> 탱자의 비밀번호 카드</h3>
+                <p class="text-xs text-[#665435] dark:text-amber-300 mb-4 font-semibold">정보수정, 이미지 업로드 및 숙제 편집을 위해 탱자의 6자리 PIN 번호를 입력해주세요.</p>
+                <input type="password" id="admin-pin" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 mb-4 outline-none text-center tracking-widest font-black text-lg" placeholder="••••••">
+                <div class="flex justify-end gap-2 text-xs font-bold">
+                    <button onclick="closeAdminLoginModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
+                    <button onclick="checkAdminPin()" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">인증완료</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Homework Edit Modal -->
+        <div id="upbo-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-md overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[80vh]">
+                <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-brand-light/30 dark:bg-amber-950/20">
+                    <div class="flex items-center gap-3" id="edit-modal-header"></div>
+                    <div class="flex items-center gap-2 text-xs font-bold">
+                        <button id="delete-user-confirm-btn" class="hidden text-xs bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-1.5 rounded-lg hover:bg-red-100 transition-all">
+                            <i class="fa-solid fa-user-minus mr-1"></i>삭제
+                        </button>
+                        <button onclick="closeUpboEditModal()" class="text-amber-500 hover:text-amber-700 dark:hover:text-white p-2">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="p-4 flex-grow overflow-y-auto" id="edit-modal-body"></div>
+                <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16]">
+                    <div class="flex gap-2">
+                        <input type="text" id="new-item-name" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-sm rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none font-semibold" placeholder="새로운 방셀/리액션 종류 기입...">
+                        <button onclick="addNewItem()" class="bg-brand text-amber-950 px-4 py-2 rounded-xl text-xs font-bold hover:bg-brand-dark hover:text-white transition-colors">추가</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add User Modal -->
+        <div id="add-user-modal" class="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2"><i class="fa-solid fa-user-plus text-brand-dark"></i> 죽탱이 신규 등록</h3>
+                    <button onclick="closeAddUserModal()" class="text-amber-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="space-y-4 font-bold text-xs">
+                    <div>
+                        <label class="block text-gray-500 mb-1.5">SOOP 아이디 (프로필 사진 연동용 / 선택)</label>
+                        <input type="text" id="new-user-id" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="아이디 입력 (ex: popo030)">
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 mb-1.5">닉네임 (필수)</label>
+                        <input type="text" id="new-user-nickname" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="닉네임 입력">
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
+                    <button onclick="closeAddUserModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
+                    <button onclick="submitNewUser()" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">등록 완료</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notice Edit Modal -->
+        <div id="notice-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[85vh]">
+                <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-brand-light/30 dark:bg-amber-950/20">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="fa-solid fa-bullhorn text-brand-dark"></i> 공지사항 관리</h3>
+                    <button onclick="closeNoticeEditModal()" class="text-amber-500 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="p-4 flex-grow overflow-y-auto space-y-3" id="notice-edit-list"></div>
+                <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16] space-y-3 font-bold text-xs">
+                    <div class="flex gap-2">
+                        <select id="new-notice-type" class="bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2 outline-none w-24">
+                            <option value="필독">필독 📍</option>
+                            <option value="공지">공지 📢</option>
+                            <option value="일상">일상 🌸</option>
+                        </select>
+                        <input type="text" id="new-notice-content" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="내용을 기재하세요...">
+                    </div>
+                    <div class="flex gap-2">
+                        <input type="text" id="new-notice-link" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="연결 링크 (선택 / https://...)">
+                        <button onclick="addNewNotice()" class="bg-brand text-amber-950 px-5 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors whitespace-nowrap shadow-xs">등록</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Schedule Edit Modal -->
+        <div id="schedule-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[85vh]">
+                <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-brand-light/30 dark:bg-amber-950/20">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-1.5"><i class="fa-regular fa-calendar text-brand-dark"></i> 주간 일정 관리</h3>
+                    <button onclick="closeScheduleEditModal()" class="text-amber-500 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                <div class="p-4 flex-grow overflow-y-auto space-y-2.5" id="schedule-edit-list"></div>
+                <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16] flex justify-end text-xs font-bold">
+                    <button onclick="saveScheduleChanges()" class="bg-brand text-amber-950 px-6 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Detail Edit Modal -->
+        <div id="profile-edit-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-lg overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40 flex flex-col max-h-[90vh]">
+                <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-brand-light/30 dark:bg-amber-950/20">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2"><i class="fa-solid fa-address-card text-brand-dark"></i> 프로필 정보 수정</h3>
+                    <button onclick="closeProfileEditModal()" class="text-amber-500 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                </div>
+                
+                <div class="p-5 flex-grow overflow-y-auto space-y-6 text-xs font-bold">
+                    <!-- Banner Cover Setting -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너</h4>
+                        <label class="block text-gray-400 mb-1.5">상단 커버용 URL 이미지</label>
+                        <input type="text" id="edit-profile-banner" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="이미지 주소를 복사해 넣어주세요">
+                    </div>
+                    <hr class="border-amber-50 dark:border-amber-950/30">
+
+                    <!-- Intro Words and Hashtags -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-solid fa-star text-brand-dark"></i> 환영 인사</h4>
+                        <textarea id="edit-profile-intro" rows="3" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none resize-none mb-2"></textarea>
+                        <label class="block text-gray-400 mb-1.5 mt-3">대표 키워드 해시태그 (쉼표(,) 구분)</label>
+                        <input type="text" id="edit-profile-tags" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                    </div>
+                    <hr class="border-amber-50 dark:border-amber-950/30">
+                    
+                    <!-- Dynamic Days / Ddays list -->
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-sm text-gray-900 dark:text-white"><i class="fa-regular fa-clock text-brand-dark"></i> 실시간 디데이 관리</h4>
+                            <button type="button" onclick="addEditDdayRow()" class="text-xs bg-brand-light text-brand-dark dark:bg-amber-950/30 dark:text-amber-200 font-bold px-2.5 py-1 rounded-lg">
+                                + 추가
+                            </button>
+                        </div>
+                        <div id="edit-dday-list" class="space-y-2">
+                            <!-- JS Generated -->
+                        </div>
+                    </div>
+                    <hr class="border-amber-50 dark:border-amber-950/30">
+
+                    <!-- Broadcast information Details -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-regular fa-calendar-check text-brand-dark"></i> 방송 개요</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 방송 주기</span>
+                                <input type="text" id="edit-profile-time" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 주요 장르</span>
+                                <input type="text" id="edit-profile-content" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 주요 게임</span>
+                                <input type="text" id="edit-profile-game" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-amber-50 dark:border-amber-950/30">
+
+                    <!-- Likes and Dislikes config -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-heart text-brand-dark"></i> 취향 저격 리스트 (쉼표(,) 구분)</h4>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-gray-400 mb-1.5">좋아하는 것</label>
+                                <input type="text" id="edit-profile-likes" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 mb-1.5">싫어하는 것</label>
+                                <input type="text" id="edit-profile-dislikes" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16] flex justify-end gap-2 text-xs font-bold">
+                    <button onclick="closeProfileEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-250 transition-colors">취소</button>
+                    <button onclick="saveProfileChanges()" class="bg-brand text-amber-950 px-6 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-brand-dark dark:bg-black text-amber-50 py-8 text-center mt-auto transition-colors duration-300 border-t border-amber-100/10">
+        <p class="text-sm text-amber-100 dark:text-amber-300 font-cute text-2xl tracking-wide">🍊 오늘도 탱자와 함께 도파민 가득한 하루 되세요 🍊</p>
+        
+        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 font-mono mt-4">© 2026 탱자 🍊. All Taengza’s Rights Reserved.</p>
+        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 mt-1 font-mono">SOOP Official integration profile design.</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast-message" class="fixed bottom-6 right-6 z-[150] bg-brand-dark text-white font-bold text-sm py-3 px-5 rounded-xl shadow-lg transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+        <span id="toast-text">성공!</span>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Firebase Configuration (Shared profile infrastructure)
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'taengza-profile-app';
+        const firebaseConfig = {
+            apiKey: "AIzaSyA-7RFaaBIxkdJpozbgN2vxF3Cw_C3uoiU",
+            authDomain: "solming-profile-db-5ebc8.firebaseapp.com",
+            projectId: "solming-profile-db-5ebc8",
+            storageBucket: "solming-profile-db-5ebc8.firebasestorage.app",
+            messagingSenderId: "144023412722",
+            appId: "1:144023412722:web:72ab8fda5ded2cfe3bd56b"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        const defaultUpboData = [
+            { id: 'popo030_fan1', nickname: '정포도죽탱이', items: [{ name: 'A4 자필 편지 방셀', count: 1 }, { name: '춤방 리액션 선택권', count: 2 }] },
+            { id: 'popo030_fan2', nickname: '침대러버', items: [{ name: '모닝콜 녹음 보이스', count: 1 }] },
+            { id: 'popo030_fan3', nickname: '도파민중독자', items: [{ name: 'ASMR 꿀잠 보이스', count: 1 }] }
+        ];
+        
+        const defaultNoticeData = [
+            { type: '필독', date: '2026.07.20', content: '죽탱이들을 위한 주간 일정표 및 방셀 숙제 업데이트! 확인 부탁드려요 💛', typeColor: 'red', link: '' },
+            { type: '공지', date: '2026.07.18', content: '탱자의 레전드 배그 하이라이트 영상 업로드 완료! 보러 가기 🎥', typeColor: 'blue', link: 'https://www.youtube.com/@taengza.030' },
+            { type: '일상', date: '2026.07.10', content: '오늘도 귀여운 오리 방송 보러 와줘서 고마워요 죽탱이들! 다들 누워서 푹 쉬자 🛌', typeColor: 'gray', link: '' }
+        ];
+
+        const defaultScheduleData = [
+            { day: '월', content: '월요일 고정 휴방 💤 (재충전 시간)', color: 'green', isRest: true },
+            { day: '화', content: '저녁 8시 수다 소통 & 시청자 참참참 🍊', color: 'gray', isRest: false },
+            { day: '수', content: '저녁 8시 배틀그라운드 죽탱이 듀오 🎮', color: 'gray', isRest: false },
+            { day: '목', content: '저녁 8시 마인크래프트 야생 탐험 🦆', color: 'gray', isRest: false },
+            { day: '금', content: '저녁 8시 종합게임 (겜못스의 리얼 생존기) 💥', color: 'gray', isRest: false },
+            { day: '토', content: '저녁 8시 랜덤휴방 or 게릴라 토크방 💛', color: 'gray', isRest: false },
+            { day: '일', content: '저녁 8시 한 주 마무리 주간정산회 🎈', color: 'gray', isRest: false }
+        ];
+        
+        const defaultProfileData = {
+            bannerUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200&auto=format&fit=crop",
+            introText: `안녕하세요! 도파민을 좋아하는 귀여운 탱커 탱자입니다! 🦆💛\n과일 '탱자'를 정말 좋아하는 상큼한 매력 of 오리예요.\n배그, 마크, 종합 게임까지! 비록 겜못스지만 귀여운 도파민을 가득 충전해드릴게요!\n누워서 커피 마시며 소소하게 수다 떠는 힐링 가득한 안식처로 놀러 오세요! ✨`,
+            tags: ["귀여운탱커", "도파민중독", "겜못스오리"],
+            broadcast: { time: "저녁 8시 (월요일고정휴방+랜덤휴방1일)", content: "도파민 충전 소통 라디오", game: "배틀그라운드 · 마인크래프트 · 종합게임" },
+            likes: ["탱자를 좋아하는 사람들 💛", "도파민 🍊", "침대에 누워있기 🛌", "달콤한 커피 ☕", "소중한 별풍선 🎈"],
+            dislikes: ["공포 게임 + 갑툭튀 👻", "징그러운 벌레 🐛", "과도한 쥐흔 🐭", "훈수/리모컨질 🎮", "이유 없이 시비거는 거 ⚔️"],
+            ddays: [
+                { title: "🎂 탱자 생일", type: "birthday", date: "11-22" },
+                { title: "🎬 영광의 데뷔일", type: "anniversary", date: "2026-01-24" }
+            ],
+            socials: {
+                soop: "https://www.sooplive.com/station/popo030",
+                youtube: "https://www.youtube.com/@taengza.030",
+                fancim: "https://fancim.me/celeb/profile.aspx?url=578524"
+            }
+        };
+
+        // Interactive Monthly Fansigns with customizable/uploadable photocard images (No ranks)
+        const defaultMonthlyFansigns = [
+            { id: "fansign_1", name: "죽탱이짱", desc: "최다 방셀 달성", quote: "고급 오디오 장비 자필 손편지", balloon: "5,200개 💛", img: "" },
+            { id: "fansign_2", name: "도파민수혈자", desc: "레전드 풍 리액션", quote: "오리 애교 춤방 스폐셜셀", balloon: "3,000개 🦆", img: "" },
+            { id: "fansign_3", name: "별풍선러버", desc: "러블리 일기셀", quote: "자필 다이어리 공개방셀", balloon: "1,122개 🍊", img: "" }
+        ];
+
+        // Star balloon items supporting custom reaction cutouts
+        const defaultSignatureStar = [
+            { id: "reaction_1", count: "100개", action: "귀여운 탱커 애교 💛", img: "" },
+            { id: "reaction_2", count: "520개", action: "죽탱이 하트 발사 🔫", img: "" },
+            { id: "reaction_3", count: "1004개", action: "천사 오리 춤 댄스 🦆", img: "" },
+            { id: "reaction_4", count: "1122개", action: "생일축하 기념송 🎂", img: "" }
+        ];
+
+        let globalUpboData = [];
+        let globalNoticeData = [];
+        let globalScheduleData = [];
+        let globalProfileData = {};
+        let globalMonthlyFansigns = [];
+        let globalSignatureStar = [];
+        
+        let isAdminMode = false;
+        let currentEditingUserId = null;
+        let deleteConfirmState = false; 
+
+        // Target slots for image file uploading callbacks
+        let activeImageUploadTarget = null; // { type: 'fansign'|'signature', id: string }
+
+        // Local Storage Utilities
+        function safeGetStorage(key, defaultValue) {
+            try { 
+                const item = window.localStorage.getItem(key); 
+                return item ? JSON.parse(item) : defaultValue; 
+            } catch (e) { 
+                return defaultValue; 
+            }
+        }
+        function safeSetStorage(key, value) {
+            try { 
+                window.localStorage.setItem(key, JSON.stringify(value)); 
+            } catch (e) {}
+        }
+
+        const getTaengzaDocRef = () => doc(db, 'taengza-data', 'profile-content');
+
+        async function authenticate() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                return true;
+            } catch (error) {
+                console.warn("Auth failed, using cache fallback:", error.message);
+                return false;
+            }
+        }
+
+        async function fetchSiteData() {
+            const loadingInd = document.getElementById('loading-indicator');
+            if (loadingInd) loadingInd.classList.remove('hidden');
+
+            const isAuthed = await authenticate();
+            
+            if (isAuthed && navigator.onLine) {
+                try {
+                    const docRef = getTaengzaDocRef();
+                    const docSnap = await getDoc(docRef);
+                    
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        globalUpboData = data.upbo || defaultUpboData;
+                        globalNoticeData = data.notice || defaultNoticeData;
+                        globalScheduleData = data.schedule || defaultScheduleData;
+                        globalProfileData = data.profile || defaultProfileData;
+                        globalMonthlyFansigns = data.monthlyFansigns || defaultMonthlyFansigns;
+                        globalSignatureStar = data.signatureStar || defaultSignatureStar;
+
+                        // Cache update
+                        safeSetStorage('taengzaUpboData', globalUpboData);
+                        safeSetStorage('taengzaNoticeData', globalNoticeData);
+                        safeSetStorage('taengzaScheduleData', globalScheduleData);
+                        safeSetStorage('taengzaProfileData', globalProfileData);
+                        safeSetStorage('taengzaMonthlyFansigns', globalMonthlyFansigns);
+                        safeSetStorage('taengzaSignatureStar', globalSignatureStar);
+                    } else {
+                        // Create initial database documents
+                        const initialPayload = {
+                            upbo: defaultUpboData,
+                            notice: defaultNoticeData,
+                            schedule: defaultScheduleData,
+                            profile: defaultProfileData,
+                            monthlyFansigns: defaultMonthlyFansigns,
+                            signatureStar: defaultSignatureStar
+                        };
+                        await setDoc(docRef, initialPayload);
+                        globalUpboData = defaultUpboData;
+                        globalNoticeData = defaultNoticeData;
+                        globalScheduleData = defaultScheduleData;
+                        globalProfileData = defaultProfileData;
+                        globalMonthlyFansigns = defaultMonthlyFansigns;
+                        globalSignatureStar = defaultSignatureStar;
+                    }
+                } catch (error) {
+                    console.warn("Firestore error, falling back to local storage:", error.message);
+                    fallbackToLocal();
+                }
+            } else {
+                fallbackToLocal();
+            }
+            if (loadingInd) loadingInd.classList.add('hidden');
+        }
+
+        function fallbackToLocal() {
+            globalUpboData = safeGetStorage('taengzaUpboData', defaultUpboData);
+            globalNoticeData = safeGetStorage('taengzaNoticeData', defaultNoticeData);
+            globalScheduleData = safeGetStorage('taengzaScheduleData', defaultScheduleData);
+            globalProfileData = safeGetStorage('taengzaProfileData', defaultProfileData);
+            globalMonthlyFansigns = safeGetStorage('taengzaMonthlyFansigns', defaultMonthlyFansigns);
+            globalSignatureStar = safeGetStorage('taengzaSignatureStar', defaultSignatureStar);
+        }
+
+        async function updateFirestore(key, data) {
+            safeSetStorage(`taengza${key.charAt(0).toUpperCase() + key.slice(1)}Data`, data);
+            
+            if (auth.currentUser && navigator.onLine) {
+                try { 
+                    const docRef = getTaengzaDocRef();
+                    await updateDoc(docRef, { [key]: data }); 
+                } catch (error) { 
+                    console.warn("Firestore update postponed:", error.message);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Particle Generation
+            generateBgTaengzas();
+
+            // Dark Mode Handling
+            const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')];
+            const html = document.documentElement;
+            let savedTheme = 'light';
+            try { savedTheme = window.localStorage.getItem('theme'); } catch(e) {}
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark'); updateIcons(true);
+            } else {
+                html.classList.remove('dark'); updateIcons(false);
+            }
+            themeToggleBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        html.classList.toggle('dark');
+                        const isDark = html.classList.contains('dark');
+                        try { window.localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
+                        updateIcons(isDark);
+                    });
+                }
+            });
+            function updateIcons(isDark) {
+                themeToggleBtns.forEach(btn => {
+                    if (btn) {
+                        const icon = btn.querySelector('i');
+                        if (icon) {
+                            if (isDark) { icon.className = 'fa-solid fa-sun text-lg w-5 h-5 flex items-center justify-center'; } 
+                            else { icon.className = 'fa-solid fa-moon text-lg w-5 h-5 flex items-center justify-center'; }
+                        }
+                    }
+                });
+            }
+
+            // Mobile Menu
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if (mobileBtn) {
+                mobileBtn.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.toggle('hidden');
+                });
+            }
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+            });
+
+            // Set Current Date
+            const today = new Date();
+            const dateSpan = document.getElementById('upbo-date');
+            if (dateSpan) {
+                dateSpan.innerText = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            }
+
+            // Searching 명단
+            const searchInput = document.getElementById('upbo-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const keyword = e.target.value.toLowerCase();
+                    const filtered = globalUpboData.filter(user => user.nickname.toLowerCase().includes(keyword) || user.id.toLowerCase().includes(keyword));
+                    renderUpbo(filtered);
+                });
+            }
+
+            // Global image file uploader logic configuration
+            const fileUploader = document.getElementById('global-image-uploader');
+            if (fileUploader) {
+                fileUploader.addEventListener('change', handleGlobalImageUpload);
+            }
+
+            // Initial Draw
+            await fetchSiteData();
+            
+            renderProfile();
+            renderUpbo(globalUpboData);
+            renderNotice();
+            renderSchedule();
+            renderMonthlyFansigns();
+            renderSignatureStar();
+        });
+
+        // Background Particles Generator (Taengza Hues)
+        function generateBgTaengzas() {
+            const container = document.getElementById('taengza-bg-effects');
+            if (!container) return;
+            const taengzaIcons = ['💛', '🍊', '🦆', '🍋', '✨'];
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'taengza-particle text-sm select-none';
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = '-20px';
+                particle.style.fontSize = Math.random() * (22 - 12) + 12 + 'px';
+                particle.style.animationDuration = Math.random() * (12 - 6) + 6 + 's';
+                particle.style.opacity = Math.random() * 0.4 + 0.1;
+                particle.innerText = taengzaIcons[Math.floor(Math.random() * taengzaIcons.length)];
+                
+                container.appendChild(particle);
+                setTimeout(() => { particle.remove(); }, 12000);
+            }, 2000);
+        }
+
+        // Toast Messages
+        function showToast(message) {
+            const toast = document.getElementById('toast-message');
+            const toastText = document.getElementById('toast-text');
+            if (!toast || !toastText) return;
+            
+            toastText.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 2500);
+        }
+
+        // Link auto format
+        function linkify(text) {
+            if (!text) return '';
+            const urlPattern = /(https?:\/\/[^\s]+)/g;
+            return text.replace(urlPattern, function(url) {
+                return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-brand-dark dark:text-amber-300 hover:underline font-bold inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded transition-all text-xs" onclick="event.stopPropagation();">링크 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>`;
+            });
+        }
+
+        function calculateDDayString(type, dateStr) {
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            
+            if (type === 'birthday') {
+                const cleaned = dateStr.replace(/[^0-9]/g, '-');
+                const parts = cleaned.split('-');
+                if (parts.length < 2) return "날짜 오류";
+                const month = parseInt(parts[0], 10) - 1;
+                const day = parseInt(parts[1], 10);
+                
+                let targetYear = today.getFullYear();
+                let targetDate = new Date(targetYear, month, day);
+                if (targetDate < today) {
+                    targetDate.setFullYear(targetYear + 1);
+                }
+                
+                const diffTime = targetDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if (diffDays === 0 || (today.getMonth() === month && today.getDate() === day)) {
+                    return '<span class="text-brand-dark dark:text-brand font-bold animate-bounce block text-sm">오늘 탱자 생일! 🍊🎂</span>';
+                }
+                return `<span class="text-brand-dark font-bold text-lg">D-${diffDays}</span>`;
+            } else if (type === 'anniversary') {
+                const cleaned = dateStr.replace(/[^0-9]/g, '-');
+                const parts = cleaned.split('-').filter(p => p !== '');
+                if (parts.length < 3) return "날짜 오류";
+                const targetDate = new Date(parts[0], parseInt(parts[1], 10) - 1, parts[2]);
+                
+                const diffTime = today - targetDate;
+                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                if (diffDays <= 0) return `<span class="text-gray-400 text-xs">데뷔 대기 중</span>`;
+                return `<span class="text-[#45361a] dark:text-white font-bold text-lg">${diffDays}일째</span>`;
+            } else {
+                const cleaned = dateStr.replace(/[^0-9]/g, '-');
+                const parts = cleaned.split('-').filter(p => p !== '');
+                if (parts.length < 3) return "날짜 오류";
+                const targetDate = new Date(parts[0], parseInt(parts[1], 10) - 1, parts[2]);
+                targetDate.setHours(0,0,0,0);
+                
+                const diffTime = targetDate - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                
+                if (diffDays === 0) {
+                    return '<span class="text-red-500 font-bold animate-pulse text-sm">D-DAY! 💥</span>';
+                } else if (diffDays > 0) {
+                    return `<span class="text-orange-500 font-bold text-lg">D-${diffDays}</span>`;
+                } else {
+                    return `<span class="text-gray-400 text-xs">완료 (D+${Math.abs(diffDays)})</span>`;
+                }
+            }
+        }
+
+        function renderProfile() {
+            const bannerImg = document.getElementById('profile-banner-img');
+            if (bannerImg) {
+                bannerImg.src = globalProfileData.bannerUrl || defaultProfileData.bannerUrl;
+            }
+
+            const introEl = document.getElementById('profile-intro-text');
+            if (introEl) introEl.textContent = globalProfileData.introText;
+            
+            const tagsContainer = document.getElementById('profile-tags-container');
+            if (tagsContainer) {
+                tagsContainer.innerHTML = (globalProfileData.tags || []).map(tag => `<span class="px-3 py-1 bg-amber-50/60 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full text-xs font-bold border border-amber-100/50 dark:border-amber-950/40 cursor-default">#${tag.trim()}</span>`).join('');
+            }
+            
+            const ddayContainer = document.getElementById('dday-container');
+            if (ddayContainer) {
+                ddayContainer.innerHTML = '';
+                const ddays = globalProfileData.ddays || defaultProfileData.ddays || [];
+                if (ddays.length === 0) {
+                    ddayContainer.innerHTML = `<div class="text-center text-gray-400 text-xs py-8 font-bold">등록된 디데이가 없습니다.</div>`;
+                } else {
+                    ddays.forEach(dday => {
+                        const ddayResult = calculateDDayString(dday.type, dday.date);
+                        ddayContainer.innerHTML += `
+                            <div class="flex items-center justify-between p-3 bg-amber-50/20 dark:bg-amber-950/10 rounded-2xl border border-amber-100/40 dark:border-amber-950/20 transition-transform">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-bold text-gray-800 dark:text-gray-200">${dday.title}</span>
+                                    <span class="text-[11px] text-gray-400 font-bold mt-0.5">${dday.date}</span>
+                                </div>
+                                <div class="text-right">${ddayResult}</div>
+                            </div>
+                        `;
+                    });
+                }
+            }
+
+            const timeEl = document.getElementById('profile-broadcast-time');
+            if (timeEl) timeEl.innerText = (globalProfileData.broadcast || {}).time || '';
+            const contentEl = document.getElementById('profile-broadcast-content');
+            if (contentEl) contentEl.innerText = (globalProfileData.broadcast || {}).content || '';
+            const gameEl = document.getElementById('profile-broadcast-game');
+            if (gameEl) gameEl.innerText = (globalProfileData.broadcast || {}).game || '';
+            
+            const likesContainer = document.getElementById('profile-likes-container');
+            if (likesContainer) {
+                likesContainer.innerHTML = (globalProfileData.likes || []).map(like => `<span class="px-3 py-1 bg-amber-100 text-brand-dark rounded-full text-xs font-bold border border-amber-200">${like.trim()}</span>`).join('');
+            }
+            const dislikesContainer = document.getElementById('profile-dislikes-container');
+            if (dislikesContainer) {
+                dislikesContainer.innerHTML = (globalProfileData.dislikes || []).map(dislike => `<span class="px-3 py-1 bg-gray-100 dark:bg-amber-950/30 text-gray-500 dark:text-amber-300 rounded-full text-xs font-bold border border-gray-200/50 dark:border-amber-950/40">${dislike.trim()}</span>`).join('');
+            }
+        }
+
+        function renderNotice() {
+            const list = document.getElementById('notice-list');
+            if (!list) return;
+            list.innerHTML = '';
+            if (globalNoticeData.length === 0) { list.innerHTML = '<li class="text-center text-gray-400 py-6 font-bold">등록된 소식이 비어있습니다.</li>'; return; }
+
+            globalNoticeData.forEach(notice => {
+                let badgeClass = '', bgClass = 'p-3.5 rounded-2xl hover:bg-amber-50/20 dark:hover:bg-amber-950/10 border border-transparent hover:border-amber-100/40 dark:hover:border-amber-950/30 transition-colors';
+                if (notice.typeColor === 'red') { badgeClass = 'bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400'; bgClass = 'bg-amber-50/40 dark:bg-amber-950/20 p-3.5 rounded-2xl border border-amber-100 dark:border-amber-950/30'; } 
+                else if (notice.typeColor === 'blue') { badgeClass = 'bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400'; } 
+                else { badgeClass = 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-amber-200'; }
+
+                let linkHtml = '';
+                if (notice.link && notice.link.trim() !== '') {
+                    linkHtml = `
+                        <div class="mt-2">
+                            <a href="${notice.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-950 bg-brand hover:bg-brand-dark hover:text-white px-3 py-1 rounded-lg transition-all">
+                                링크 가기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </a>
+                        </div>
+                    `;
+                }
+
+                list.innerHTML += `
+                    <li class="${bgClass} font-semibold">
+                        <div class="flex justify-between items-start mb-1.5">
+                            <span class="${badgeClass} text-[10px] px-1.5 py-0.5 rounded font-bold">${notice.type}</span>
+                            <span class="text-[11px] text-gray-400 font-bold">${notice.date}</span>
+                        </div>
+                        <p class="text-sm text-gray-800 dark:text-amber-100 ${notice.typeColor === 'red' ? 'font-bold text-brand-dark dark:text-brand' : ''}">${linkify(notice.content)}</p>
+                        ${linkHtml}
+                    </li>
+                `;
+            });
+        }
+
+        function renderSchedule() {
+            const list = document.getElementById('schedule-list');
+            if (!list) return;
+            list.innerHTML = '';
+            
+            const colorMap = {
+                gray: { text: 'text-gray-700 dark:text-amber-200', dayText: 'text-gray-600 dark:text-amber-300 bg-amber-50/80 dark:bg-amber-950/40' },
+                green: { text: 'text-emerald-600 dark:text-emerald-400 font-bold', dayText: 'text-white bg-emerald-400' }
+            };
+
+            globalScheduleData.forEach(schedule => {
+                const colors = schedule.isRest ? colorMap.green : colorMap.gray;
+                const bgClass = schedule.isRest ? 'bg-emerald-50/10 dark:bg-emerald-950/5 border border-emerald-100/10 dark:border-emerald-950/10' : 'hover:bg-amber-50/10 border border-transparent';
+                list.innerHTML += `
+                    <div class="flex items-center justify-between p-2 rounded-xl ${bgClass} transition-colors font-semibold">
+                        <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 flex items-center justify-center text-xs rounded-full ${colors.dayText}">${schedule.day}</div>
+                            <div class="text-sm ${colors.text}">${schedule.content}</div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function getAvatarUrl(user) {
+            if (user.id && user.id.trim() !== '' && !user.id.startsWith('popo030_fan_')) {
+                const prefix = user.id.substring(0, 2);
+                return `https://stimg.afreecatv.com/LOGO/${prefix}/${user.id}/${user.id}.jpg`;
+            }
+            const safeName = user.nickname.length >= 2 ? user.nickname.substring(0, 2) : user.nickname;
+            return `https://placehold.co/100x100/fef3c7/d97706?text=${encodeURIComponent(safeName)}`;
+        }
+
+        function renderUpbo(data) {
+            const grid = document.getElementById('upbo-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            if (data.length === 0) { grid.innerHTML = '<div class="col-span-full py-10 text-center text-gray-400 font-bold">검색 결과가 없습니다.</div>'; return; }
+
+            data.forEach(user => {
+                const totalItems = (user.items || []).reduce((sum, item) => sum + item.count, 0);
+                
+                const avatarUrl = getAvatarUrl(user);
+                const card = document.createElement('div');
+                card.className = 'bg-white dark:bg-[#1f1d18] border border-amber-100/50 dark:border-amber-950/30 rounded-2xl p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-amber-50/30 dark:hover:bg-amber-950/10 transition-all shadow-xs relative group hover:scale-[1.03] duration-200';
+                card.onclick = () => { if (isAdminMode) openUpboEditModal(user, avatarUrl); else openUpboModal(user, avatarUrl); };
+                const adminBadge = isAdminMode ? `<div class="absolute top-2.5 right-2.5 text-amber-500 group-hover:text-brand-dark transition-colors"><i class="fa-solid fa-pen-to-square text-xs"></i></div>` : '';
+
+                card.innerHTML = `
+                    ${adminBadge}
+                    <img src="${avatarUrl}" onerror="this.src='https://placehold.co/100x100/fef3c7/d97706?text=${encodeURIComponent(user.nickname.substring(0,2))}'" alt="${user.nickname}" class="w-14 h-14 rounded-full object-cover mb-2.5 shadow-xs border-2 border-amber-100/60 dark:border-amber-950/40 bg-white">
+                    <div class="text-[#45361a] dark:text-amber-100 font-bold text-sm mb-2.5 truncate w-full text-center">${user.nickname}</div>
+                    <div class="bg-brand text-amber-950 text-xs font-bold px-2.5 py-0.5 rounded-full shadow-xs">숙제 ${totalItems}개</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderMonthlyFansigns() {
+            const container = document.getElementById('monthly-fansign-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            globalMonthlyFansigns.forEach((fansign) => {
+                const photoHtml = fansign.img 
+                    ? `<img src="${fansign.img}" class="w-full h-40 object-cover rounded-xl mb-3 shadow-inner" alt="${fansign.name} 방셀 이미지">`
+                    : `
+                        <div class="w-full h-40 bg-amber-50/50 dark:bg-amber-950/10 border-2 border-dashed border-amber-200 dark:border-amber-950 rounded-xl mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-900">
+                            <i class="fa-solid fa-image text-2xl mb-1.5"></i>
+                            <span class="text-xs font-bold">방셀 이미지가 없습니다 📸</span>
+                        </div>
+                    `;
+
+                const editBtnHtml = isAdminMode 
+                    ? `
+                        <button onclick="triggerImageUpload('fansign', '${fansign.id}')" class="absolute top-2 left-2 z-20 bg-brand hover:bg-brand-dark hover:text-white text-amber-950 text-[10px] font-bold px-2.5 py-1.5 rounded-lg shadow-md transition-transform active:scale-95 flex items-center gap-1">
+                            <i class="fa-solid fa-camera"></i> 사진 등록/변경
+                        </button>
+                    ` : '';
+
+                container.innerHTML += `
+                    <div class="bg-gradient-to-b from-amber-50/30 to-white dark:from-amber-950/10 dark:to-[#181611] border-2 border-amber-200/60 dark:border-amber-950/40 rounded-2xl p-5 flex flex-col justify-between text-center relative overflow-hidden group">
+                        ${editBtnHtml}
+                        <div>
+                            ${photoHtml}
+                            <h4 class="font-bold text-lg text-brand-dark dark:text-brand mt-1">${fansign.name}</h4>
+                            <p class="text-xs text-gray-500 dark:text-amber-400 mt-0.5">${fansign.desc}</p>
+                            <p class="text-sm mt-3 font-semibold text-gray-700 dark:text-amber-200 italic">"${fansign.quote}"</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-dashed border-amber-150/50 text-xs font-bold text-brand-dark">
+                            풍선 개수: ${fansign.balloon}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function renderSignatureStar() {
+            const container = document.getElementById('signature-star-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            globalSignatureStar.forEach((reaction) => {
+                const photoHtml = reaction.img 
+                    ? `<img src="${reaction.img}" class="w-16 h-16 rounded-full object-cover border-2 border-brand mx-auto mb-2" alt="${reaction.count} 리액션">`
+                    : `
+                        <div class="w-16 h-16 rounded-full bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 mx-auto mb-2 flex items-center justify-center text-gray-400 dark:text-amber-800">
+                            <i class="fa-solid fa-ghost text-lg"></i>
+                        </div>
+                    `;
+
+                const editBtnHtml = isAdminMode 
+                    ? `
+                        <button onclick="triggerImageUpload('signature', '${reaction.id}')" class="absolute bottom-2 right-2 z-20 bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 text-[9px] font-bold p-1 rounded-md border border-brand/40 active:scale-95" title="리액션 사진 업로드">
+                            <i class="fa-solid fa-camera"></i>
+                        </button>
+                    ` : '';
+
+                container.innerHTML += `
+                    <div class="bg-[#fffdf8] dark:bg-[#201e19] border border-amber-150 rounded-xl p-3 text-center relative flex flex-col justify-center min-h-[140px] overflow-hidden">
+                        ${editBtnHtml}
+                        ${photoHtml}
+                        <span class="text-base font-black text-accent">${reaction.count}</span>
+                        <p class="text-xs font-bold mt-1 text-[#45361a] dark:text-amber-200">${reaction.action}</p>
+                    </div>
+                `;
+            });
+        }
+
+        // File selection handling
+        function triggerImageUpload(type, id) {
+            activeImageUploadTarget = { type, id };
+            const uploader = document.getElementById('global-image-uploader');
+            if (uploader) {
+                uploader.value = ''; // Reset
+                uploader.click();
+            }
+        }
+
+        function handleGlobalImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file || !activeImageUploadTarget) return;
+
+            showToast("📸 이미지 압축 가공 중... 잠시만 기다려주세요!");
+
+            compressImage(file, 400, 400, (compressedBase64) => {
+                if (activeImageUploadTarget.type === 'fansign') {
+                    const fansignItem = globalMonthlyFansigns.find(f => f.id === activeImageUploadTarget.id);
+                    if (fansignItem) {
+                        fansignItem.img = compressedBase64;
+                        updateFirestore('monthlyFansigns', globalMonthlyFansigns);
+                        renderMonthlyFansigns();
+                        showToast("🎉 이달의 방셀 이미지가 성공적으로 업로드되었습니다 💛");
+                    }
+                } else if (activeImageUploadTarget.type === 'signature') {
+                    const reactionItem = globalSignatureStar.find(r => r.id === activeImageUploadTarget.id);
+                    if (reactionItem) {
+                        reactionItem.img = compressedBase64;
+                        updateFirestore('signatureStar', globalSignatureStar);
+                        renderSignatureStar();
+                        showToast("🎉 시그풍 리액션 예시 이미지가 연동되었습니다 🦆");
+                    }
+                }
+                activeImageUploadTarget = null;
+            });
+        }
+
+        function compressImage(file, maxWidth, maxHeight, callback) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height *= maxWidth / width;
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width *= maxHeight / height;
+                            height = maxHeight;
+                        }
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.65);
+                    callback(dataUrl);
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function openUpboModal(user, avatarUrl) {
+            let modal = document.getElementById('upbo-modal');
+            if (!modal) {
+                modal = document.createElement('div'); modal.id = 'upbo-modal'; modal.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300';
+                document.body.appendChild(modal);
+            }
+            const itemsHtml = (user.items || []).length > 0 ? user.items.map(item => `
+                <div class="flex justify-between items-center bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100/40 dark:border-amber-950/20 rounded-xl p-3 mb-2 font-bold text-sm">
+                    <span class="text-gray-800 dark:text-amber-100">${item.name}</span>
+                    <span class="text-brand-dark font-bold bg-amber-100 px-2.5 py-0.5 rounded-lg text-xs">×${item.count}</span>
+                </div>
+            `).join('') : `<div class="text-center text-gray-400 py-6 font-bold">남은 숙제가 없습니다! 완벽해요 💛</div>`;
+
+            modal.innerHTML = `
+                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm overflow-hidden transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
+                    <div class="p-4 flex items-center justify-between border-b border-amber-50 dark:border-amber-950/30 bg-[#fffdfa] dark:bg-[#13110e]">
+                        <div class="flex items-center gap-2.5">
+                            <img src="${avatarUrl}" onerror="this.src='https://placehold.co/100x100/fef3c7/d97706?text=${user.nickname.substring(0,2)}'" class="w-10 h-10 rounded-full border border-amber-100 object-cover bg-white">
+                            <div>
+                                <div class="text-gray-900 dark:text-white font-bold text-sm">${user.nickname}</div>
+                                <div class="text-gray-400 text-[10px] font-bold">(${user.id || '아이디 없음'})</div>
+                            </div>
+                        </div>
+                        <button onclick="closeUpboModal()" class="text-amber-500 hover:text-white p-2"><i class="fa-solid fa-xmark text-xl"></i></button>
+                    </div>
+                    <div class="p-4 max-h-64 overflow-y-auto">${itemsHtml}</div>
+                </div>
+            `;
+            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
+            modal.addEventListener('click', (e) => { if (e.target === modal) closeUpboModal(); });
+        }
+
+        function closeUpboModal() {
+            const modal = document.getElementById('upbo-modal');
+            if (modal) { modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+        }
+
+        function openAdminLoginModal() {
+            if (isAdminMode) {
+                isAdminMode = false;
+                document.getElementById('admin-add-user-btn').classList.add('hidden'); document.getElementById('admin-add-user-btn').classList.remove('flex');
+                document.getElementById('admin-notice-edit-btn').classList.add('hidden'); document.getElementById('admin-schedule-edit-btn').classList.add('hidden'); document.getElementById('admin-profile-edit-btn').classList.add('hidden');
+                document.getElementById('upbo-search').dispatchEvent(new Event('input')); 
+                renderMonthlyFansigns();
+                renderSignatureStar();
+                showToast("관리자 모드가 완전히 로그아웃 되었어요! 🌸");
+                return;
+            }
+            const modal = document.getElementById('admin-login-modal');
+            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
+            document.getElementById('admin-pin').value = ''; document.getElementById('admin-pin').focus();
+        }
+
+        function closeAdminLoginModal() {
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function checkAdminPin() {
+            const pin = document.getElementById('admin-pin').value;
+            if (pin === '021122') { 
+                isAdminMode = true; closeAdminLoginModal();
+                document.getElementById('admin-add-user-btn').classList.remove('hidden'); document.getElementById('admin-add-user-btn').classList.add('flex');
+                document.getElementById('admin-notice-edit-btn').classList.remove('hidden'); document.getElementById('admin-schedule-edit-btn').classList.remove('hidden'); document.getElementById('admin-profile-edit-btn').classList.remove('hidden');
+                document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+                renderMonthlyFansigns();
+                renderSignatureStar();
+                showToast("탱자 매니저님 인증 완료! 이미지 업로드 및 편집 기능들이 모두 활성화되었습니다 💛");
+            } else {
+                const input = document.getElementById('admin-pin');
+                input.classList.add('border-red-500'); input.value = ''; input.placeholder = '비밀번호를 확인해주세요!';
+                setTimeout(() => { input.classList.remove('border-red-500'); input.placeholder = '••••••'; }, 2000);
+            }
+        }
+
+        function saveUpboData() { updateFirestore('upbo', globalUpboData); }
+
+        function openUpboEditModal(user, avatarUrl) {
+            currentEditingUserId = user.id; 
+            const modal = document.getElementById('upbo-edit-modal');
+            
+            document.getElementById('edit-modal-header').innerHTML = `
+                <img src="${avatarUrl}" onerror="this.src='https://placehold.co/100x100/fef3c7/d97706?text=${user.nickname.substring(0,2)}'" class="w-10 h-10 rounded-full border border-amber-250 object-cover bg-white">
+                <div>
+                    <div class="text-gray-900 dark:text-white font-bold text-sm">
+                        ${user.nickname} 
+                        <span class="text-[10px] bg-brand text-amber-950 px-1.5 py-0.5 rounded-md ml-1">상태 편집</span>
+                    </div>
+                    <div class="text-gray-400 text-[10px] font-bold">(${user.id})</div>
+                </div>
+            `;
+            
+            const deleteUserBtn = document.getElementById('delete-user-confirm-btn');
+            if (deleteUserBtn) {
+                deleteUserBtn.classList.remove('hidden');
+                deleteUserBtn.classList.add('block');
+                deleteConfirmState = false; 
+                deleteUserBtn.innerHTML = `<i class="fa-solid fa-user-minus mr-1"></i>삭제`;
+                deleteUserBtn.className = "text-xs bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-1.5 rounded-lg hover:bg-red-100 transition-all";
+                deleteUserBtn.onclick = () => handleDeleteUser(user.id);
+            }
+
+            renderEditItems();
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
+            });
+            document.getElementById('new-item-name').onkeypress = function(e) { if (e.key === 'Enter') addNewItem(); };
+        }
+
+        function closeUpboEditModal() {
+            const modal = document.getElementById('upbo-edit-modal'); 
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95'); 
+            currentEditingUserId = null;
+        }
+
+        function handleDeleteUser(userId) {
+            const btn = document.getElementById('delete-user-confirm-btn');
+            if (!btn) return;
+
+            if (!deleteConfirmState) {
+                deleteConfirmState = true;
+                btn.innerHTML = `<i class="fa-solid fa-triangle-exclamation mr-1"></i>진짜삭제?`;
+                btn.className = "text-xs bg-red-600 text-white font-bold px-2.5 py-1.5 rounded-lg hover:bg-red-700 transition-all animate-pulse";
+                
+                setTimeout(() => {
+                    if (deleteConfirmState && currentEditingUserId === userId) {
+                        btn.innerHTML = `<i class="fa-solid fa-user-minus mr-1"></i>삭제`;
+                        btn.className = "text-xs bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 font-bold px-2.5 py-1.5 rounded-lg hover:bg-red-100 transition-all";
+                        deleteConfirmState = false;
+                    }
+                }, 3000);
+            } else {
+                globalUpboData = globalUpboData.filter(u => u.id !== userId);
+                saveUpboData();
+                closeUpboEditModal();
+                document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+                deleteConfirmState = false;
+            }
+        }
+
+        function renderEditItems() {
+            const user = globalUpboData.find(u => u.id === currentEditingUserId); if (!user) return;
+            const body = document.getElementById('edit-modal-body');
+            if (user.items.length === 0) { body.innerHTML = `<div class="text-center text-gray-400 py-6 font-bold text-xs">보여줄 숙제 내역이 아직 없어요!</div>`; return; }
+            body.innerHTML = user.items.map((item, index) => `
+                <div class="flex justify-between items-center bg-amber-50/10 dark:bg-[#1f1d18] border border-amber-100/50 dark:border-amber-950/20 rounded-xl p-3 mb-2 font-bold">
+                    <span class="text-gray-800 dark:text-amber-100 text-xs">${item.name}</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeItemCount(${index}, -1)" class="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100 dark:bg-amber-950/40 text-gray-600 dark:text-amber-200 hover:bg-red-105 transition-colors"><i class="fa-solid fa-minus text-[10px]"></i></button>
+                        <span class="w-5 text-center text-xs text-gray-900 dark:text-white">${item.count}</span>
+                        <button onclick="changeItemCount(${index}, 1)" class="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100 dark:bg-amber-950/40 text-gray-600 dark:text-amber-200 hover:bg-amber-150 transition-colors"><i class="fa-solid fa-plus text-[10px]"></i></button>
+                        <button onclick="deleteItem(${index})" class="ml-2 text-gray-400 hover:text-red-500 transition-colors p-1"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeItemCount(index, delta) {
+            const user = globalUpboData.find(u => u.id === currentEditingUserId); if (!user) return;
+            user.items[index].count += delta; if (user.items[index].count <= 0) user.items[index].count = 0;
+            saveUpboData(); renderEditItems(); document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+        }
+
+        function deleteItem(index) {
+            const user = globalUpboData.find(u => u.id === currentEditingUserId); if (!user) return;
+            user.items.splice(index, 1); saveUpboData(); renderEditItems(); document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+        }
+
+        function addNewItem() {
+            const input = document.getElementById('new-item-name'); const name = input.value.trim(); if (!name) return;
+            let user = globalUpboData.find(u => u.id === currentEditingUserId); if (!user) return;
+            const existing = user.items.find(i => i.name === name);
+            if (existing) existing.count += 1; else user.items.push({ name: name, count: 1 });
+            input.value = ''; saveUpboData(); renderEditItems(); document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+        }
+
+        function openAddUserModal() {
+            const modal = document.getElementById('add-user-modal'); document.getElementById('new-user-id').value = ''; document.getElementById('new-user-nickname').value = '';
+            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); }); document.getElementById('new-user-nickname').focus();
+        }
+        function closeAddUserModal() { const modal = document.getElementById('add-user-modal'); modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+
+        function submitNewUser() {
+            const idInput = document.getElementById('new-user-id').value.trim(); const nickInput = document.getElementById('new-user-nickname').value.trim();
+            if (!nickInput) {
+                const nickEl = document.getElementById('new-user-nickname'); nickEl.classList.add('border-red-500'); nickEl.placeholder = '닉네임을 정확하게 적어주세요!';
+                setTimeout(() => { nickEl.classList.remove('border-red-500'); nickEl.placeholder = '닉네임 입력'; }, 2000); return;
+            }
+            const finalId = idInput || 'popo030_fan_' + Math.random().toString(36).substring(2, 9);
+            globalUpboData.unshift({ id: finalId, nickname: nickInput, items: [] });
+            saveUpboData(); closeAddUserModal(); document.getElementById('upbo-search').dispatchEvent(new Event('input'));
+        }
+
+        // Notice config operations
+        function openNoticeEditModal() {
+            const modal = document.getElementById('notice-edit-modal'); renderNoticeEditList();
+            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
+            document.getElementById('new-notice-content').onkeypress = function(e) { if (e.key === 'Enter') addNewNotice(); };
+        }
+        function closeNoticeEditModal() { const modal = document.getElementById('notice-edit-modal'); modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+
+        function renderNoticeEditList() {
+            const list = document.getElementById('notice-edit-list'); list.innerHTML = '';
+            if (globalNoticeData.length === 0) { list.innerHTML = '<div class="text-center text-gray-400 py-4 font-bold text-xs">공지사항이 비어있습니다.</div>'; return; }
+            globalNoticeData.forEach((notice, index) => {
+                let linkBadge = '';
+                if (notice.link && notice.link.trim() !== '') {
+                    linkBadge = `<span class="text-[9px] bg-amber-50 text-brand-dark border border-amber-100 px-1.5 py-0.5 rounded truncate max-w-[120px]" title="${notice.link}"><i class="fa-solid fa-link mr-1"></i>${notice.link}</span>`;
+                }
+                list.innerHTML += `
+                    <div class="bg-[#fffdfa] dark:bg-[#1a1813] border border-amber-100/50 dark:border-amber-950/40 p-3 rounded-xl flex justify-between items-start gap-3 font-bold text-xs">
+                        <div class="flex-grow min-w-0">
+                            <div class="flex items-center gap-2 mb-1 flex-wrap font-sans">
+                                <span class="text-[9px] bg-brand text-amber-950 px-1.5 py-0.5 rounded">${notice.type}</span>
+                                <span class="text-[10px] text-gray-400">${notice.date}</span>
+                                ${linkBadge}
+                            </div>
+                            <p class="text-xs text-gray-700 dark:text-amber-200 break-all">${linkify(notice.content)}</p>
+                        </div>
+                        <button onclick="deleteNotice(${index})" class="text-gray-400 hover:text-red-500 p-1 flex-shrink-0"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                    </div>
+                `;
+            });
+        }
+        function addNewNotice() {
+            const type = document.getElementById('new-notice-type').value; 
+            const contentInput = document.getElementById('new-notice-content'); 
+            const linkInput = document.getElementById('new-notice-link');
+            const content = contentInput.value.trim();
+            let link = linkInput.value.trim();
+            
+            if (!content) return; 
+            if (link && !/^https?:\/\//i.test(link)) link = 'https://' + link;
+            
+            let typeColor = 'gray'; 
+            if (type === '필독') typeColor = 'red'; 
+            if (type === '공지') typeColor = 'blue';
+            
+            const today = new Date(); 
+            const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
+            
+            globalNoticeData.unshift({ type, date: dateStr, content, link, typeColor });
+            updateFirestore('notice', globalNoticeData); 
+            contentInput.value = ''; linkInput.value = '';
+            renderNoticeEditList(); renderNotice();
+        }
+        function deleteNotice(index) { globalNoticeData.splice(index, 1); updateFirestore('notice', globalNoticeData); renderNoticeEditList(); renderNotice(); }
+
+        function openScheduleEditModal() {
+            const modal = document.getElementById('schedule-edit-modal'); renderScheduleEditList();
+            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
+        }
+        function closeScheduleEditModal() { const modal = document.getElementById('schedule-edit-modal'); modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+        function renderScheduleEditList() {
+            const list = document.getElementById('schedule-edit-list'); list.innerHTML = '';
+            globalScheduleData.forEach((schedule, index) => {
+                list.innerHTML += `
+                    <div class="flex items-center gap-3 bg-[#fffdfa] dark:bg-[#1a1813] border border-amber-100 dark:border-amber-950/20 p-2 rounded-xl font-bold">
+                        <div class="w-6 text-center text-xs text-brand-dark dark:text-brand">${schedule.day}</div>
+                        <input type="text" id="schedule-input-${index}" value="${schedule.content}" class="flex-grow bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-lg p-1.5 outline-none font-medium">
+                        <label class="flex items-center gap-1 text-[10px] text-gray-400 cursor-pointer flex-shrink-0">
+                            <input type="checkbox" id="schedule-rest-${index}" ${schedule.isRest ? 'checked' : ''} class="w-4 h-4 text-brand rounded focus:ring-brand">휴방
+                        </label>
+                    </div>
+                `;
+            });
+        }
+        function saveScheduleChanges() {
+            globalScheduleData.forEach((schedule, index) => {
+                const content = document.getElementById(`schedule-input-${index}`).value; 
+                const isRest = document.getElementById(`schedule-rest-${index}`).checked;
+                schedule.content = content; 
+                schedule.isRest = isRest;
+                
+                if (isRest) { 
+                    schedule.color = 'green'; 
+                } else { 
+                    schedule.color = 'gray'; 
+                }
+            });
+            updateFirestore('schedule', globalScheduleData); 
+            renderSchedule(); 
+            closeScheduleEditModal();
+        }
+
+        function openProfileEditModal() {
+            const modal = document.getElementById('profile-edit-modal');
+            
+            document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || defaultProfileData.bannerUrl || '';
+            document.getElementById('edit-profile-intro').value = globalProfileData.introText || ''; 
+            document.getElementById('edit-profile-tags').value = (globalProfileData.tags || []).join(', ');
+            
+            const broadcast = globalProfileData.broadcast || {};
+            document.getElementById('edit-profile-time').value = broadcast.time || ''; 
+            document.getElementById('edit-profile-content').value = broadcast.content || ''; 
+            document.getElementById('edit-profile-game').value = broadcast.game || '';
+            
+            document.getElementById('edit-profile-likes').value = (globalProfileData.likes || []).join(', '); 
+            document.getElementById('edit-profile-dislikes').value = (globalProfileData.dislikes || []).join(', ');
+
+            if (!globalProfileData.ddays || globalProfileData.ddays.length === 0) {
+                globalProfileData.ddays = JSON.parse(JSON.stringify(defaultProfileData.ddays));
+            }
+
+            renderEditDdays();
+
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
+            });
+        }
+
+        function closeProfileEditModal() { 
+            const modal = document.getElementById('profile-edit-modal'); 
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95'); 
+        }
+
+        function renderEditDdays() {
+            const list = document.getElementById('edit-dday-list');
+            if (!list) return;
+            list.innerHTML = '';
+            
+            const ddays = globalProfileData.ddays || defaultProfileData.ddays || [];
+            ddays.forEach((dday, index) => {
+                list.innerHTML += `
+                    <div class="flex items-center gap-2 bg-[#fffdfa] dark:bg-amber-950/10 p-2 rounded-xl border border-amber-100 dark:border-amber-950/20 font-bold">
+                        <input type="text" id="edit-dday-title-${index}" value="${dday.title}" class="w-1/3 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none" placeholder="타이틀">
+                        <select id="edit-dday-type-${index}" class="w-1/4 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none">
+                            <option value="birthday" ${dday.type === 'birthday' ? 'selected' : ''}>생일</option>
+                            <option value="anniversary" ${dday.type === 'anniversary' ? 'selected' : ''}>기념일</option>
+                            <option value="dday" ${dday.type === 'dday' ? 'selected' : ''}>디데이</option>
+                        </select>
+                        <input type="text" id="edit-dday-date-${index}" value="${dday.date}" class="w-1/4 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none" placeholder="예: 2026-01-24">
+                        <button type="button" onclick="deleteEditDdayRow(${index})" class="text-gray-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                `;
+            });
+        }
+
+        function addEditDdayRow() {
+            if (!globalProfileData.ddays) globalProfileData.ddays = [];
+            globalProfileData.ddays.push({ title: "새 기념일", type: "dday", date: "2026-11-22" });
+            renderEditDdays();
+        }
+
+        function deleteEditDdayRow(index) {
+            if (!globalProfileData.ddays) return;
+            globalProfileData.ddays.splice(index, 1);
+            renderEditDdays();
+        }
+
+        function saveProfileChanges() {
+            const parse = (str) => str.split(',').map(item => item.trim()).filter(item => item !== '');
+            
+            globalProfileData.bannerUrl = document.getElementById('edit-profile-banner').value.trim();
+            globalProfileData.introText = document.getElementById('edit-profile-intro').value; 
+            globalProfileData.tags = parse(document.getElementById('edit-profile-tags').value);
+            
+            if (!globalProfileData.broadcast) globalProfileData.broadcast = {};
+            globalProfileData.broadcast.time = document.getElementById('edit-profile-time').value; 
+            globalProfileData.broadcast.content = document.getElementById('edit-profile-content').value; 
+            globalProfileData.broadcast.game = document.getElementById('edit-profile-game').value;
+            
+            globalProfileData.likes = parse(document.getElementById('edit-profile-likes').value); 
+            globalProfileData.dislikes = parse(document.getElementById('edit-profile-dislikes').value);
+
+            const ddaysCount = (globalProfileData.ddays || []).length;
+            const savedDdays = [];
+            for (let i = 0; i < ddaysCount; i++) {
+                const titleEl = document.getElementById(`edit-dday-title-${i}`);
+                if (!titleEl) continue;
+                
+                const title = titleEl.value.trim();
+                const type = document.getElementById(`edit-dday-type-${i}`).value;
+                const date = document.getElementById(`edit-dday-date-${i}`).value.trim();
+                
+                if (title !== '' && date !== '') {
+                    savedDdays.push({ title, type, date });
+                }
+            }
+            globalProfileData.ddays = savedDdays;
+
+            updateFirestore('profile', globalProfileData); 
+            renderProfile(); 
+            closeProfileEditModal();
+            showToast("탱자의 대표 프로필들이 완벽히 적용되었습니다. 🧡");
+        }
+
+        async function captureProfile() {
+            showToast("📸 프로필 이미지 내보내기 준비 중입니다. 잠시만 기다려주세요...");
+            
+            const target = document.getElementById('capture-target');
+            
+            try {
+                const canvas = await html2canvas(target, {
+                    useCORS: true, 
+                    allowTaint: true,
+                    backgroundColor: document.documentElement.classList.contains('dark') ? '#0f0e0a' : '#fefef9',
+                    scale: 2, // High-DPI capture output
+                    logging: false
+                });
+
+                const image = canvas.toDataURL("image/png");
+                const link = document.createElement('a');
+                link.download = `Taengza_Profile_Capture_${new Date().toISOString().slice(0,10)}.png`;
+                link.href = image;
+                link.click();
+                
+                showToast("🎉 성공적으로 프로필 이미지가 저장되었습니다!");
+            } catch (error) {
+                console.error("Capture failure:", error);
+                showToast("❌ 이미지 저장 중 문제가 발생했습니다. (외부 이미지 CORS 제한일 수 있습니다)");
+            }
+        }
+
+        // Global functions mapped for inline browser events
+        window.openProfileEditModal = openProfileEditModal;
+        window.closeProfileEditModal = closeProfileEditModal;
+        window.saveProfileChanges = saveProfileChanges;
+        window.openUpboEditModal = openUpboEditModal;
+        window.closeUpboEditModal = closeUpboEditModal;
+        window.openUpboModal = openUpboModal;
+        window.closeUpboModal = closeUpboModal;
+        window.openAdminLoginModal = openAdminLoginModal;
+        window.closeAdminLoginModal = closeAdminLoginModal;
+        window.checkAdminPin = checkAdminPin;
+        window.addNewItem = addNewItem;
+        window.changeItemCount = changeItemCount;
+        window.deleteItem = deleteItem;
+        window.openAddUserModal = openAddUserModal;
+        window.closeAddUserModal = closeAddUserModal;
+        window.submitNewUser = submitNewUser;
+        window.openNoticeEditModal = openNoticeEditModal;
+        window.closeNoticeEditModal = closeNoticeEditModal;
+        window.addNewNotice = addNewNotice;
+        window.deleteNotice = deleteNotice;
+        window.openScheduleEditModal = openScheduleEditModal;
+        window.closeScheduleEditModal = closeScheduleEditModal;
+        window.saveScheduleChanges = saveScheduleChanges;
+        window.addEditDdayRow = addEditDdayRow;
+        window.deleteEditDdayRow = deleteEditDdayRow;
+        window.handleDeleteUser = handleDeleteUser;
+        window.captureProfile = captureProfile;
+        window.triggerImageUpload = triggerImageUpload;
+    </script>
+</body>
+</html>
