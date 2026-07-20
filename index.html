@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>탱자 오피셜 프로필 🦆💛</title>
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍊</text></svg>">
+    <link class="rounded-full" rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍊</text></svg>">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -317,7 +317,7 @@
             </section>
         </div>
 
-        <!-- 3. Homework Area (Redesigned as requested: Simple clickable premium link card) -->
+        <!-- 3. Homework Area -->
         <section id="homework" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -352,7 +352,7 @@
             </div>
         </section>
 
-        <!-- 4. Monthly Fansign Area (Simplified: Description-based, with Add/Delete & customizable image/text) -->
+        <!-- 4. Monthly Fansign Area -->
         <section id="monthly-fansign" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -373,7 +373,7 @@
             </div>
         </section>
 
-        <!-- 5. Signature Balloon Area (Landscape 16:9 images, Clean top-right button positions, Add/Delete support) -->
+        <!-- 5. Signature Balloon Area -->
         <section id="signature-star" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -480,10 +480,22 @@
                 </div>
                 
                 <div class="p-5 flex-grow overflow-y-auto space-y-6 text-xs font-bold">
+                    <!-- Art Cover Banner Upload Row (Upgraded from URL text box to File Uploader) -->
                     <div>
                         <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너</h4>
-                        <label class="block text-gray-400 mb-1.5">상단 커버용 URL 이미지</label>
-                        <input type="text" id="edit-profile-banner" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="이미지 주소를 복사해 넣어주세요">
+                        <div class="flex flex-col gap-2.5">
+                            <div class="w-full h-24 rounded-xl border border-dashed border-amber-200 dark:border-amber-950 overflow-hidden relative bg-amber-50/20 flex items-center justify-center">
+                                <img id="edit-banner-preview" src="" class="w-full h-full object-cover hidden" alt="배너 미리보기">
+                                <div id="edit-banner-placeholder" class="text-gray-400 text-xs font-bold flex flex-col items-center gap-1">
+                                    <i class="fa-solid fa-image text-xl"></i>
+                                    <span>배너 이미지를 선택해주세요.</span>
+                                </div>
+                            </div>
+                            <button type="button" onclick="triggerImageUpload('banner', 'profile_banner')" class="w-full bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2.5 px-4 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs">
+                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i>배너 이미지 선택 및 업로드
+                            </button>
+                            <input type="hidden" id="edit-profile-banner">
+                        </div>
                     </div>
                     <hr class="border-amber-50 dark:border-amber-950/30">
 
@@ -1262,10 +1274,31 @@
             const file = event.target.files[0];
             if (!file || !activeImageUploadTarget) return;
 
-            showToast("📸 고해상도 이미지 보정 및 리사이징 중...");
+            showToast("📸 이미지 보정 및 데이터 압축 중...");
 
-            compressImage(file, 400, 400, (compressedBase64) => {
-                if (activeImageUploadTarget.type === 'fansign') {
+            // Apply different bounding sizes based on image targets (Banners need larger landscape dimension bounds)
+            let maxWidth = 400;
+            let maxHeight = 400;
+            if (activeImageUploadTarget.type === 'banner') {
+                maxWidth = 1200;
+                maxHeight = 400;
+            }
+
+            compressImage(file, maxWidth, maxHeight, (compressedBase64) => {
+                if (activeImageUploadTarget.type === 'banner') {
+                    // Instantly update the input data value and preview thumbnail in the Edit Profile Modal
+                    const bannerInput = document.getElementById('edit-profile-banner');
+                    if (bannerInput) bannerInput.value = compressedBase64;
+
+                    const previewImg = document.getElementById('edit-banner-preview');
+                    const placeholderDiv = document.getElementById('edit-banner-placeholder');
+                    if (previewImg && placeholderDiv) {
+                        previewImg.src = compressedBase64;
+                        previewImg.classList.remove('hidden');
+                        placeholderDiv.classList.add('hidden');
+                    }
+                    showToast("🎉 임시 배너 이미지 적용 완료! (수정 모달 하단의 [저장 완료] 버튼을 꼭 눌러주세요) 🍊");
+                } else if (activeImageUploadTarget.type === 'fansign') {
                     const fansignItem = globalMonthlyFansigns.find(f => f.id === activeImageUploadTarget.id);
                     if (fansignItem) {
                         fansignItem.img = compressedBase64;
@@ -1495,7 +1528,23 @@
         function openProfileEditModal() {
             const modal = document.getElementById('profile-edit-modal');
             
-            document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || defaultProfileData.bannerUrl || '';
+            const currentBanner = globalProfileData.bannerUrl || defaultProfileData.bannerUrl || '';
+            document.getElementById('edit-profile-banner').value = currentBanner;
+            
+            // Sync live banner thumbnail inside modal preview window
+            const previewImg = document.getElementById('edit-banner-preview');
+            const placeholderDiv = document.getElementById('edit-banner-placeholder');
+            if (previewImg && placeholderDiv) {
+                if (currentBanner) {
+                    previewImg.src = currentBanner;
+                    previewImg.classList.remove('hidden');
+                    placeholderDiv.classList.add('hidden');
+                } else {
+                    previewImg.classList.add('hidden');
+                    placeholderDiv.classList.remove('hidden');
+                }
+            }
+
             document.getElementById('edit-profile-intro').value = globalProfileData.introText || ''; 
             document.getElementById('edit-profile-tags').value = (globalProfileData.tags || []).join(', ');
             
