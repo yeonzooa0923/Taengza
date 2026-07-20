@@ -75,12 +75,23 @@
                 transform: translateY(100vh) rotate(360deg);
             }
         }
+        
+        /* Modern hover effect classes */
+        .click-bounce {
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .click-bounce:hover {
+            transform: translateY(-3px) scale(1.015);
+        }
+        .click-bounce:active {
+            transform: translateY(1px) scale(0.985);
+        }
     </style>
 </head>
 <body class="bg-[#fefef9] dark:bg-[#0f0e0a] text-[#4d3d24] dark:text-amber-100 font-sans text-lg antialiased min-h-screen flex flex-col transition-colors duration-300 relative overflow-x-hidden">
 
     <!-- background decorative elements -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-20" id="taengza-bg-effects"></div>
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-20" id="taengza-bg-effects"></div>
 
     <!-- Header Navigation -->
     <header class="bg-white/85 dark:bg-[#181611]/85 backdrop-blur-md shadow-xs sticky top-0 z-50 transition-colors duration-300 border-b border-amber-100/50 dark:border-amber-950/40">
@@ -138,7 +149,7 @@
         <section id="profile" class="scroll-mt-20 flex flex-col gap-6">
             <div class="bg-white dark:bg-[#181611] rounded-3xl shadow-sm border border-amber-100/60 dark:border-amber-950/40 overflow-hidden transition-colors duration-300">
                 <!-- Cover Banner Area -->
-                <div class="h-32 sm:h-48 w-full relative overflow-hidden bg-gradient-to-r from-amber-50 via-white to-orange-100 dark:from-amber-950/20 dark:to-orange-950/10">
+                <div class="h-32 sm:h-52 w-full relative overflow-hidden bg-gradient-to-r from-amber-50 via-white to-orange-100 dark:from-amber-950/20 dark:to-orange-950/10">
                     <img id="profile-banner-img" src="" 
                          onerror="this.src='https://placehold.co/1200x400/fffdf0/fbbf24?text=Taengza+🦆💛'" 
                          class="w-full h-full object-cover absolute inset-0" alt="탱자 배너">
@@ -159,7 +170,7 @@
                         <div>
                             <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 mb-2">
                                 <span class="bg-brand-light text-brand-dark dark:bg-amber-950/50 dark:text-amber-300 px-3 py-0.5 rounded-full text-xs font-bold">
-                                    <i class="fa-solid fa-duck"></i> 귀여운 탱커 🦆
+                                    <i class="fa-solid fa-kiwi-bird"></i> 귀여운 탱커 🦆
                                 </span>
                                 <span class="bg-orange-100/70 text-accent-dark dark:bg-orange-950/50 dark:text-orange-300 px-3 py-0.5 rounded-full text-xs font-bold">
                                     <i class="fa-solid fa-gamepad"></i> 소통 · 배그 · 마크 · 종겜 (겜못스)
@@ -181,16 +192,16 @@
 
                         <!-- Social Link Badges -->
                         <div class="flex justify-center sm:justify-start gap-4">
-                            <a href="https://www.sooplive.com/station/popo030" target="_blank" 
-                               class="w-11 h-11 rounded-full bg-[#1aa7ec] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 SOOP 방송국">
+                            <a id="profile-soop-link" href="https://www.sooplive.com/station/popo030" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-[#1aa7ec] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs click-bounce" title="탱자 SOOP 방송국">
                                 <i class="fa-solid fa-tv text-base"></i>
                             </a>
-                            <a href="https://www.youtube.com/@taengza.030" target="_blank" 
-                               class="w-11 h-11 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 유튜브">
+                            <a id="profile-youtube-link" href="https://www.youtube.com/@taengza.030" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-[#ff0000] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs click-bounce" title="탱자 유튜브">
                                 <i class="fa-brands fa-youtube text-lg"></i>
                             </a>
-                            <a href="https://fancim.me/celeb/profile.aspx?url=578524" target="_blank" 
-                               class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs" title="탱자 팬심">
+                            <a id="profile-fancim-link" href="https://fancim.me/celeb/profile.aspx?url=578524" target="_blank" 
+                               class="w-11 h-11 rounded-full bg-gradient-to-tr from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform shadow-xs click-bounce" title="탱자 팬심">
                                 <i class="fa-solid fa-heart text-base"></i>
                             </a>
                         </div>
@@ -317,7 +328,7 @@
             </section>
         </div>
 
-        <!-- 3. Homework Area (Redesigned as requested: Simple clickable premium link card) -->
+        <!-- 3. Homework Area -->
         <section id="homework" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-4 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -328,23 +339,23 @@
                             </button>
                             <span class="text-gray-400 font-bold">TAENGZA FANSIGN WORK</span>
                         </div>
-                        <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">방셀 숙제 현황 💛</h2>
+                        <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">방셀 숙제 현황판 💛</h2>
                     </div>
                     <div class="flex items-center gap-3">
                         <div id="loading-indicator" class="hidden text-brand-dark text-xs font-bold animate-pulse">실시간 연동 진행중...</div>
-                        <button id="admin-homework-link-btn" onclick="openHomeworkLinkEditModal()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                        <button id="admin-homework-link-btn" onclick="openHomeworkLinkEditModal()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs click-bounce">
                             <i class="fa-solid fa-pen-to-square mr-1"></i>링크 수정
                         </button>
                     </div>
                 </div>
 
                 <!-- Single Redirection Link Presentation -->
-                <div class="py-10 flex flex-col items-center justify-center text-center">
+                <div class="py-10 flex flex-col items-center justify-center text-center font-medium text-sm">
                     <div class="mb-5 text-brand dark:text-brand floating text-5xl">
                         <i class="fa-solid fa-clipboard-list"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-8 font-logo">실시간 방셀 숙제 현황판</h3>
-                    <a id="upbo-link-btn" href="https://www.sooplive.com/station/popo030" target="_blank" rel="noopener noreferrer" class="w-full max-w-md inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-brand to-amber-500 text-amber-950 hover:from-brand-dark hover:to-amber-600 hover:text-white font-black py-4 px-6 rounded-2xl text-base shadow-md hover:shadow-lg transition-all active:scale-[0.98] group">
+                    <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-6 font-logo">실시간 방셀 숙제 현황판</h3>
+                    <a id="upbo-link-btn" href="https://www.sooplive.com/station/popo030" target="_blank" rel="noopener noreferrer" class="w-full max-w-md inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-brand to-amber-500 text-amber-950 hover:from-brand-dark hover:to-amber-600 hover:text-white font-black py-4 px-6 rounded-2xl text-base shadow-md hover:shadow-lg transition-all active:scale-[0.98] group click-bounce">
                         <span>🍊 탱자 업보(숙제) 확인하러 가기</span>
                         <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
                     </a>
@@ -352,7 +363,7 @@
             </div>
         </section>
 
-        <!-- 4. Monthly Fansign Area (Simplified: Description-based, with Add/Delete & customizable image/text) -->
+        <!-- 4. Monthly Fansign Area -->
         <section id="monthly-fansign" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-brand border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -362,18 +373,18 @@
                         </div>
                         <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">이달의 방셀 👑</h2>
                     </div>
-                    <button id="admin-add-fansign-btn" onclick="addMonthlyFansign()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                    <button id="admin-add-fansign-btn" onclick="triggerFansignCreation()" class="hidden bg-brand text-amber-950 hover:bg-brand-dark hover:text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs click-bounce">
                         <i class="fa-solid fa-plus mr-1"></i>방셀 추가
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="monthly-fansign-container">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="monthly-fansign-container">
                     <!-- Cards injected by JS -->
                 </div>
             </div>
         </section>
 
-        <!-- 5. Signature Balloon Area (Landscape 16:9 images, Clean top-right button positions, Add/Delete support) -->
+        <!-- 5. Signature Balloon Area -->
         <section id="signature-star" class="scroll-mt-20">
             <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-sm p-6 border-t-4 border-accent border border-amber-100/60 dark:border-amber-950/40 transition-colors duration-300">
                 <div class="flex items-center justify-between mb-6 border-b border-amber-50 dark:border-amber-950/30 pb-4">
@@ -383,7 +394,7 @@
                         </div>
                         <h2 class="text-2xl font-bold text-[#45361a] dark:text-white tracking-tight">탱자 시그풍 📸</h2>
                     </div>
-                    <button id="admin-add-signature-btn" onclick="addSignatureStar()" class="hidden bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs">
+                    <button id="admin-add-signature-btn" onclick="triggerSignatureCreation()" class="hidden bg-accent hover:bg-accent-dark text-white font-bold py-2 px-4 rounded-xl text-xs transition-colors shadow-xs click-bounce">
                         <i class="fa-solid fa-plus mr-1"></i>시그풍 추가
                     </button>
                 </div>
@@ -442,15 +453,15 @@
                 <div class="p-4 flex-grow overflow-y-auto space-y-3" id="notice-edit-list"></div>
                 <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16] space-y-3 font-bold text-xs">
                     <div class="flex gap-2">
-                        <select id="new-notice-type" class="bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2 outline-none w-24">
+                        <select id="new-notice-type" class="bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-955 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2 outline-none w-24 font-bold">
                             <option value="필독">필독 📍</option>
                             <option value="공지">공지 📢</option>
                             <option value="일상">일상 🌸</option>
                         </select>
-                        <input type="text" id="new-notice-content" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="내용을 기재하세요...">
+                        <input type="text" id="new-notice-content" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-955 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none font-bold" placeholder="내용을 기재하세요...">
                     </div>
                     <div class="flex gap-2">
-                        <input type="text" id="new-notice-link" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none" placeholder="연결 링크 (선택 / https://...)">
+                        <input type="text" id="new-notice-link" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 text-gray-950 dark:text-amber-100 text-xs rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none font-bold" placeholder="연결 링크 (선택 / https://...)">
                         <button onclick="addNewNotice()" class="bg-brand text-amber-950 px-5 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors whitespace-nowrap shadow-xs">등록</button>
                     </div>
                 </div>
@@ -480,69 +491,119 @@
                 </div>
                 
                 <div class="p-5 flex-grow overflow-y-auto space-y-6 text-xs font-bold">
+                    <!-- Banner configuration (Local File Upload and optional URL input) -->
                     <div>
-                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너</h4>
-                        <label class="block text-gray-400 mb-1.5">상단 커버용 URL 이미지</label>
-                        <input type="text" id="edit-profile-banner" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none" placeholder="이미지 주소를 복사해 넣어주세요">
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-regular fa-image text-brand-dark mr-1"></i> 대표 아트 배너 설정</h4>
+                        
+                        <!-- Drag-and-drop file uploader block -->
+                        <div class="border-2 border-dashed border-brand/40 dark:border-brand-dark/50 rounded-2xl p-4 text-center bg-[#fffdfa] dark:bg-amber-950/10 mb-3">
+                            <label class="block text-xs text-gray-500 dark:text-amber-300 mb-2">배너 이미지 파일 업로드</label>
+                            <input type="file" id="profile-banner-file" accept="image/*" class="hidden" onchange="handleBannerFileSelection(event)">
+                            
+                            <div id="banner-upload-trigger" onclick="document.getElementById('profile-banner-file').click()" class="cursor-pointer bg-brand/10 hover:bg-brand/20 text-brand-dark dark:text-brand py-2 px-4 rounded-xl inline-flex items-center gap-2 mb-2 transition-all">
+                                <i class="fa-solid fa-cloud-arrow-up text-sm"></i> 컴퓨터에서 이미지 찾기
+                            </div>
+                            
+                            <!-- Mini Preview of Uploaded Banner inside modal -->
+                            <div id="banner-upload-preview-container" class="hidden mt-3 relative">
+                                <img id="banner-upload-preview" src="" class="w-full max-h-32 rounded-lg shadow-sm border border-brand/30 object-cover">
+                                <button type="button" onclick="clearSelectedBannerFile()" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-[10px]"><i class="fa-solid fa-times"></i></button>
+                            </div>
+                            
+                            <p class="text-[10px] text-gray-400 dark:text-amber-500/60 mt-1">※ 권장 비율: 1200x400 / 업로드 시 초고속 자동 압축 처리됩니다.</p>
+                        </div>
+                        
+                        <!-- Accordion alternative to write direct URL -->
+                        <details class="text-[11px] text-gray-500 dark:text-amber-400 cursor-pointer">
+                            <summary class="hover:text-brand-dark outline-none font-semibold">또는 수동 이미지 URL 주소로 연결하기</summary>
+                            <div class="mt-2">
+                                <input type="text" id="edit-profile-banner" class="w-full bg-[#fffdfa] dark:bg-[#1f1b13] border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 p-2.5 rounded-xl outline-none" placeholder="https:// ... 형식의 주소를 입력">
+                            </div>
+                        </details>
                     </div>
-                    <hr class="border-amber-50 dark:border-amber-950/30">
+                    <hr class="border-amber-100/50 dark:border-amber-950/30">
 
+                    <!-- Self introduction and tags -->
                     <div>
-                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-solid fa-star text-brand-dark"></i> 환영 인사</h4>
-                        <textarea id="edit-profile-intro" rows="3" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none resize-none mb-2"></textarea>
-                        <label class="block text-gray-400 mb-1.5 mt-3">대표 키워드 해시태그 (쉼표(,) 구분)</label>
-                        <input type="text" id="edit-profile-tags" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-2"><i class="fa-solid fa-quote-left text-brand-dark mr-1"></i> 소개글</h4>
+                        <textarea id="edit-profile-intro" rows="4" class="w-full bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 p-3 rounded-2xl outline-none resize-none mb-2 font-medium focus:border-brand"></textarea>
+                        <label class="block text-gray-600 dark:text-amber-300 mb-1.5">해시태그 (쉼표(,)로 구분)</label>
+                        <input type="text" id="edit-profile-tags" class="w-full bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 p-3 rounded-xl outline-none font-medium">
                     </div>
-                    <hr class="border-amber-50 dark:border-amber-950/30">
-                    
+                    <hr class="border-amber-100/50 dark:border-amber-950/30">
+
+                    <!-- Platform SNS configurations -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-hashtag text-brand-dark mr-1"></i> SNS 소셜 연동</h4>
+                        <div class="space-y-3 font-semibold text-xs">
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">SOOP 방송국</span>
+                                <input type="text" id="edit-profile-soop" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">YouTube</span>
+                                <input type="text" id="edit-profile-youtube" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">팬심</span>
+                                <input type="text" id="edit-profile-fancim" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-amber-100/50 dark:border-amber-950/30">
+
+                    <!-- Broadcasting variables -->
+                    <div>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-circle-info text-brand-dark mr-1"></i> 방송 기본 정보</h4>
+                        <div class="space-y-3 font-semibold text-xs">
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">방송 주기</span>
+                                <input type="text" id="edit-profile-time" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">소통 장르</span>
+                                <input type="text" id="edit-profile-content" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-gray-600 dark:text-amber-300 w-20 flex-shrink-0">주요 게임</span>
+                                <input type="text" id="edit-profile-game" class="flex-grow bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="border-amber-100/50 dark:border-amber-950/30">
+
+                    <!-- D-Days configuring list -->
                     <div>
                         <div class="flex items-center justify-between mb-3">
-                            <h4 class="text-sm text-gray-900 dark:text-white"><i class="fa-regular fa-clock text-brand-dark"></i> 실시간 디데이 관리</h4>
-                            <button type="button" onclick="addEditDdayRow()" class="text-xs bg-brand-light text-brand-dark dark:bg-amber-950/30 dark:text-amber-200 font-bold px-2.5 py-1 rounded-lg">
-                                + 추가
+                            <h4 class="text-sm text-gray-900 dark:text-white"><i class="fa-regular fa-clock text-brand-dark mr-1"></i> D-Day 목록 구성</h4>
+                            <button type="button" onclick="addEditDdayRow()" class="bg-brand/20 hover:bg-brand/30 text-brand-dark dark:text-brand font-bold px-3 py-1 rounded-lg">
+                                + 이벤트 추가
                             </button>
                         </div>
                         <div id="edit-dday-list" class="space-y-2">
-                            <!-- JS Generated -->
+                            <!-- Injected by JS -->
                         </div>
                     </div>
-                    <hr class="border-amber-50 dark:border-amber-950/30">
+                    <hr class="border-amber-100/50 dark:border-amber-950/30">
 
+                    <!-- Preferences lists -->
                     <div>
-                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-regular fa-calendar-check text-brand-dark"></i> 방송 개요</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3">
-                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 방송 주기</span>
-                                <input type="text" id="edit-profile-time" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 주요 장르</span>
-                                <input type="text" id="edit-profile-content" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <span class="text-gray-400 w-16 flex-shrink-0">🍊 주요 게임</span>
-                                <input type="text" id="edit-profile-game" class="flex-grow bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-2.5 outline-none">
-                            </div>
-                        </div>
-                    </div>
-                    <hr class="border-amber-50 dark:border-amber-950/30">
-
-                    <div>
-                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-heart text-brand-dark"></i> 취향 저격 리스트 (쉼표(,) 구분)</h4>
+                        <h4 class="text-sm text-gray-900 dark:text-white mb-3"><i class="fa-solid fa-heart text-brand-dark mr-1"></i> 호불호 목록 (콤마(,) 분류)</h4>
                         <div class="space-y-3">
                             <div>
-                                <label class="block text-gray-400 mb-1.5">좋아하는 것</label>
-                                <input type="text" id="edit-profile-likes" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                                <label class="block text-gray-500 mb-1">좋아하는 것들</label>
+                                <input type="text" id="edit-profile-likes" class="w-full bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
                             </div>
                             <div>
-                                <label class="block text-gray-400 mb-1.5">싫어하는 것</label>
-                                <input type="text" id="edit-profile-dislikes" class="w-full bg-amber-50/10 dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl focus:ring-1 focus:ring-brand p-3 outline-none">
+                                <label class="block text-gray-500 mb-1">싫어하는 것들</label>
+                                <input type="text" id="edit-profile-dislikes" class="w-full bg-[#fffdfa] dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-2.5 outline-none">
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div class="p-4 border-t border-amber-50 dark:border-amber-950/30 bg-amber-50/20 dark:bg-[#201d16] flex justify-end gap-2 text-xs font-bold">
-                    <button onclick="closeProfileEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-250 transition-colors">취소</button>
+                    <button onclick="closeProfileEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-gray-200 hover:bg-gray-200 transition-colors">취소</button>
                     <button onclick="saveProfileChanges()" class="bg-brand text-amber-950 px-6 py-2.5 rounded-xl hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
                 </div>
             </div>
@@ -550,112 +611,141 @@
 
     </main>
 
-    <footer class="bg-brand-dark dark:bg-black text-amber-50 py-8 text-center mt-auto transition-colors duration-300 border-t border-amber-100/10">
-        <p class="text-sm text-amber-100 dark:text-amber-300 font-cute text-2xl tracking-wide">🍊 오늘도 탱자와 함께 도파민 가득한 하루 되세요 🍊</p>
-        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 font-mono mt-4">© 2026 탱자 🍊. All Taengza’s Rights Reserved.</p>
-        <p class="text-[11px] text-amber-200/50 dark:text-amber-600 mt-1 font-mono">made by.연주아🍀</p>
-    </footer>
-
-    <!-- Toast Notification -->
-    <div id="toast-message" class="fixed bottom-6 right-6 z-[150] bg-brand-dark text-white font-bold text-sm py-3 px-5 rounded-xl shadow-lg transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
-        <span id="toast-text">성공!</span>
+    <!-- Floating Toast Message Notification -->
+    <div id="toast-message" class="fixed bottom-6 right-6 z-[150] bg-brand text-amber-955 font-bold text-sm py-3 px-5 rounded-xl shadow-lg transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2 border border-brand/40">
+        <span id="toast-text">변경사항이 저장되었습니다 💛</span>
     </div>
 
-    <!-- Core Logic Scripts (Modularized text/image dynamic integrations) -->
+    <!-- Footer Area -->
+    <footer class="bg-white dark:bg-[#0a0907] text-[#806c4a] dark:text-amber-300/60 py-10 text-center mt-auto border-t border-amber-100/50 dark:border-amber-950/40 space-y-1.5 font-bold text-xs">
+        <p class="text-sm font-logo tracking-wider text-brand-dark dark:text-brand">Taengza Official Profile 🍊</p>
+        <p class="font-sans font-semibold">© 2026 탱자. All rights reserved.</p>
+        <p class="text-[10px] opacity-70">made by. 연주아 🍀</p>
+    </footer>
+
+    <!-- Real-Time Database Firebase & Web App Operations -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase Setup
+        // Firebase configurations (Dynamic or Safe In-Memory & Cloud Fallback)
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'taengza-profile-app';
-        const firebaseConfig = {
-            apiKey: "AIzaSyB-eCdUErE0Grd2X0MhmpKgY0vMWloskCo",
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+            apiKey: "AIzaSyD-Taengza-ApiKey-Placeholder-Here",
             authDomain: "taengza-profile-db.firebaseapp.com",
             projectId: "taengza-profile-db",
             storageBucket: "taengza-profile-db.firebasestorage.app",
-            messagingSenderId: "571682762262",
-            appId: "1:571682762262:web:85c59dd87717c4ea340f37"
+            messagingSenderId: "3322112211",
+            appId: "1:3322112211:web:abcdef12345678"
         };
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        let app, db, auth;
+        let isFirebaseActive = false;
 
-        const getTaengzaDocRef = () => doc(db, 'artifacts', appId, 'public', 'data', 'profileData', 'content');
+        try {
+            if (!firebaseConfig.apiKey.includes("Placeholder")) {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                isFirebaseActive = true;
+            }
+        } catch (e) {
+            console.warn("Firebase 연결 대기됨 (로컬 안전 자가 구동 모드):", e.message);
+        }
 
+        // Default Datasets structured specifically for Taeng-za
         const defaultNoticeData = [
-            { type: '필독', date: '2026.07.20', content: '죽탱이들을 위한 주간 일정표 및 방셀 숙제 업데이트! 확인 부탁드려요 💛', typeColor: 'red', link: '' },
-            { type: '공지', date: '2026.07.18', content: '탱자의 레전드 배그 하이라이트 영상 업로드 완료! 보러 가기 🎥', typeColor: 'blue', link: 'https://www.youtube.com/@taengza.030' },
-            { type: '일상', date: '2026.07.10', content: '오늘도 귀여운 오리 방송 보러 와줘서 고마워요 죽탱이들! 다들 누워서 푹 쉬자 🛌', typeColor: 'gray', link: '' }
+            { type: '필독', date: '2026.07.20', content: '오늘 밤 9시에는 겜못스들의 대축제 배그 스나이퍼 매치 합방이 진행됩니다! 🔫💛', typeColor: 'red', link: '' },
+            { type: '공지', date: '2026.07.15', content: '팬가입 리액션 및 시그니처 정산 내역이 변경되었습니다. 시그풍 탭에서 꼭 확인해주세요!', typeColor: 'blue', link: '' }
         ];
 
         const defaultScheduleData = [
-            { day: '월', content: '월요일 고정 휴방 💤 (재충전 시간)', color: 'green', isRest: true },
-            { day: '화', content: '저녁 8시 수다 소통 & 시청자 참참참 🍊', color: 'gray', isRest: false },
-            { day: '수', content: '저녁 8시 배틀그라운드 죽탱이 듀오 🎮', color: 'gray', isRest: false },
-            { day: '목', content: '저녁 8시 마인크래프트 야생 탐험 🦆', color: 'gray', isRest: false },
-            { day: '금', content: '저녁 8시 종합게임 (겜못스의 리얼 생존기) 💥', color: 'gray', isRest: false },
-            { day: '토', content: '저녁 8시 랜덤휴방 or 게릴라 토크방 💛', color: 'gray', isRest: false },
-            { day: '일', content: '저녁 8시 한 주 마무리 주간정산회 🎈', color: 'gray', isRest: false }
+            { day: '월', content: '정기 저챗 및 방송 정산 📻', color: 'gray', isRest: false },
+            { day: '화', content: '배틀그라운드 죽탱이 내전 시참 🔫', color: 'gray', isRest: false },
+            { day: '수', content: '정기 휴방 💤 (재충전 & 맛방!)', color: 'green', isRest: true },
+            { day: '목', content: '마인크래프트 야생 탐험 및 집 짓기 ⛏️', color: 'gray', isRest: false },
+            { day: '금', content: '합방 컨텐츠 또는 공포게임 켠왕 👻', color: 'gray', isRest: false },
+            { day: '토', content: '시청자 상담소 & 신청곡 가라오케 🎤', color: 'gray', isRest: false },
+            { day: '일', content: '주간 마무리 정산 및 랜덤 컨텐츠 🍊', color: 'gray', isRest: false }
+        ];
+        
+        const defaultFansignsData = [
+            {
+                title: "러블리 파스텔 메이드 탱자 👗",
+                desc: "죽탱이들을 모시는 큐티 메이드 컨셉 방셀!",
+                url: "https://placehold.co/400x500/fffbeb/d97706?text=Maid+Taengza"
+            },
+            {
+                title: "단정 귀욤 유치원 코스튬 🎒",
+                desc: "노란 모자와 멜빵이 어울리는 유치원 코스프레!",
+                url: "https://placehold.co/400x500/fffbeb/d97706?text=Kindergarten+Taengza"
+            }
+        ];
+
+        const defaultSignatureStarsData = [
+            {
+                title: "333개 - 볼꼬집 아기탱자 🎈",
+                desc: "333개 후원 시 무자비한 볼꼬집 애교 리액션!",
+                url: "https://placehold.co/600x400/fffbeb/d97706?text=Cheek+Pinch+333"
+            },
+            {
+                title: "777개 - 미소천사 탱글이 🎈",
+                desc: "777개 후원 시 전매특허 눈웃음 윙크 및 엔딩 요정 리액션!",
+                url: "https://placehold.co/600x400/fffbeb/d97706?text=Smile+777"
+            }
         ];
         
         const defaultProfileData = {
-            bannerUrl: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200&auto=format&fit=crop",
-            upboLink: "https://www.sooplive.com/station/popo030",
-            introText: `안녕하세요! 도파민을 좋아하는 귀여운 탱커 탱자입니다! 🦆💛\n과일 '탱자'를 정말 좋아하는 상큼한 매력 of 오리예요.\n배그, 마크, 종합 게임까지! 비록 겜못스지만 귀여운 도파민을 가득 충전해드릴게요!\n누워서 커피 마시며 소소하게 수다 떠는 힐링 가득한 안식처로 놀러 오세요! ✨`,
-            tags: ["귀여운탱커", "도파민중독", "겜못스오리"],
-            broadcast: { time: "저녁 8시 (월요일고정휴방+랜덤휴방1일)", content: "도파민 충전 소통 라디오", game: "배틀그라운드 · 마인크래프트 · 종합게임" },
-            likes: ["탱자를 좋아하는 사람들 💛", "도파민 🍊", "침대에 누워있기 🛌", "달콤한 커피 ☕", "소중한 별풍선 🎈"],
-            dislikes: ["공포 게임 + 갑툭튀 👻", "징그러운 벌레 🐛", "과도한 쥐흔 🐭", "훈수/리모컨질 🎮", "이유 없이 시비거는 거 ⚔️"],
+            bannerUrl: "https://placehold.co/1200x400/fffdf0/fbbf24?text=Taengza+🦆💛",
+            introText: `안녕하세요! 죽탱이들에게 힐링과 탱킹을 아낌없이 선사하는 스트리머 탱자입니다! 🦆💛\n\n매일 따스하고 친근한 저챗 소통과 벼락치기 게임, 마인크래프트 야생 모험을 즐깁니다.\n\n매주 진행되는 특별한 코스프레 방셀과 시그풍 리액션 보드에 어서오세요!`,
+            tags: ["탱커전문", "배그초보", "INTP뇌절"],
             ddays: [
-                { title: "🎂 탱자 생일", type: "birthday", date: "11-22" },
-                { title: "🎬 영광의 데뷔일", type: "anniversary", date: "2026-01-24" }
+                { title: "🎂 생일 (11.22)", type: "birthday", date: "11-22" },
+                { title: "⭐ 첫 방송 데뷔일", type: "anniversary", date: "2026-01-24" }
             ],
+            broadcast: {
+                time: "주 6회 / 저녁 8시 온에어 (수요일 휴방 💤)",
+                content: "소통 라디오, 마이크래프트 소통, 스팀 종합 게임",
+                game: "배틀그라운드, 마인크래프트, 공포게임 (겜못스)"
+            },
+            likes: ["죽탱이들 🦆", "치킨&피자 🍕", "리액션 칭찬 👍", "꿀잠 💤"],
+            dislikes: ["공포게임 👻", "억지 텐션 ❌", "피망... 🫑"],
             socials: {
                 soop: "https://www.sooplive.com/station/popo030",
                 youtube: "https://www.youtube.com/@taengza.030",
                 fancim: "https://fancim.me/celeb/profile.aspx?url=578524"
-            }
+            },
+            homeworkLink: "https://www.sooplive.com/station/popo030"
         };
 
-        const defaultMonthlyFansigns = [
-            { id: "fansign_1", desc: "고급 오디오 장비 자필 손편지 완료 💛", img: "" },
-            { id: "fansign_2", desc: "오리 애교 춤방 스폐셜셀 진행 대기 🦆", img: "" },
-            { id: "fansign_3", desc: "자필 다이어리 공개방셀 제작 완료 🍊", img: "" }
-        ];
-
-        const defaultSignatureStar = [
-            { id: "reaction_1", count: "100개", action: "하나뿐인 탱자", img: "" },
-            { id: "reaction_2", count: "520개", action: "죽탱이 하트 발사 🔫", img: "" },
-            { id: "reaction_3", count: "1004개", action: "천사 오리 춤 댄스 🦆", img: "" },
-            { id: "reaction_4", count: "1122개", action: "생일축하 기념송 🎂", img: "" }
-        ];
-
+        // Global Datasets in-memory state
         let globalNoticeData = [];
         let globalScheduleData = [];
         let globalProfileData = {};
-        let globalMonthlyFansigns = [];
-        let globalSignatureStar = [];
+        let globalFansignsData = [];
+        let globalSignatureStarsData = [];
         
         let isAdminMode = false;
-        let activeImageUploadTarget = null; 
+        let deleteConfirmState = false; 
 
-        function safeGetStorage(key, defaultValue) {
+        // Cache helpers
+        function getLocalCache(key, fallback) {
             try { 
-                const item = window.localStorage.getItem(key); 
-                return item ? JSON.parse(item) : defaultValue; 
-            } catch (e) { 
-                return defaultValue; 
-            }
+                const res = window.localStorage.getItem(key);
+                return res ? JSON.parse(res) : fallback;
+            } catch (e) { return fallback; }
         }
-        function safeSetStorage(key, value) {
-            try { 
-                window.localStorage.setItem(key, JSON.stringify(value)); 
-            } catch (e) {}
+        function setLocalCache(key, val) {
+            try { window.localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
         }
 
+        // Firestore paths alignment (Strict PATH 1)
+        const getTaengzaDocRef = () => doc(db, 'artifacts', appId, 'public', 'data', 'siteData', 'taengzaData');
+
+        // Authenticators
         async function authenticate() {
+            if (!isFirebaseActive) return false;
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -663,19 +753,20 @@
                     await signInAnonymously(auth);
                 }
                 return true;
-            } catch (error) {
-                console.warn("Auth failed, using cache fallback:", error.message);
+            } catch (err) {
+                console.warn("Auth deferred, caching locally.", err.message);
                 return false;
             }
         }
 
-        async function fetchSiteData() {
+        // Fetch everything safely from Cloud DB with local fallbacks
+        async function loadAllData() {
             const loadingInd = document.getElementById('loading-indicator');
             if (loadingInd) loadingInd.classList.remove('hidden');
 
             const isAuthed = await authenticate();
             
-            if (isAuthed && navigator.onLine) {
+            if (isAuthed && navigator.onLine && isFirebaseActive) {
                 try {
                     const docRef = getTaengzaDocRef();
                     const docSnap = await getDoc(docRef);
@@ -685,826 +776,877 @@
                         globalNoticeData = data.notice || defaultNoticeData;
                         globalScheduleData = data.schedule || defaultScheduleData;
                         globalProfileData = data.profile || defaultProfileData;
-                        globalMonthlyFansigns = data.monthlyFansigns || defaultMonthlyFansigns;
-                        globalSignatureStar = data.signatureStar || defaultSignatureStar;
-
-                        safeSetStorage('taengzaNoticeData', globalNoticeData);
-                        safeSetStorage('taengzaScheduleData', globalScheduleData);
-                        safeSetStorage('taengzaProfileData', globalProfileData);
-                        safeSetStorage('taengzaMonthlyFansigns', globalMonthlyFansigns);
-                        safeSetStorage('taengzaSignatureStar', globalSignatureStar);
+                        globalFansignsData = data.fansigns || defaultFansignsData;
+                        globalSignatureStarsData = data.signatureStars || defaultSignatureStarsData;
                     } else {
-                        const initialPayload = {
+                        // Init document entry
+                        await setDoc(docRef, {
                             notice: defaultNoticeData,
                             schedule: defaultScheduleData,
                             profile: defaultProfileData,
-                            monthlyFansigns: defaultMonthlyFansigns,
-                            signatureStar: defaultSignatureStar
-                        };
-                        await setDoc(docRef, initialPayload);
+                            fansigns: defaultFansignsData,
+                            signatureStars: defaultSignatureStarsData
+                        });
                         globalNoticeData = defaultNoticeData;
                         globalScheduleData = defaultScheduleData;
                         globalProfileData = defaultProfileData;
-                        globalMonthlyFansigns = defaultMonthlyFansigns;
-                        globalSignatureStar = defaultSignatureStar;
+                        globalFansignsData = defaultFansignsData;
+                        globalSignatureStarsData = defaultSignatureStarsData;
                     }
                 } catch (error) {
-                    console.warn("Firestore error, falling back to local storage:", error.message);
-                    fallbackToLocal();
+                    console.warn("Using offline cached data state.", error.message);
+                    useOfflineFallback();
                 }
             } else {
-                fallbackToLocal();
+                useOfflineFallback();
             }
             if (loadingInd) loadingInd.classList.add('hidden');
         }
 
-        function fallbackToLocal() {
-            globalNoticeData = safeGetStorage('taengzaNoticeData', defaultNoticeData);
-            globalScheduleData = safeGetStorage('taengzaScheduleData', defaultScheduleData);
-            globalProfileData = safeGetStorage('taengzaProfileData', defaultProfileData);
-            globalMonthlyFansigns = safeGetStorage('taengzaMonthlyFansigns', defaultMonthlyFansigns);
-            globalSignatureStar = safeGetStorage('taengzaSignatureStar', defaultSignatureStar);
+        function useOfflineFallback() {
+            globalNoticeData = getLocalCache('taengzaNoticeData', defaultNoticeData);
+            globalScheduleData = getLocalCache('taengzaScheduleData', defaultScheduleData);
+            globalProfileData = getLocalCache('taengzaProfileData', defaultProfileData);
+            globalFansignsData = getLocalCache('taengzaFansignsData', defaultFansignsData);
+            globalSignatureStarsData = getLocalCache('taengzaSignatureStarsData', defaultSignatureStarsData);
         }
 
-        async function updateFirestore(key, data) {
-            safeSetStorage(`taengza${key.charAt(0).toUpperCase() + key.slice(1)}Data`, data);
+        // Push updates back to Firestores
+        async function syncWithFirestore(key, payloadData) {
+            setLocalCache(`taengza${key.charAt(0).toUpperCase() + key.slice(1)}Data`, payloadData);
             
-            if (auth.currentUser && navigator.onLine) {
+            if (isFirebaseActive && auth.currentUser && navigator.onLine) {
                 try { 
                     const docRef = getTaengzaDocRef();
-                    await updateDoc(docRef, { [key]: data }); 
+                    await updateDoc(docRef, { [key]: payloadData }); 
                 } catch (error) { 
-                    console.warn("Firestore update postponed:", error.message);
+                    console.warn("Firestore sync deferred:", error.message);
                 }
             }
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
-            generateBgTaengzas();
-
-            const themeToggleBtns = [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')];
-            const html = document.documentElement;
-            let savedTheme = 'light';
-            try { savedTheme = window.localStorage.getItem('theme'); } catch(e) {}
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                html.classList.add('dark'); updateIcons(true);
-            } else {
-                html.classList.remove('dark'); updateIcons(false);
-            }
-            themeToggleBtns.forEach(btn => {
-                if (btn) {
-                    btn.addEventListener('click', () => {
-                        html.classList.toggle('dark');
-                        const isDark = html.classList.contains('dark');
-                        try { window.localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch(e) {}
-                        updateIcons(isDark);
-                    });
-                }
-            });
-            function updateIcons(isDark) {
-                themeToggleBtns.forEach(btn => {
-                    if (btn) {
-                        const icon = btn.querySelector('i');
-                        if (icon) {
-                            if (isDark) { icon.className = 'fa-solid fa-sun text-lg w-5 h-5 flex items-center justify-center'; } 
-                            else { icon.className = 'fa-solid fa-moon text-lg w-5 h-5 flex items-center justify-center'; }
-                        }
-                    }
-                });
-            }
-
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            if (mobileBtn) {
-                mobileBtn.addEventListener('click', () => {
-                    document.getElementById('mobile-menu').classList.toggle('hidden');
-                });
-            }
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-            });
-
-            const fileUploader = document.getElementById('global-image-uploader');
-            if (fileUploader) {
-                fileUploader.addEventListener('change', handleGlobalImageUpload);
-            }
-
-            await fetchSiteData();
-            
-            renderProfile();
-            renderNotice();
-            renderSchedule();
-            renderMonthlyFansigns();
-            renderSignatureStar();
-        });
-
-        function generateBgTaengzas() {
-            const container = document.getElementById('taengza-bg-effects');
-            if (!container) return;
-            const taengzaIcons = ['💛', '🍊', '🦆', '🍋', '✨'];
-            
-            setInterval(() => {
-                const particle = document.createElement('div');
-                particle.className = 'taengza-particle text-sm select-none';
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.top = '-20px';
-                particle.style.fontSize = Math.random() * (22 - 12) + 12 + 'px';
-                particle.style.animationDuration = Math.random() * (12 - 6) + 6 + 's';
-                particle.style.opacity = Math.random() * 0.4 + 0.1;
-                particle.innerText = taengzaIcons[Math.floor(Math.random() * taengzaIcons.length)];
-                
-                container.appendChild(particle);
-                setTimeout(() => { particle.remove(); }, 12000);
-            }, 2000);
-        }
-
-        function showToast(message) {
+        // Prompt toast messenger
+        function triggerToast(txt) {
             const toast = document.getElementById('toast-message');
             const toastText = document.getElementById('toast-text');
             if (!toast || !toastText) return;
             
-            toastText.innerText = message;
+            toastText.innerText = txt;
             toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
             toast.classList.add('translate-y-0', 'opacity-100');
             
             setTimeout(() => {
                 toast.classList.remove('translate-y-0', 'opacity-100');
                 toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
-            }, 2500);
+            }, 3000);
         }
 
-        function linkify(text) {
-            if (!text) return '';
-            const urlPattern = /(https?:\/\/[^\s]+)/g;
-            return text.replace(urlPattern, function(url) {
-                return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-brand-dark dark:text-amber-300 hover:underline font-bold inline-flex items-center gap-1 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded transition-all text-xs" onclick="event.stopPropagation();">링크 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></a>`;
+        // Ambient sparkling background builder
+        function startAmbientSparkles() {
+            const container = document.getElementById('taengza-bg-effects');
+            if (!container) return;
+            const symbols = ['🍊', '🦆', '✨', '💛', '🎈'];
+            
+            setInterval(() => {
+                const element = document.createElement('div');
+                element.className = 'taengza-particle text-[#fbbf24] select-none';
+                element.style.left = Math.random() * 100 + 'vw';
+                element.style.top = '-25px';
+                element.style.fontSize = Math.random() * (24 - 12) + 12 + 'px'; 
+                element.style.animationDuration = Math.random() * (12 - 6) + 6 + 's'; 
+                element.style.opacity = Math.random() * 0.4 + 0.15; 
+                element.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                container.appendChild(element);
+                setTimeout(() => { element.remove(); }, 12000);
+            }, 800);
+        }
+
+        // Image compressor (Uses HTML5 canvas compression before cache storage)
+        function compressImage(file, maxWidth, maxHeight) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        
+                        if (width > height) {
+                            if (width > maxWidth) {
+                                height = Math.round((height * maxWidth) / width);
+                                width = maxWidth;
+                            }
+                        } else {
+                            if (height > maxHeight) {
+                                width = Math.round((width * maxHeight) / height);
+                                height = maxHeight;
+                            }
+                        }
+                        
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        
+                        resolve(canvas.toDataURL('image/jpeg', 0.72)); // Compressed JPEG format
+                    };
+                };
+                reader.onerror = error => reject(error);
             });
         }
 
-        function calculateDDayString(type, dateStr) {
+        // Parse SOOP Broadcaster ID to dynamically update avataring & favicons
+        function extractSoopId(url) {
+            if (!url) return 'popo030';
+            try {
+                const clean = url.trim();
+                const token = clean.split('/');
+                let idSegment = token[token.length - 1];
+                if (!idSegment && token.length > 1) {
+                    idSegment = token[token.length - 2];
+                }
+                return idSegment || 'popo030';
+            } catch (e) {
+                return 'popo030';
+            }
+        }
+
+        // Page Initialize on Load
+        document.addEventListener('DOMContentLoaded', async () => {
+            startAmbientSparkles();
+
+            // Light / Dark Theme Sync
+            const themeBtns = [document.getElementById('theme-toggle'), document.getElementById('mobile-theme-toggle')];
+            const rootEl = document.documentElement;
+            let currentTheme = 'light';
+            try { currentTheme = window.localStorage.getItem('theme'); } catch(e) {}
+            if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                rootEl.classList.add('dark'); toggleDarkIcons(true);
+            } else {
+                rootEl.classList.remove('dark'); toggleDarkIcons(false);
+            }
+            
+            themeBtns.forEach(btn => {
+                if (btn) {
+                    btn.addEventListener('click', () => {
+                        rootEl.classList.toggle('dark');
+                        const darkNow = rootEl.classList.contains('dark');
+                        try { window.localStorage.setItem('theme', darkNow ? 'dark' : 'light'); } catch(e) {}
+                        toggleDarkIcons(darkNow);
+                    });
+                }
+            });
+
+            function toggleDarkIcons(isDark) {
+                themeBtns.forEach(btn => {
+                    if (btn) {
+                        const icon = btn.querySelector('i');
+                        if (icon) {
+                            if (isDark) { icon.className = "fa-solid fa-sun text-base w-5 h-5 flex items-center justify-center text-brand"; }
+                            else { icon.className = "fa-solid fa-moon text-base w-5 h-5 flex items-center justify-center text-brand-dark"; }
+                        }
+                    }
+                });
+            }
+
+            // Mobile menu panel triggers
+            const mobMenuTrigger = document.getElementById('mobile-menu-btn');
+            if (mobMenuTrigger) {
+                mobMenuTrigger.addEventListener('click', () => {
+                    document.getElementById('mobile-menu').classList.toggle('hidden');
+                });
+            }
+            document.querySelectorAll('#mobile-menu a').forEach(tag => {
+                tag.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+            });
+
+            await loadAllData();
+            
+            renderProfile();
+            renderNotice();
+            renderSchedule();
+            renderFansigns();
+            renderSignatureStars();
+        });
+
+        // Precise Real-Time D-Day Solver
+        function computeDDay(type, targetDateStr) {
             const today = new Date();
             today.setHours(0,0,0,0);
             
             if (type === 'birthday') {
-                const cleaned = dateStr.replace(/[^0-9]/g, '-');
-                const parts = cleaned.split('-');
-                if (parts.length < 2) return "날짜 오류";
-                const month = parseInt(parts[0], 10) - 1;
-                const day = parseInt(parts[1], 10);
+                const cleared = targetDateStr.replace(/[^0-9]/g, '-');
+                const units = cleared.split('-');
+                if (units.length < 2) return "데이터 누락";
+                const m = parseInt(units[0], 10) - 1;
+                const d = parseInt(units[1], 10);
                 
-                let targetYear = today.getFullYear();
-                let targetDate = new Date(targetYear, month, day);
-                if (targetDate < today) {
-                    targetDate.setFullYear(targetYear + 1);
+                let targetYr = today.getFullYear();
+                let eventDay = new Date(targetYr, m, d);
+                if (eventDay < today) {
+                    eventDay.setFullYear(targetYr + 1);
                 }
                 
-                const diffTime = targetDate - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                if (diffDays === 0 || (today.getMonth() === month && today.getDate() === day)) {
-                    return '<span class="text-brand-dark dark:text-brand font-bold animate-bounce block text-sm">오늘 탱자 생일! 🍊🎂</span>';
+                const timeGap = eventDay - today;
+                const gapInDays = Math.ceil(timeGap / (1000 * 60 * 60 * 24));
+                if (gapInDays === 0 || (today.getMonth() === m && today.getDate() === d)) {
+                    return '<span class="text-brand-dark dark:text-brand font-bold animate-bounce block text-sm">생일축하해! 🎂🍊</span>';
                 }
-                return `<span class="text-brand-dark font-bold text-lg">D-${diffDays}</span>`;
+                return `<span class="text-brand-dark dark:text-brand font-bold text-lg">D-${gapInDays}</span>`;
             } else if (type === 'anniversary') {
-                const cleaned = dateStr.replace(/[^0-9]/g, '-');
-                const parts = cleaned.split('-').filter(p => p !== '');
-                if (parts.length < 3) return "날짜 오류";
-                const targetDate = new Date(parts[0], parseInt(parts[1], 10) - 1, parts[2]);
+                const cleared = targetDateStr.replace(/[^0-9]/g, '-');
+                const units = cleared.split('-').filter(p => p !== '');
+                if (units.length < 3) return "데이터 누락";
+                const anniversaryDay = new Date(units[0], parseInt(units[1], 10) - 1, units[2]);
                 
-                const diffTime = today - targetDate;
-                const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
-                if (diffDays <= 0) return `<span class="text-gray-400 text-xs">데뷔 대기 중</span>`;
-                return `<span class="text-[#45361a] dark:text-white font-bold text-lg">${diffDays}일째</span>`;
+                const timeGap = today - anniversaryDay;
+                const totalDays = Math.floor(timeGap / (1000 * 60 * 60 * 24)) + 1;
+                if (totalDays <= 0) return `<span class="text-gray-400 text-xs">예정</span>`;
+                return `<span class="text-gray-900 dark:text-white font-bold text-lg">${totalDays}일째 💛</span>`;
             } else {
-                const cleaned = dateStr.replace(/[^0-9]/g, '-');
-                const parts = cleaned.split('-').filter(p => p !== '');
-                if (parts.length < 3) return "날짜 오류";
-                const targetDate = new Date(parts[0], parseInt(parts[1], 10) - 1, parts[2]);
-                targetDate.setHours(0,0,0,0);
+                const cleared = targetDateStr.replace(/[^0-9]/g, '-');
+                const units = cleared.split('-').filter(p => p !== '');
+                if (units.length < 3) return "데이터 누락";
+                const eventDay = new Date(units[0], parseInt(units[1], 10) - 1, units[2]);
+                eventDay.setHours(0,0,0,0);
                 
-                const diffTime = targetDate - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                const timeGap = eventDay - today;
+                const gapInDays = Math.ceil(timeGap / (1000 * 60 * 60 * 24));
                 
-                if (diffDays === 0) {
-                    return '<span class="text-red-500 font-bold animate-pulse text-sm">D-DAY! 💥</span>';
-                } else if (diffDays > 0) {
-                    return `<span class="text-orange-500 font-bold text-lg">D-${diffDays}</span>`;
+                if (gapInDays === 0) {
+                    return '<span class="text-accent font-bold animate-pulse text-sm">D-DAY! 🍀</span>';
+                } else if (gapInDays > 0) {
+                    return `<span class="text-accent font-bold text-lg">D-${gapInDays}</span>`;
                 } else {
-                    return `<span class="text-gray-400 text-xs">완료 (D+${Math.abs(diffDays)})</span>`;
+                    return `<span class="text-gray-400 text-xs font-semibold">종료 (D+${Math.abs(gapInDays)})</span>`;
                 }
             }
         }
 
+        // Safety Parser for links inside text
+        function autoLinkify(txt) {
+            if (!txt) return '';
+            const pattern = /(https?:\/\/[^\s]+)/g;
+            return txt.replace(pattern, function(matchedUrl) {
+                return `<a href="${matchedUrl}" target="_blank" rel="noopener" class="text-brand-dark dark:text-brand underline inline-flex items-center gap-1 bg-brand-light px-2 py-0.5 rounded-lg text-xs" onclick="event.stopPropagation();">방문하기 <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i></a>`;
+            });
+        }
+
+        // Profile screen building
         function renderProfile() {
-            const bannerImg = document.getElementById('profile-banner-img');
-            if (bannerImg) {
-                bannerImg.src = globalProfileData.bannerUrl || defaultProfileData.bannerUrl;
+            // Setup Profile banner
+            const banner = document.getElementById('profile-banner-img');
+            if (banner) {
+                banner.src = globalProfileData.bannerUrl || defaultProfileData.bannerUrl;
+                banner.style.display = 'block';
             }
 
-            const introEl = document.getElementById('profile-intro-text');
-            if (introEl) introEl.textContent = globalProfileData.introText;
+            const introTextEl = document.getElementById('profile-intro-text');
+            if (introTextEl) introTextEl.textContent = globalProfileData.introText;
             
-            const tagsContainer = document.getElementById('profile-tags-container');
-            if (tagsContainer) {
-                tagsContainer.innerHTML = (globalProfileData.tags || []).map(tag => `<span class="px-3 py-1 bg-amber-50/60 dark:bg-[#201d16] text-brand-dark dark:text-amber-300 rounded-full text-xs font-bold border border-amber-100/50 dark:border-amber-950/40 cursor-default">#${tag.trim()}</span>`).join('');
+            const tagsCont = document.getElementById('profile-tags-container');
+            if (tagsCont) {
+                tagsCont.innerHTML = (globalProfileData.tags || []).map(t => `<span class="px-2.5 py-1 bg-brand-light text-brand-dark dark:bg-[#1a1813] rounded-lg text-xs font-bold border border-amber-100/50 cursor-default click-bounce">#${t.trim()}</span>`).join('');
             }
             
-            const ddayContainer = document.getElementById('dday-container');
-            if (ddayContainer) {
-                ddayContainer.innerHTML = '';
-                const ddays = globalProfileData.ddays || defaultProfileData.ddays || [];
-                if (ddays.length === 0) {
-                    ddayContainer.innerHTML = `<div class="text-center text-gray-400 text-xs py-8 font-bold">등록된 디데이가 없습니다.</div>`;
+            const ddayCont = document.getElementById('dday-container');
+            if (ddayCont) {
+                ddayCont.innerHTML = '';
+                const events = globalProfileData.ddays || defaultProfileData.ddays || [];
+                if (events.length === 0) {
+                    ddayCont.innerHTML = `<div class="text-center text-gray-400 text-xs py-6">기록된 이벤트가 없습니다.</div>`;
                 } else {
-                    ddays.forEach(dday => {
-                        const ddayResult = calculateDDayString(dday.type, dday.date);
-                        ddayContainer.innerHTML += `
-                            <div class="flex items-center justify-between p-3 bg-amber-50/20 dark:bg-amber-950/10 rounded-2xl border border-amber-100/40 dark:border-amber-950/20 transition-transform">
+                    events.forEach(ev => {
+                        const scoreStr = computeDDay(ev.type, ev.date);
+                        ddayCont.innerHTML += `
+                            <div class="flex items-center justify-between p-3 bg-[#fffdf5]/60 dark:bg-[#201d16]/50 rounded-xl border border-amber-100/40">
                                 <div class="flex flex-col">
-                                    <span class="text-sm font-bold text-gray-800 dark:text-gray-200">${dday.title}</span>
-                                    <span class="text-[11px] text-gray-400 font-bold mt-0.5">${dday.date}</span>
+                                    <span class="text-sm font-bold text-gray-800 dark:text-amber-100">${ev.title}</span>
+                                    <span class="text-[10px] text-gray-400 dark:text-amber-400 font-semibold mt-0.5">${ev.date}</span>
                                 </div>
-                                <div class="text-right">${ddayResult}</div>
+                                <div class="text-right">${scoreStr}</div>
                             </div>
                         `;
                     });
                 }
             }
 
-            const timeEl = document.getElementById('profile-broadcast-time');
-            if (timeEl) timeEl.innerText = (globalProfileData.broadcast || {}).time || '';
-            const contentEl = document.getElementById('profile-broadcast-content');
-            if (contentEl) contentEl.innerText = (globalProfileData.broadcast || {}).content || '';
-            const gameEl = document.getElementById('profile-broadcast-game');
-            if (gameEl) gameEl.innerText = (globalProfileData.broadcast || {}).game || '';
-            
-            const likesContainer = document.getElementById('profile-likes-container');
-            if (likesContainer) {
-                likesContainer.innerHTML = (globalProfileData.likes || []).map(like => `<span class="px-3 py-1 bg-amber-100 text-brand-dark rounded-full text-xs font-bold border border-amber-200">${like.trim()}</span>`).join('');
+            // Broadcast details
+            const bc = globalProfileData.broadcast || defaultProfileData.broadcast || {};
+            document.getElementById('profile-broadcast-time').innerText = bc.time || '';
+            document.getElementById('profile-broadcast-content').innerText = bc.content || '';
+            document.getElementById('profile-broadcast-game').innerText = bc.game || '';
+
+            // Likes and dislikes
+            const likesCont = document.getElementById('profile-likes-container');
+            if (likesCont) {
+                likesCont.innerHTML = (globalProfileData.likes || []).map(l => `<span class="px-3 py-1 bg-amber-50 dark:bg-amber-950/20 text-brand-dark dark:text-brand rounded-xl text-xs font-bold">${l}</span>`).join('');
             }
-            const dislikesContainer = document.getElementById('profile-dislikes-container');
-            if (dislikesContainer) {
-                dislikesContainer.innerHTML = (globalProfileData.dislikes || []).map(dislike => `<span class="px-3 py-1 bg-gray-100 dark:bg-amber-950/30 text-gray-500 dark:text-amber-300 rounded-full text-xs font-bold border border-gray-200/50 dark:border-amber-950/40">${dislike.trim()}</span>`).join('');
+            const dislikesCont = document.getElementById('profile-dislikes-container');
+            if (dislikesCont) {
+                dislikesCont.innerHTML = (globalProfileData.dislikes || []).map(d => `<span class="px-3 py-1 bg-gray-100 dark:bg-amber-950/10 text-gray-500 dark:text-amber-400 rounded-xl text-xs font-bold">${d}</span>`).join('');
             }
 
-            // Sync homework single link target
-            const upboLinkBtn = document.getElementById('upbo-link-btn');
-            if (upboLinkBtn) {
-                upboLinkBtn.href = globalProfileData.upboLink || defaultProfileData.upboLink;
+            // Redirections configurations
+            const platforms = globalProfileData.socials || defaultProfileData.socials || {};
+            if (document.getElementById('profile-soop-link')) document.getElementById('profile-soop-link').href = platforms.soop || '';
+            if (document.getElementById('profile-youtube-link')) document.getElementById('profile-youtube-link').href = platforms.youtube || '';
+            if (document.getElementById('profile-fancim-link')) document.getElementById('profile-fancim-link').href = platforms.fancim || '';
+
+            // Redirect Homework link button
+            const upboLink = document.getElementById('upbo-link-btn');
+            if (upboLink) {
+                upboLink.href = globalProfileData.homeworkLink || defaultProfileData.homeworkLink || '#';
             }
         }
 
+        // RENDER NOTICES
         function renderNotice() {
             const list = document.getElementById('notice-list');
             if (!list) return;
             list.innerHTML = '';
-            if (globalNoticeData.length === 0) { list.innerHTML = '<li class="text-center text-gray-400 py-6 font-bold">등록된 소식이 비어있습니다.</li>'; return; }
+            if (globalNoticeData.length === 0) { list.innerHTML = '<li class="text-center text-gray-400 py-6 text-xs">안내 공지사항이 비어있습니다.</li>'; return; }
 
             globalNoticeData.forEach(notice => {
-                let badgeClass = '', bgClass = 'p-3.5 rounded-2xl hover:bg-amber-50/20 dark:hover:bg-amber-950/10 border border-transparent hover:border-amber-100/40 dark:hover:border-amber-950/30 transition-colors';
-                if (notice.typeColor === 'red') { badgeClass = 'bg-red-100 text-red-600 dark:bg-red-900/50 dark:text-red-400'; bgClass = 'bg-amber-50/40 dark:bg-amber-950/20 p-3.5 rounded-2xl border border-amber-100 dark:border-amber-950/30'; } 
-                else if (notice.typeColor === 'blue') { badgeClass = 'bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400'; } 
-                else { badgeClass = 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-amber-200'; }
+                let badgeStyle = '', cardBg = 'p-3 rounded-xl hover:bg-amber-50/40 dark:hover:bg-amber-950/10 transition-all font-medium text-sm';
+                if (notice.typeColor === 'red') { 
+                    badgeStyle = 'bg-red-100 text-red-600 dark:bg-red-950 dark:text-red-400'; 
+                    cardBg = 'bg-brand-light dark:bg-amber-950/20 p-3 rounded-xl border border-brand/20'; 
+                } else if (notice.typeColor === 'blue') { 
+                    badgeStyle = 'bg-amber-100 text-brand-dark dark:bg-amber-950/40 dark:text-amber-300'; 
+                } else { 
+                    badgeStyle = 'bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300'; 
+                }
 
-                let linkHtml = '';
+                let linkBadge = '';
                 if (notice.link && notice.link.trim() !== '') {
-                    linkHtml = `
-                        <div class="mt-2">
-                            <a href="${notice.link}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-950 bg-brand hover:bg-brand-dark hover:text-white px-3 py-1 rounded-lg transition-all">
-                                링크 가기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    linkBadge = `
+                        <div class="mt-2 text-right">
+                            <a href="${notice.link}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-[11px] font-semibold text-brand-dark bg-brand/10 dark:bg-brand-dark/40 dark:text-brand px-2.5 py-1 rounded-lg hover:underline">
+                                첨부 링크 바로가기 <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                             </a>
                         </div>
                     `;
                 }
 
                 list.innerHTML += `
-                    <li class="${bgClass} font-semibold">
-                        <div class="flex justify-between items-start mb-1.5">
-                            <span class="${badgeClass} text-[10px] px-1.5 py-0.5 rounded font-bold">${notice.type}</span>
-                            <span class="text-[11px] text-gray-400 font-bold">${notice.date}</span>
+                    <li class="${cardBg}">
+                        <div class="flex justify-between items-center mb-1.5 text-[10px]">
+                            <span class="${badgeStyle} font-bold px-2 py-0.5 rounded-md">${notice.type}</span>
+                            <span class="text-gray-450 dark:text-gray-300">${notice.date}</span>
                         </div>
-                        <p class="text-sm text-gray-800 dark:text-amber-100 ${notice.typeColor === 'red' ? 'font-bold text-brand-dark dark:text-brand' : ''}">${linkify(notice.content)}</p>
-                        ${linkHtml}
+                        <p class="text-xs text-gray-850 dark:text-amber-100/90 leading-relaxed">${autoLinkify(notice.content)}</p>
+                        ${linkBadge}
                     </li>
                 `;
             });
         }
 
+        // RENDER WEEKLY SCHEDULES
         function renderSchedule() {
             const list = document.getElementById('schedule-list');
             if (!list) return;
             list.innerHTML = '';
             
-            const colorMap = {
-                gray: { text: 'text-gray-700 dark:text-amber-200', dayText: 'text-gray-600 dark:text-amber-300 bg-amber-50/80 dark:bg-amber-950/40' },
-                green: { text: 'text-emerald-600 dark:text-emerald-400 font-bold', dayText: 'text-white bg-emerald-400' }
+            const colorDefinitions = {
+                gray: { label: 'text-gray-750 dark:text-amber-150', dayBox: 'bg-gray-100 dark:bg-amber-950/30 text-gray-500 dark:text-amber-400' },
+                green: { label: 'text-brand-dark dark:text-brand font-bold', dayBox: 'bg-brand text-amber-950' }
             };
 
-            globalScheduleData.forEach(schedule => {
-                const colors = schedule.isRest ? colorMap.green : colorMap.gray;
-                const bgClass = schedule.isRest ? 'bg-emerald-50/10 dark:bg-emerald-950/5 border border-emerald-100/10 dark:border-emerald-950/10' : 'hover:bg-amber-50/10 border border-transparent';
+            globalScheduleData.forEach(sc => {
+                const colors = colorDefinitions[sc.color] || colorDefinitions.gray;
+                const activeStateBg = sc.isRest ? 'bg-brand-light/30 dark:bg-amber-950/10 border border-brand/10' : 'hover:bg-amber-50/20 dark:hover:bg-amber-950/5 border border-transparent';
+                
                 list.innerHTML += `
-                    <div class="flex items-center justify-between p-2 rounded-xl ${bgClass} transition-colors font-semibold">
+                    <div class="flex items-center justify-between p-2 rounded-xl ${activeStateBg} transition-all text-xs font-semibold">
                         <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 flex items-center justify-center text-xs rounded-full ${colors.dayText}">${schedule.day}</div>
-                            <div class="text-sm ${colors.text}">${schedule.content}</div>
+                            <div class="w-7 h-7 flex items-center justify-center rounded-lg text-xs font-bold ${colors.dayBox}">${sc.day}</div>
+                            <div class="text-xs ${colors.label}">${sc.content}</div>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function addMonthlyFansign() {
-            const newId = "fansign_" + Date.now();
-            globalMonthlyFansigns.push({ id: newId, desc: "고마운 마음을 가득 담은 탱자만의 스페셜 방셀! 💛", img: "" });
-            updateFirestore('monthlyFansigns', globalMonthlyFansigns);
-            renderMonthlyFansigns();
-            showToast("✨ 새로운 이달의 방셀 카드가 신규 등록되었습니다!");
-        }
-
-        function deleteMonthlyFansign(id) {
-            globalMonthlyFansigns = globalMonthlyFansigns.filter(f => f.id !== id);
-            updateFirestore('monthlyFansigns', globalMonthlyFansigns);
-            renderMonthlyFansigns();
-            showToast("🗑️ 선택한 방셀 카드가 완전히 삭제되었습니다.");
-        }
-
-        function openFansignTextEditModal(id) {
-            const fansign = globalMonthlyFansigns.find(f => f.id === id);
-            if (!fansign) return;
-            let modal = document.getElementById('fansign-text-edit-modal');
-            if (!modal) {
-                modal = document.createElement('div');
-                modal.id = 'fansign-text-edit-modal';
-                modal.className = 'fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300';
-                document.body.appendChild(modal);
-            }
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
-                    <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
-                        <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                            <i class="fa-solid fa-pen text-brand-dark"></i> 방셀 설명 수정
-                        </h3>
-                        <button onclick="closeFansignTextEditModal()" class="text-amber-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-                    </div>
-                    <div class="space-y-4 font-bold text-xs">
-                        <div>
-                            <label class="block text-gray-500 mb-1.5">설명 기입</label>
-                            <textarea id="edit-fansign-desc" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none resize-none font-medium text-xs" rows="3">${fansign.desc}</textarea>
-                        </div>
-                    </div>
-                    <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
-                        <button onclick="closeFansignTextEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
-                        <button onclick="saveFansignText('${id}')" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
-                    </div>
-                </div>
-            `;
-            requestAnimationFrame(() => {
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-95');
-                modal.querySelector('div').classList.add('scale-100');
-            });
-        }
-
-        function closeFansignTextEditModal() {
-            const modal = document.getElementById('fansign-text-edit-modal');
-            if (modal) {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-100');
-                modal.querySelector('div').classList.add('scale-95');
-            }
-        }
-
-        function saveFansignText(id) {
-            const desc = document.getElementById('edit-fansign-desc').value.trim();
-            if (!desc) return;
-            const fansign = globalMonthlyFansigns.find(f => f.id === id);
-            if (fansign) {
-                fansign.desc = desc;
-                updateFirestore('monthlyFansigns', globalMonthlyFansigns);
-                renderMonthlyFansigns();
-                closeFansignTextEditModal();
-                showToast("📝 방셀 설명문구가 수정되었습니다.");
-            }
-        }
-
-        function renderMonthlyFansigns() {
+        // RENDER MONTHLY FANSIGNS (이달의 방셀)
+        function renderFansigns() {
             const container = document.getElementById('monthly-fansign-container');
             if (!container) return;
             container.innerHTML = '';
 
-            globalMonthlyFansigns.forEach((fansign) => {
-                const photoHtml = fansign.img 
-                    ? `<img src="${fansign.img}" class="w-full h-40 object-cover rounded-xl mb-3 shadow-inner bg-amber-50/20" alt="방셀 이미지">`
-                    : `
-                        <div class="w-full h-40 bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 rounded-xl mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-900">
-                            <i class="fa-solid fa-image text-2xl mb-1.5"></i>
-                            <span class="text-xs font-bold">방셀 이미지 등록 📸</span>
-                        </div>
-                    `;
-
-                const editBtnHtml = isAdminMode 
-                    ? `
-                        <div class="absolute top-2 right-2 z-20 flex gap-1 bg-white/90 dark:bg-black/80 p-1 rounded-lg backdrop-blur-xs shadow-sm">
-                            <button onclick="triggerImageUpload('fansign', '${fansign.id}')" class="bg-brand text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="방셀 사진 변경">
-                                <i class="fa-solid fa-camera"></i>
-                            </button>
-                            <button onclick="openFansignTextEditModal('${fansign.id}')" class="bg-white text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md border border-amber-300 active:scale-95" title="설명 수정">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button onclick="deleteMonthlyFansign('${fansign.id}')" class="bg-red-500 text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="방셀 삭제">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                    ` : '';
+            globalFansignsData.forEach((item, index) => {
+                const adminOptions = isAdminMode ? `
+                    <div class="absolute top-2 right-2 flex gap-1.5 z-20">
+                        <button onclick="triggerFansignImageUpload(${index})" class="bg-[#1aa7ec] text-white p-1.5 rounded-lg shadow-sm hover:scale-105 transition-transform" title="이미지 변경">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                        </button>
+                        <button onclick="deleteMonthlyFansign(${index})" class="bg-red-600 text-white p-1.5 rounded-lg shadow-sm hover:scale-105 transition-transform" title="삭제">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                ` : '';
 
                 container.innerHTML += `
-                    <div class="bg-gradient-to-b from-amber-50/30 to-white dark:from-amber-[#181611]/10 dark:to-[#181611] border border-amber-200/60 dark:border-amber-950/40 rounded-2xl p-5 flex flex-col justify-between text-center relative overflow-hidden group">
-                        ${editBtnHtml}
-                        <div>
-                            ${photoHtml}
-                            <p class="text-xs text-gray-500 dark:text-amber-400 mt-2 font-medium leading-relaxed">${fansign.desc}</p>
+                    <div class="relative bg-white dark:bg-[#181611] rounded-2xl overflow-hidden border border-amber-100/60 dark:border-amber-950/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+                        ${adminOptions}
+                        <div class="aspect-[4/5] w-full overflow-hidden relative bg-amber-50/30 flex items-center justify-center">
+                            <img src="${item.url}" onerror="this.src='https://placehold.co/400x500/fffbeb/d97706?text=Image+Load+Error'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="${item.title}">
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-900 dark:text-white truncate mb-1" id="fansign-title-text-${index}" ${isAdminMode ? 'contenteditable="true" onblur="saveFansignText('+index+')"' : ''}>${item.title}</h4>
+                                <p class="text-[11px] text-[#665435] dark:text-amber-300 font-medium line-clamp-2" id="fansign-desc-text-${index}" ${isAdminMode ? 'contenteditable="true" onblur="saveFansignText('+index+')"' : ''}>${item.desc}</p>
+                            </div>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function addSignatureStar() {
-            const newId = "reaction_" + Date.now();
-            globalSignatureStar.push({ id: newId, count: "100개", action: "하나뿐인 탱자", img: "" });
-            updateFirestore('signatureStar', globalSignatureStar);
-            renderSignatureStar();
-            showToast("✨ 새로운 시그풍 리액션 카드가 신규 등록되었습니다!");
-        }
-
-        function deleteSignatureStar(id) {
-            globalSignatureStar = globalSignatureStar.filter(r => r.id !== id);
-            updateFirestore('signatureStar', globalSignatureStar);
-            renderSignatureStar();
-            showToast("🗑️ 시그풍 리액션 카드가 삭제되었습니다.");
-        }
-
-        function openSignatureTextEditModal(id) {
-            const star = globalSignatureStar.find(r => r.id === id);
-            if (!star) return;
-            let modal = document.getElementById('signature-text-edit-modal');
-            if (!modal) {
-                modal = document.createElement('div');
-                modal.id = 'signature-text-edit-modal';
-                modal.className = 'fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300';
-                document.body.appendChild(modal);
-            }
-            modal.innerHTML = `
-                <div class="bg-white dark:bg-[#181611] rounded-2xl shadow-2xl w-11/12 max-w-sm p-6 transform scale-95 transition-transform duration-300 border border-amber-100/50 dark:border-amber-950/40">
-                    <div class="flex justify-between items-center mb-4 border-b border-amber-50 dark:border-amber-950/30 pb-3">
-                        <h3 class="text-base font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                            <i class="fa-solid fa-pen text-brand-dark"></i> 시그풍 리액션 수정
-                        </h3>
-                        <button onclick="closeSignatureTextEditModal()" class="text-amber-500 hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
-                    </div>
-                    <div class="space-y-4 font-bold text-xs">
-                        <div>
-                            <label class="block text-gray-500 mb-1.5">별풍선 개수</label>
-                            <input type="text" id="edit-signature-count" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none" value="${star.count}">
-                        </div>
-                        <div>
-                            <label class="block text-gray-500 mb-1.5">리액션 설명</label>
-                            <input type="text" id="edit-signature-action" class="w-full bg-[#fffdfa] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-xl p-3 outline-none" value="${star.action}">
-                        </div>
-                    </div>
-                    <div class="mt-6 flex justify-end gap-2 text-xs font-bold">
-                        <button onclick="closeSignatureTextEditModal()" class="px-4 py-2.5 rounded-xl bg-gray-100 dark:bg-amber-950/30 text-gray-600 dark:text-amber-200 hover:bg-gray-200 transition-colors">취소</button>
-                        <button onclick="saveSignatureText('${id}')" class="px-4 py-2.5 rounded-xl bg-brand text-amber-950 hover:bg-brand-dark hover:text-white transition-colors">저장 완료</button>
-                    </div>
-                </div>
-            `;
-            requestAnimationFrame(() => {
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-95');
-                modal.querySelector('div').classList.add('scale-100');
-            });
-        }
-
-        function closeSignatureTextEditModal() {
-            const modal = document.getElementById('signature-text-edit-modal');
-            if (modal) {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-100');
-                modal.querySelector('div').classList.add('scale-95');
-            }
-        }
-
-        function saveSignatureText(id) {
-            const count = document.getElementById('edit-signature-count').value.trim();
-            const action = document.getElementById('edit-signature-action').value.trim();
-            if (!count) return;
-            const star = globalSignatureStar.find(r => r.id === id);
-            if (star) {
-                star.count = count;
-                star.action = action;
-                updateFirestore('signatureStar', globalSignatureStar);
-                renderSignatureStar();
-                closeSignatureTextEditModal();
-                showToast("📝 시그풍 리액션 정보가 성공적으로 반영되었습니다.");
-            }
-        }
-
-        function renderSignatureStar() {
+        // RENDER SIGNATURE STAR BALLOONS (탱자 시그풍)
+        function renderSignatureStars() {
             const container = document.getElementById('signature-star-container');
             if (!container) return;
             container.innerHTML = '';
 
-            globalSignatureStar.forEach((reaction) => {
-                const photoHtml = reaction.img 
-                    ? `<img src="${reaction.img}" class="w-full aspect-video rounded-xl object-cover border border-brand/40 mx-auto mb-3 bg-amber-50/20 dark:bg-[#12110e]" alt="리액션 이미지">`
-                    : `
-                        <div class="w-full aspect-video rounded-xl bg-amber-50/50 dark:bg-amber-950/10 border border-dashed border-amber-200 dark:border-amber-950 mx-auto mb-3 flex flex-col items-center justify-center text-gray-400 dark:text-amber-850">
-                            <i class="fa-solid fa-image text-2xl mb-1"></i>
-                            <span class="text-xs font-bold">이미지 등록 📸</span>
-                        </div>
-                    `;
-
-                const editBtnHtml = isAdminMode 
-                    ? `
-                        <div class="absolute top-2 right-2 z-20 flex gap-1 bg-white/90 dark:bg-black/80 p-1 rounded-lg backdrop-blur-xs shadow-sm">
-                            <button onclick="triggerImageUpload('signature', '${reaction.id}')" class="bg-brand text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="리액션 사진 업로드">
-                                <i class="fa-solid fa-camera"></i>
-                            </button>
-                            <button onclick="openSignatureTextEditModal('${reaction.id}')" class="bg-white text-amber-950 text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md border border-amber-300 active:scale-95" title="글씨 수정">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                            <button onclick="deleteSignatureStar('${reaction.id}')" class="bg-red-500 text-white text-[10px] font-bold w-6 h-6 flex items-center justify-center rounded-md active:scale-95" title="시그풍 삭제">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </button>
-                        </div>
-                    ` : '';
+            globalSignatureStarsData.forEach((item, index) => {
+                const adminOptions = isAdminMode ? `
+                    <div class="absolute top-2 right-2 flex gap-1.5 z-20">
+                        <button onclick="triggerSignatureImageUpload(${index})" class="bg-[#1aa7ec] text-white p-1.5 rounded-lg shadow-sm hover:scale-105 transition-transform" title="이미지 변경">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                        </button>
+                        <button onclick="deleteSignatureStar(${index})" class="bg-red-600 text-white p-1.5 rounded-lg shadow-sm hover:scale-105 transition-transform" title="삭제">
+                            <i class="fa-solid fa-trash-can text-xs"></i>
+                        </button>
+                    </div>
+                ` : '';
 
                 container.innerHTML += `
-                    <div class="bg-[#fffdf8] dark:bg-[#201e19] border border-amber-150 rounded-xl p-4 text-center relative flex flex-col justify-center min-h-[140px] overflow-hidden">
-                        ${editBtnHtml}
-                        ${photoHtml}
-                        <span class="text-base font-black text-accent">${reaction.count}</span>
-                        <p class="text-xs font-bold mt-1 text-[#45361a] dark:text-amber-200">${reaction.action}</p>
+                    <div class="relative bg-white dark:bg-[#181611] rounded-2xl overflow-hidden border border-amber-100/60 dark:border-amber-950/40 shadow-xs hover:shadow-md transition-all flex flex-col justify-between group">
+                        ${adminOptions}
+                        <div class="aspect-[16/10] w-full overflow-hidden relative bg-amber-50/30 flex items-center justify-center">
+                            <img src="${item.url}" onerror="this.src='https://placehold.co/600x400/fffbeb/d97706?text=Image+Load+Error'" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="${item.title}">
+                        </div>
+                        <div class="p-4 flex-grow flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-sm font-bold text-gray-900 dark:text-white truncate mb-1" id="signature-title-text-${index}" ${isAdminMode ? 'contenteditable="true" onblur="saveSignatureText('+index+')"' : ''}>${item.title}</h4>
+                                <p class="text-[11px] text-[#665435] dark:text-amber-300 font-medium line-clamp-2" id="signature-desc-text-${index}" ${isAdminMode ? 'contenteditable="true" onblur="saveSignatureText('+index+')"' : ''}>${item.desc}</p>
+                            </div>
+                        </div>
                     </div>
                 `;
             });
         }
 
-        function triggerImageUpload(type, id) {
-            activeImageUploadTarget = { type, id };
-            const uploader = document.getElementById('global-image-uploader');
-            if (uploader) {
-                uploader.value = ''; 
-                uploader.click();
+        // Administrative PIN verification (Password configured to: 1122)
+        function openAdminLoginModal() {
+            if (isAdminMode) {
+                isAdminMode = false;
+                toggleAdminVisibilities(false);
+                triggerToast("관리 권한 세션이 안전하게 해제되었습니다.");
+                return;
+            }
+            const modal = document.getElementById('admin-login-modal');
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
+            });
+            document.getElementById('admin-pin').value = '';
+            document.getElementById('admin-pin').focus();
+        }
+
+        function closeAdminLoginModal() {
+            const modal = document.getElementById('admin-login-modal');
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95');
+        }
+
+        function checkAdminPin() {
+            const pinVal = document.getElementById('admin-pin').value;
+            if (pinVal === '1122') {
+                isAdminMode = true;
+                closeAdminLoginModal();
+                toggleAdminVisibilities(true);
+                triggerToast("탱자님! 관리인 세션 인증에 성공했습니다! 🍊");
+            } else {
+                const targetBox = document.getElementById('admin-pin');
+                targetBox.classList.add('border-red-500', 'animate-pulse'); 
+                targetBox.value = ''; 
+                targetBox.placeholder = '틀렸습니다!';
+                setTimeout(() => { 
+                    targetBox.classList.remove('border-red-500', 'animate-pulse'); 
+                    targetBox.placeholder = '••••••'; 
+                }, 1500);
             }
         }
 
-        function handleGlobalImageUpload(event) {
-            const file = event.target.files[0];
-            if (!file || !activeImageUploadTarget) return;
-
-            showToast("📸 고해상도 이미지 보정 및 리사이징 중...");
-
-            compressImage(file, 400, 400, (compressedBase64) => {
-                if (activeImageUploadTarget.type === 'fansign') {
-                    const fansignItem = globalMonthlyFansigns.find(f => f.id === activeImageUploadTarget.id);
-                    if (fansignItem) {
-                        fansignItem.img = compressedBase64;
-                        updateFirestore('monthlyFansigns', globalMonthlyFansigns);
-                        renderMonthlyFansigns();
-                        showToast("🎉 이달의 방셀 이미지가 업로드 완료되었습니다 💛");
-                    }
-                } else if (activeImageUploadTarget.type === 'signature') {
-                    const reactionItem = globalSignatureStar.find(r => r.id === activeImageUploadTarget.id);
-                    if (reactionItem) {
-                        reactionItem.img = compressedBase64;
-                        updateFirestore('signatureStar', globalSignatureStar);
-                        renderSignatureStar();
-                        showToast("🎉 해당 시그풍의 가로형 리액션 프레임이 최적화되었습니다 🦆");
-                    }
+        function toggleAdminVisibilities(show) {
+            const btns = [
+                'admin-profile-edit-btn',
+                'admin-notice-edit-btn',
+                'admin-schedule-edit-btn',
+                'admin-homework-link-btn',
+                'admin-add-fansign-btn',
+                'admin-add-signature-btn'
+            ];
+            btns.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    if (show) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
                 }
-                activeImageUploadTarget = null;
             });
+            // Rerender cards with edit badges
+            renderFansigns();
+            renderSignatureStars();
         }
 
-        function compressImage(file, maxWidth, maxHeight, callback) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const img = new Image();
-                img.onload = function() {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-                    
-                    if (width > height) {
-                        if (width > maxWidth) {
-                            height *= maxWidth / width;
-                            width = maxWidth;
-                        }
-                    } else {
-                        if (height > maxHeight) {
-                            width *= maxHeight / height;
-                            height = maxHeight;
-                        }
-                    }
-                    
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.clearRect(0, 0, width, height); 
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    const outMime = file.type === 'image/png' ? 'image/png' : 'image/jpeg';
-                    const quality = outMime === 'image/jpeg' ? 0.7 : undefined;
-                    const dataUrl = canvas.toDataURL(outMime, quality);
-                    callback(dataUrl);
-                };
-                img.src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
+        // Homework Links Editors
         function openHomeworkLinkEditModal() {
             const modal = document.getElementById('homework-link-edit-modal');
-            document.getElementById('edit-homework-url').value = globalProfileData.upboLink || defaultProfileData.upboLink || '';
-            requestAnimationFrame(() => {
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-95');
-                modal.querySelector('div').classList.add('scale-100');
+            document.getElementById('edit-homework-url').value = globalProfileData.homeworkLink || '';
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
             });
         }
 
         function closeHomeworkLinkEditModal() {
             const modal = document.getElementById('homework-link-edit-modal');
-            if (modal) {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.querySelector('div').classList.remove('scale-100');
-                modal.querySelector('div').classList.add('scale-95');
-            }
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95'); 
         }
 
         function saveHomeworkLink() {
-            let url = document.getElementById('edit-homework-url').value.trim();
-            if (url && !/^https?:\/\//i.test(url)) {
-                url = 'https://' + url;
-            }
-            globalProfileData.upboLink = url;
-            updateFirestore('profile', globalProfileData);
-            const upboLinkBtn = document.getElementById('upbo-link-btn');
-            if (upboLinkBtn) {
-                upboLinkBtn.href = url;
-            }
+            const val = document.getElementById('edit-homework-url').value.trim();
+            globalProfileData.homeworkLink = val;
+            syncWithFirestore('profile', globalProfileData);
+            renderProfile();
             closeHomeworkLinkEditModal();
-            showToast("🔗 숙제 연결 링크가 성공적으로 수정되었습니다.");
+            triggerToast("숙제 현황판 이동 주소가 실시간 업데이트되었습니다.");
         }
 
-        function openAdminLoginModal() {
-            if (isAdminMode) {
-                isAdminMode = false;
-                document.getElementById('admin-add-fansign-btn').classList.add('hidden');
-                document.getElementById('admin-add-signature-btn').classList.add('hidden');
-                document.getElementById('admin-notice-edit-btn').classList.add('hidden'); 
-                document.getElementById('admin-schedule-edit-btn').classList.add('hidden'); 
-                document.getElementById('admin-profile-edit-btn').classList.add('hidden');
-                document.getElementById('admin-homework-link-btn').classList.add('hidden');
-                renderMonthlyFansigns();
-                renderSignatureStar();
-                showToast("관리자 모드가 해제되었습니다! 🌸");
-                return;
-            }
-            const modal = document.getElementById('admin-login-modal');
-            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
-            document.getElementById('admin-pin').value = ''; document.getElementById('admin-pin').focus();
-        }
-
-        function closeAdminLoginModal() {
-            const modal = document.getElementById('admin-login-modal');
-            modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95');
-        }
-
-        function checkAdminPin() {
-            const pin = document.getElementById('admin-pin').value;
-            if (pin === '021122') { 
-                isAdminMode = true; closeAdminLoginModal();
-                document.getElementById('admin-add-fansign-btn').classList.remove('hidden');
-                document.getElementById('admin-add-signature-btn').classList.remove('hidden');
-                document.getElementById('admin-notice-edit-btn').classList.remove('hidden'); 
-                document.getElementById('admin-schedule-edit-btn').classList.remove('hidden'); 
-                document.getElementById('admin-profile-edit-btn').classList.remove('hidden');
-                document.getElementById('admin-homework-link-btn').classList.remove('hidden');
-                renderMonthlyFansigns();
-                renderSignatureStar();
-                showToast("인증 완료되었습니다. 공지/일정/방셀/시그풍 추가 및 텍스트와 이미지 변경이 가능합니다.");
-            } else {
-                const input = document.getElementById('admin-pin');
-                input.classList.add('border-red-500'); input.value = ''; input.placeholder = '비밀번호를 확인해주세요!';
-                setTimeout(() => { input.classList.remove('border-red-500'); input.placeholder = '••••••'; }, 2000);
-            }
-        }
-
+        // Notice Editors
         function openNoticeEditModal() {
             const modal = document.getElementById('notice-edit-modal'); renderNoticeEditList();
-            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
-            document.getElementById('new-notice-content').onkeypress = function(e) { if (e.key === 'Enter') addNewNotice(); };
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
+            });
         }
-        function closeNoticeEditModal() { const modal = document.getElementById('notice-edit-modal'); modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+        function closeNoticeEditModal() { 
+            const modal = document.getElementById('notice-edit-modal'); 
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95'); 
+        }
 
         function renderNoticeEditList() {
             const list = document.getElementById('notice-edit-list'); list.innerHTML = '';
-            if (globalNoticeData.length === 0) { list.innerHTML = '<div class="text-center text-gray-400 py-4 font-bold text-xs">공지사항이 비어있습니다.</div>'; return; }
+            if (globalNoticeData.length === 0) { list.innerHTML = '<div class="text-center text-gray-500 py-4 text-xs">작성된 공지 전파 기록이 없습니다.</div>'; return; }
             globalNoticeData.forEach((notice, index) => {
-                let linkBadge = '';
+                let badge = '';
                 if (notice.link && notice.link.trim() !== '') {
-                    linkBadge = `<span class="text-[9px] bg-amber-50 text-brand-dark border border-amber-100 px-1.5 py-0.5 rounded truncate max-w-[120px]" title="${notice.link}"><i class="fa-solid fa-link mr-1"></i>${notice.link}</span>`;
+                    badge = `<span class="text-[9px] bg-brand/20 text-brand-dark px-1.5 py-0.5 rounded truncate max-w-[150px]" title="${notice.link}"><i class="fa-solid fa-link mr-1"></i>${notice.link}</span>`;
                 }
                 list.innerHTML += `
-                    <div class="bg-[#fffdfa] dark:bg-[#1a1813] border border-amber-100/50 dark:border-amber-950/40 p-3 rounded-xl flex justify-between items-start gap-3 font-bold text-xs">
+                    <div class="bg-amber-50/40 dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950/40 p-3 rounded-xl flex justify-between items-start gap-3 font-bold text-xs">
                         <div class="flex-grow min-w-0">
-                            <div class="flex items-center gap-2 mb-1 flex-wrap font-sans">
-                                <span class="text-[9px] bg-brand text-amber-950 px-1.5 py-0.5 rounded">${notice.type}</span>
-                                <span class="text-[10px] text-gray-400">${notice.date}</span>
-                                ${linkBadge}
+                            <div class="flex items-center gap-2 mb-1 flex-wrap">
+                                <span class="text-[10px] bg-brand-light text-brand-dark px-1.5 py-0.5 rounded-md">${notice.type}</span>
+                                <span class="text-gray-400 text-[10px]">${notice.date}</span>
+                                ${badge}
                             </div>
-                            <p class="text-xs text-gray-700 dark:text-amber-200 break-all">${linkify(notice.content)}</p>
+                            <p class="text-xs text-gray-700 dark:text-amber-100/90 break-all">${autoLinkify(notice.content)}</p>
                         </div>
-                        <button onclick="deleteNotice(${index})" class="text-gray-400 hover:text-red-500 p-1 flex-shrink-0"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                        <button onclick="deleteNotice(${index})" class="text-gray-400 hover:text-red-500 p-1 flex-shrink-0 transition-colors"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
             });
         }
+
         function addNewNotice() {
             const type = document.getElementById('new-notice-type').value; 
-            const contentInput = document.getElementById('new-notice-content'); 
-            const linkInput = document.getElementById('new-notice-link');
-            const content = contentInput.value.trim();
-            let link = linkInput.value.trim();
+            const contentBox = document.getElementById('new-notice-content'); 
+            const linkBox = document.getElementById('new-notice-link');
+            const parsedContent = contentBox.value.trim();
+            let parsedLink = linkBox.value.trim();
             
-            if (!content) return; 
-            if (link && !/^https?:\/\//i.test(link)) link = 'https://' + link;
+            if (!parsedContent) return; 
             
-            let typeColor = 'gray'; 
-            if (type === '필독') typeColor = 'red'; 
-            if (type === '공지') typeColor = 'blue';
+            if (parsedLink && !/^https?:\/\//i.test(parsedLink)) {
+                parsedLink = 'https://' + parsedLink;
+            }
+            
+            let colorCode = 'gray'; 
+            if (type === '필독') colorCode = 'red'; 
+            if (type === '공지') colorCode = 'blue';
             
             const today = new Date(); 
             const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, '0')}.${String(today.getDate()).padStart(2, '0')}`;
             
-            globalNoticeData.unshift({ type, date: dateStr, content, link, typeColor });
-            updateFirestore('notice', globalNoticeData); 
-            contentInput.value = ''; linkInput.value = '';
-            renderNoticeEditList(); renderNotice();
+            globalNoticeData.unshift({ 
+                type: type, 
+                date: dateStr, 
+                content: parsedContent, 
+                link: parsedLink, 
+                typeColor: colorCode 
+            });
+            
+            syncWithFirestore('notice', globalNoticeData); 
+            contentBox.value = ''; 
+            linkBox.value = '';
+            renderNoticeEditList(); 
+            renderNotice();
+            triggerToast("신규 긴급공지가 공식 방송국 정산판에 등록되었습니다.");
         }
-        function deleteNotice(index) { globalNoticeData.splice(index, 1); updateFirestore('notice', globalNoticeData); renderNoticeEditList(); renderNotice(); }
 
+        function deleteNotice(index) { 
+            globalNoticeData.splice(index, 1); 
+            syncWithFirestore('notice', globalNoticeData); 
+            renderNoticeEditList(); 
+            renderNotice(); 
+            triggerToast("선택 공지가 삭제되었습니다."); 
+        }
+
+        // Schedule Editors
         function openScheduleEditModal() {
             const modal = document.getElementById('schedule-edit-modal'); renderScheduleEditList();
-            requestAnimationFrame(() => { modal.classList.remove('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-95'); modal.querySelector('div').classList.add('scale-100'); });
+            requestAnimationFrame(() => { 
+                modal.classList.remove('opacity-0', 'pointer-events-none'); 
+                modal.querySelector('div').classList.remove('scale-95'); 
+                modal.querySelector('div').classList.add('scale-100'); 
+            });
         }
-        function closeScheduleEditModal() { const modal = document.getElementById('schedule-edit-modal'); modal.classList.add('opacity-0', 'pointer-events-none'); modal.querySelector('div').classList.remove('scale-100'); modal.querySelector('div').classList.add('scale-95'); }
+        function closeScheduleEditModal() { 
+            const modal = document.getElementById('schedule-edit-modal'); 
+            modal.classList.add('opacity-0', 'pointer-events-none'); 
+            modal.querySelector('div').classList.remove('scale-100'); 
+            modal.querySelector('div').classList.add('scale-95'); 
+        }
         function renderScheduleEditList() {
             const list = document.getElementById('schedule-edit-list'); list.innerHTML = '';
-            globalScheduleData.forEach((schedule, index) => {
+            globalScheduleData.forEach((sc, index) => {
                 list.innerHTML += `
-                    <div class="flex items-center gap-3 bg-[#fffdfa] dark:bg-[#1a1813] border border-amber-100 dark:border-amber-950/20 p-2 rounded-xl font-bold">
-                        <div class="w-6 text-center text-xs text-brand-dark dark:text-brand">${schedule.day}</div>
-                        <input type="text" id="schedule-input-${index}" value="${schedule.content}" class="flex-grow bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 text-xs rounded-lg p-1.5 outline-none font-medium">
+                    <div class="flex items-center gap-3 bg-amber-50/30 dark:bg-amber-950/20 border border-amber-100/50 p-2 rounded-xl text-xs font-semibold">
+                        <div class="w-6 text-center text-brand-dark dark:text-brand font-bold flex-shrink-0">${sc.day}</div>
+                        <input type="text" id="schedule-input-${index}" value="${sc.content}" class="flex-grow bg-white dark:bg-amber-950/10 border border-amber-100 dark:border-amber-950 text-gray-950 dark:text-amber-100 rounded-lg p-1.5 outline-none">
                         <label class="flex items-center gap-1 text-[10px] text-gray-400 cursor-pointer flex-shrink-0">
-                            <input type="checkbox" id="schedule-rest-${index}" ${schedule.isRest ? 'checked' : ''} class="w-4 h-4 text-brand rounded focus:ring-brand">휴방
+                            <input type="checkbox" id="schedule-rest-${index}" ${sc.isRest ? 'checked' : ''} class="w-3.5 h-3.5 rounded border-amber-300">휴방
                         </label>
                     </div>
                 `;
             });
         }
         function saveScheduleChanges() {
-            globalScheduleData.forEach((schedule, index) => {
-                const content = document.getElementById(`schedule-input-${index}`).value; 
-                const isRest = document.getElementById(`schedule-rest-${index}`).checked;
-                schedule.content = content; 
-                schedule.isRest = isRest;
-                
-                if (isRest) { 
-                    schedule.color = 'green'; 
+            globalScheduleData.forEach((sc, index) => {
+                const text = document.getElementById(`schedule-input-${index}`).value; 
+                const checkRest = document.getElementById(`schedule-rest-${index}`).checked;
+                sc.content = text; 
+                sc.isRest = checkRest;
+                if (checkRest) { 
+                    sc.color = 'green'; 
                 } else { 
-                    schedule.color = 'gray'; 
+                    sc.color = 'gray'; 
                 }
             });
-            updateFirestore('schedule', globalScheduleData); 
+            syncWithFirestore('schedule', globalScheduleData); 
             renderSchedule(); 
             closeScheduleEditModal();
+            triggerToast("주간 고정 방송일정이 실시간 업데이트되었습니다.");
         }
 
+        // Fansign management details
+        function triggerFansignCreation() {
+            globalFansignsData.unshift({
+                title: "새 방셀 타이틀 📸",
+                desc: "방셀 숙제 리액션 설명을 적어주세요.",
+                url: "https://placehold.co/400x500/fffbeb/d97706?text=Upload+Image"
+            });
+            syncWithFirestore('fansigns', globalFansignsData);
+            renderFansigns();
+            triggerToast("리스트 맨 위에 새 방셀 카드가 생성되었습니다.");
+        }
+
+        function deleteMonthlyFansign(index) {
+            globalFansignsData.splice(index, 1);
+            syncWithFirestore('fansigns', globalFansignsData);
+            renderFansigns();
+            triggerToast("선택 방셀 카드가 소거되었습니다.");
+        }
+
+        function saveFansignText(index) {
+            const titleVal = document.getElementById(`fansign-title-text-${index}`).innerText.trim();
+            const descVal = document.getElementById(`fansign-desc-text-${index}`).innerText.trim();
+            globalFansignsData[index].title = titleVal;
+            globalFansignsData[index].desc = descVal;
+            syncWithFirestore('fansigns', globalFansignsData);
+        }
+
+        let currentActiveFansignIndexForImage = null;
+        function triggerFansignImageUpload(index) {
+            currentActiveFansignIndexForImage = index;
+            const triggerFile = document.getElementById('global-image-uploader');
+            triggerFile.value = '';
+            triggerFile.onchange = handleFansignFileSelection;
+            triggerFile.click();
+        }
+
+        async function handleFansignFileSelection(event) {
+            const file = event.target.files[0];
+            if (!file || currentActiveFansignIndexForImage === null) return;
+            try {
+                // Compress highly to fit localStorage and Firestore perfectly
+                const compressed = await compressImage(file, 400, 500);
+                globalFansignsData[currentActiveFansignIndexForImage].url = compressed;
+                syncWithFirestore('fansigns', globalFansignsData);
+                renderFansigns();
+                triggerToast("방셀 의상 실물 이미지가 성공적으로 압축 캐싱되었습니다! 📸");
+            } catch (err) {
+                console.error("Image processing error: ", err);
+                triggerToast("이미지 가공에 실패했습니다.");
+            }
+            currentActiveFansignIndexForImage = null;
+        }
+
+        // Signature Stars management details
+        function triggerSignatureCreation() {
+            globalSignatureStarsData.unshift({
+                title: "새 시그풍 타이틀 🎈",
+                desc: "개수 및 리액션 내용을 적어주세요.",
+                url: "https://placehold.co/600x400/fffbeb/d97706?text=Upload+Image"
+            });
+            syncWithFirestore('signatureStars', globalSignatureStarsData);
+            renderSignatureStars();
+            triggerToast("리스트 맨 위에 새 시그풍 카드가 생성되었습니다.");
+        }
+
+        function deleteSignatureStar(index) {
+            globalSignatureStarsData.splice(index, 1);
+            syncWithFirestore('signatureStars', globalSignatureStarsData);
+            renderSignatureStars();
+            triggerToast("선택 시그풍 리액션 카드가 소거되었습니다.");
+        }
+
+        function saveSignatureText(index) {
+            const titleVal = document.getElementById(`signature-title-text-${index}`).innerText.trim();
+            const descVal = document.getElementById(`signature-desc-text-${index}`).innerText.trim();
+            globalSignatureStarsData[index].title = titleVal;
+            globalSignatureStarsData[index].desc = descVal;
+            syncWithFirestore('signatureStars', globalSignatureStarsData);
+        }
+
+        let currentActiveSignatureIndexForImage = null;
+        function triggerSignatureImageUpload(index) {
+            currentActiveSignatureIndexForImage = index;
+            const triggerFile = document.getElementById('global-image-uploader');
+            triggerFile.value = '';
+            triggerFile.onchange = handleSignatureFileSelection;
+            triggerFile.click();
+        }
+
+        async function handleSignatureFileSelection(event) {
+            const file = event.target.files[0];
+            if (!file || currentActiveSignatureIndexForImage === null) return;
+            try {
+                // Compress highly to fit local cache perfectly
+                const compressed = await compressImage(file, 600, 400);
+                globalSignatureStarsData[currentActiveSignatureIndexForImage].url = compressed;
+                syncWithFirestore('signatureStars', globalSignatureStarsData);
+                renderSignatureStars();
+                triggerToast("시그풍 리액션 이미지가 성공적으로 압축 캐싱되었습니다! 📸");
+            } catch (err) {
+                console.error("Image processing error: ", err);
+                triggerToast("이미지 가공에 실패했습니다.");
+            }
+            currentActiveSignatureIndexForImage = null;
+        }
+
+        // Profile Banner Direct Image uploading operations (Newly added!)
+        let tempBase64BannerImage = '';
+
+        async function handleBannerFileSelection(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const triggerBtn = document.getElementById('banner-upload-trigger');
+            if (triggerBtn) {
+                triggerBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-1"></i>처리 중...`;
+            }
+
+            try {
+                // Highly optimize image size and resolution for banner ratios (1200x400)
+                tempBase64BannerImage = await compressImage(file, 1200, 400);
+                
+                document.getElementById('banner-upload-preview').src = tempBase64BannerImage;
+                document.getElementById('banner-upload-preview-container').classList.remove('hidden');
+                triggerToast("배너 이미지가 성공적으로 압축 캐싱되었습니다! 📸");
+            } catch (error) {
+                console.error("Banner upload error:", error);
+                triggerToast("배너 이미지 업로드 처리에 실패했습니다.");
+            } finally {
+                if (triggerBtn) {
+                    triggerBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up text-sm"></i> 컴퓨터에서 이미지 찾기`;
+                }
+            }
+        }
+
+        function clearSelectedBannerFile() {
+            document.getElementById('profile-banner-file').value = '';
+            tempBase64BannerImage = '';
+            document.getElementById('banner-upload-preview').src = '';
+            document.getElementById('banner-upload-preview-container').classList.add('hidden');
+            triggerToast("선택한 배너 파일이 해제되었습니다.");
+        }
+
+        // Admin Profile Details Editors
         function openProfileEditModal() {
             const modal = document.getElementById('profile-edit-modal');
             
-            document.getElementById('edit-profile-banner').value = globalProfileData.bannerUrl || defaultProfileData.bannerUrl || '';
+            // Clean uploaded cached elements
+            document.getElementById('profile-banner-file').value = '';
+            tempBase64BannerImage = globalProfileData.bannerUrl || '';
+
+            // Render existing banner in preview if base64 or URL exists
+            if (tempBase64BannerImage) {
+                document.getElementById('banner-upload-preview').src = tempBase64BannerImage;
+                document.getElementById('banner-upload-preview-container').classList.remove('hidden');
+                
+                // Keep URL input synced if it's a standard web image URL
+                if (!tempBase64BannerImage.startsWith('data:')) {
+                    document.getElementById('edit-profile-banner').value = tempBase64BannerImage;
+                } else {
+                    document.getElementById('edit-profile-banner').value = '';
+                }
+            } else {
+                document.getElementById('banner-upload-preview').src = '';
+                document.getElementById('banner-upload-preview-container').classList.add('hidden');
+                document.getElementById('edit-profile-banner').value = '';
+            }
+
             document.getElementById('edit-profile-intro').value = globalProfileData.introText || ''; 
             document.getElementById('edit-profile-tags').value = (globalProfileData.tags || []).join(', ');
             
-            const broadcast = globalProfileData.broadcast || {};
-            document.getElementById('edit-profile-time').value = broadcast.time || ''; 
-            document.getElementById('edit-profile-content').value = broadcast.content || ''; 
-            document.getElementById('edit-profile-game').value = broadcast.game || '';
-            
-            document.getElementById('edit-profile-likes').value = (globalProfileData.likes || []).join(', '); 
+            const platforms = globalProfileData.socials || defaultProfileData.socials || {};
+            document.getElementById('edit-profile-soop').value = platforms.soop || '';
+            document.getElementById('edit-profile-youtube').value = platforms.youtube || '';
+            document.getElementById('edit-profile-fancim').value = platforms.fancim || '';
+
+            const bc = globalProfileData.broadcast || defaultProfileData.broadcast || {};
+            document.getElementById('edit-profile-time').value = bc.time || '';
+            document.getElementById('edit-profile-content').value = bc.content || '';
+            document.getElementById('edit-profile-game').value = bc.game || '';
+
+            document.getElementById('edit-profile-likes').value = (globalProfileData.likes || []).join(', ');
             document.getElementById('edit-profile-dislikes').value = (globalProfileData.dislikes || []).join(', ');
 
             if (!globalProfileData.ddays || globalProfileData.ddays.length === 0) {
@@ -1532,18 +1674,18 @@
             if (!list) return;
             list.innerHTML = '';
             
-            const ddays = globalProfileData.ddays || defaultProfileData.ddays || [];
-            ddays.forEach((dday, index) => {
+            const events = globalProfileData.ddays || defaultProfileData.ddays || [];
+            events.forEach((ev, index) => {
                 list.innerHTML += `
-                    <div class="flex items-center gap-2 bg-[#fffdfa] dark:bg-amber-950/10 p-2 rounded-xl border border-amber-100 dark:border-amber-950/20 font-bold">
-                        <input type="text" id="edit-dday-title-${index}" value="${dday.title}" class="w-1/3 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none" placeholder="타이틀">
-                        <select id="edit-dday-type-${index}" class="w-1/4 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none">
-                            <option value="birthday" ${dday.type === 'birthday' ? 'selected' : ''}>생일</option>
-                            <option value="anniversary" ${dday.type === 'anniversary' ? 'selected' : ''}>기념일</option>
-                            <option value="dday" ${dday.type === 'dday' ? 'selected' : ''}>디데이</option>
+                    <div class="flex items-center gap-2 bg-amber-50/40 dark:bg-[#1a1813] p-2 rounded-xl border border-amber-100/50 font-bold">
+                        <input type="text" id="edit-dday-title-${index}" value="${ev.title}" class="w-1/3 bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-950 rounded-lg p-1.5 text-xs text-gray-900 dark:text-amber-100 outline-none" placeholder="이름">
+                        <select id="edit-dday-type-${index}" class="w-1/4 bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-955 rounded-lg p-1.5 text-xs text-gray-900 dark:text-amber-100 outline-none font-bold">
+                            <option value="birthday" ${ev.type === 'birthday' ? 'selected' : ''}>생일</option>
+                            <option value="anniversary" ${ev.type === 'anniversary' ? 'selected' : ''}>기념일</option>
+                            <option value="dday" ${ev.type === 'dday' ? 'selected' : ''}>디데이</option>
                         </select>
-                        <input type="text" id="edit-dday-date-${index}" value="${dday.date}" class="w-1/4 bg-white dark:bg-[#12110e] border border-amber-100 rounded-lg p-1.5 text-[10px] outline-none" placeholder="예: 2026-01-24">
-                        <button type="button" onclick="deleteEditDdayRow(${index})" class="text-gray-400 hover:text-red-500 p-1"><i class="fa-solid fa-trash-can"></i></button>
+                        <input type="text" id="edit-dday-date-${index}" value="${ev.date}" class="w-1/4 bg-white dark:bg-amber-950/20 border border-amber-100 dark:border-amber-955 rounded-lg p-1.5 text-xs text-gray-900 dark:text-amber-100 outline-none" placeholder="형식: YYYY-MM-DD">
+                        <button type="button" onclick="deleteEditDdayRow(${index})" class="text-gray-400 hover:text-red-500 p-1 text-sm"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 `;
             });
@@ -1551,7 +1693,7 @@
 
         function addEditDdayRow() {
             if (!globalProfileData.ddays) globalProfileData.ddays = [];
-            globalProfileData.ddays.push({ title: "새 기념일", type: "dday", date: "2026-11-22" });
+            globalProfileData.ddays.push({ title: "새 디데이", type: "dday", date: "2026-01-24" });
             renderEditDdays();
         }
 
@@ -1562,23 +1704,33 @@
         }
 
         function saveProfileChanges() {
-            const parse = (str) => str.split(',').map(item => item.trim()).filter(item => item !== '');
+            const splitAndTrim = (str) => str.split(',').map(item => item.trim()).filter(item => item !== '');
             
-            globalProfileData.bannerUrl = document.getElementById('edit-profile-banner').value.trim();
-            globalProfileData.introText = document.getElementById('edit-profile-intro').value; 
-            globalProfileData.tags = parse(document.getElementById('edit-profile-tags').value);
-            
-            if (!globalProfileData.broadcast) globalProfileData.broadcast = {};
-            globalProfileData.broadcast.time = document.getElementById('edit-profile-time').value; 
-            globalProfileData.broadcast.content = document.getElementById('edit-profile-content').value; 
-            globalProfileData.broadcast.game = document.getElementById('edit-profile-game').value;
-            
-            globalProfileData.likes = parse(document.getElementById('edit-profile-likes').value); 
-            globalProfileData.dislikes = parse(document.getElementById('edit-profile-dislikes').value);
+            // Prioritize Base64 image. Fallback to manual URL input or default image
+            const urlInputBanner = document.getElementById('edit-profile-banner').value.trim();
+            globalProfileData.bannerUrl = tempBase64BannerImage || urlInputBanner || defaultProfileData.bannerUrl;
 
-            const ddaysCount = (globalProfileData.ddays || []).length;
-            const savedDdays = [];
-            for (let i = 0; i < ddaysCount; i++) {
+            globalProfileData.introText = document.getElementById('edit-profile-intro').value; 
+            globalProfileData.tags = splitAndTrim(document.getElementById('edit-profile-tags').value);
+            
+            globalProfileData.socials = {
+                soop: document.getElementById('edit-profile-soop').value.trim(),
+                youtube: document.getElementById('edit-profile-youtube').value.trim(),
+                fancim: document.getElementById('edit-profile-fancim').value.trim()
+            };
+
+            globalProfileData.broadcast = {
+                time: document.getElementById('edit-profile-time').value.trim(),
+                content: document.getElementById('edit-profile-content').value.trim(),
+                game: document.getElementById('edit-profile-game').value.trim()
+            };
+
+            globalProfileData.likes = splitAndTrim(document.getElementById('edit-profile-likes').value);
+            globalProfileData.dislikes = splitAndTrim(document.getElementById('edit-profile-dislikes').value);
+
+            const count = (globalProfileData.ddays || []).length;
+            const updatedEvents = [];
+            for (let i = 0; i < count; i++) {
                 const titleEl = document.getElementById(`edit-dday-title-${i}`);
                 if (!titleEl) continue;
                 
@@ -1587,17 +1739,20 @@
                 const date = document.getElementById(`edit-dday-date-${i}`).value.trim();
                 
                 if (title !== '' && date !== '') {
-                    savedDdays.push({ title, type, date });
+                    updatedEvents.push({ title, type, date });
                 }
             }
-            globalProfileData.ddays = savedDdays;
+            globalProfileData.ddays = updatedEvents;
 
-            updateFirestore('profile', globalProfileData); 
+            syncWithFirestore('profile', globalProfileData); 
             renderProfile(); 
             closeProfileEditModal();
-            showToast("탱자의 대표 프로필들이 완벽히 적용되었습니다. 🧡");
+            triggerToast("대표 프로필과 신규 커버 아트가 안전하게 저장되었습니다 💛");
         }
 
+        // ==========================================
+        // 🔗 GLOBAL EXPOSE FOR RAW HTML ACTIONS 🔗
+        // ==========================================
         window.openProfileEditModal = openProfileEditModal;
         window.closeProfileEditModal = closeProfileEditModal;
         window.saveProfileChanges = saveProfileChanges;
@@ -1613,20 +1768,25 @@
         window.saveScheduleChanges = saveScheduleChanges;
         window.addEditDdayRow = addEditDdayRow;
         window.deleteEditDdayRow = deleteEditDdayRow;
-        window.triggerImageUpload = triggerImageUpload;
-        window.addMonthlyFansign = addMonthlyFansign;
-        window.deleteMonthlyFansign = deleteMonthlyFansign;
-        window.openFansignTextEditModal = openFansignTextEditModal;
-        window.closeFansignTextEditModal = closeFansignTextEditModal;
-        window.saveFansignText = saveFansignText;
-        window.addSignatureStar = addSignatureStar;
-        window.deleteSignatureStar = deleteSignatureStar;
-        window.openSignatureTextEditModal = openSignatureTextEditModal;
-        window.closeSignatureTextEditModal = closeSignatureTextEditModal;
-        window.saveSignatureText = saveSignatureText;
         window.openHomeworkLinkEditModal = openHomeworkLinkEditModal;
         window.closeHomeworkLinkEditModal = closeHomeworkLinkEditModal;
         window.saveHomeworkLink = saveHomeworkLink;
+        
+        // Expose new upload file handlers
+        window.handleBannerFileSelection = handleBannerFileSelection;
+        window.clearSelectedBannerFile = clearSelectedBannerFile;
+        
+        // Expose Fansign control methods
+        window.addMonthlyFansign = triggerFansignCreation;
+        window.deleteMonthlyFansign = deleteMonthlyFansign;
+        window.saveFansignText = saveFansignText;
+        window.triggerFansignImageUpload = triggerFansignImageUpload;
+        
+        // Expose Signature balloon reactions controls
+        window.addSignatureStar = triggerSignatureCreation;
+        window.deleteSignatureStar = deleteSignatureStar;
+        window.saveSignatureText = saveSignatureText;
+        window.triggerSignatureImageUpload = triggerSignatureImageUpload;
     </script>
 </body>
 </html>
